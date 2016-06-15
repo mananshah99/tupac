@@ -71,8 +71,6 @@ def addMaskOverlay(img, msk, color):
     img_overlay = cv2.addWeighted(img, alpha, msk, 1 - alpha, 1);
     return img_overlay
 
-# msktype is 0 if it's a simple addition
-# msktype is 1 if it's an overlay
 def doAddMask(imgName, mskName, color, outputName, msktype = 0):
     img = cv2.imread(imgName)
     if msktype == 0:
