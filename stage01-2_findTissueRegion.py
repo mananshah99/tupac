@@ -91,6 +91,7 @@ def run_findROI_test(ID):
 def check_ROI_OK(ID):
     mskName1 ='tr_tm/Tumor_%03d.png'%(ID)
     mskName2 ='tr_t_m/Tumor_%03d_Mask.png'%(ID)
+    
     msk1 = imread(mskName1, True)
     msk2 = imread(mskName2, True)
     msk = msk1 - msk2
@@ -101,31 +102,45 @@ def check_ROI_OK(ID):
         return False
 
 def run_findROI(ID):
-    print(ID)
-	imgName = 'small_images-level-4/TUPAC-TR-%03d.png'	
-    imgName = 'tr_t/Tumor_%03d.png'%(ID)
-    mskName1 ='tr_tm/Tumor_%03d.png'%(ID)
-    doFindROI(imgName, mskName1)
+    print("On ID " + str(ID))
+    
+    try: 
+        imgName = '../data/TrainingData/small_images-level-3/TUPAC-TR-%03d.png'%(ID)	
+        mskName1 ='../data/TrainingData/small_images-level-3-mask/TUPAC-TR-%03d.png'%(ID)
+    
+        doFindROI(imgName, mskName1)
 
-    mskName2 ='tr_t_m/Tumor_%03d_Mask.png'%(ID)
-    outputName ='tr_t_overlay/Tumor_%03d_overlay.png'%(ID)
-    tools.doAddMasks(imgName,
-                     [mskName1, mskName2],
-                     [[0, 255, 0],[0, 0, 255]],
+        outputName = '../data/TrainingData/small_images-level-3-overlay/TUPAC-TR-%03d.png'%(ID)
+
+        tools.doAddMask(imgName,
+                     mskName1,
+                     [0, 255, 0],
                      outputName)
+    except:
+        print("[!] ID " + str(ID) + " failed.")
+        pass
 
 if __name__ == "__main__":
 
 	# remember to modify the level in run_findROI
 	# generates a multiprocessing pool
-    pool = Pool(10)
+    pool = Pool(100)
 	
-	ID1, ID2 = 1, 500
-	IDs = range(ID1, ID2 + 1)
-	pool.map(run_findROI, IDs)
-	for ID in IDs:
-		if not check_ROI_OK(ID):
-			print("ROI is too small for image ", ID)
+    ID1, ID2 = 1,500
+    IDs = range(ID1, ID2 + 1)
+   
+    pool.map(run_findROI, IDs)
+    
+    #for ID in IDs:
+    #    try: 
+    #        run_findROI(ID)
+    #    except:
+    #        print "Finding ROI failed for ID " + str(ID)
+
+    # pool.map(run_findROI, IDs)
+    #for ID in IDs:
+    #    if not check_ROI_OK(ID):
+    #        print("ROI is too small for image ", ID)
 
 
 	#===there is no normal/tumor distinction in these images===

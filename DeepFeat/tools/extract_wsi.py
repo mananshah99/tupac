@@ -262,9 +262,15 @@ def main(args):
 
 if __name__ == '__main__':
     args = create_parser().parse_args()
+    
+    # set up loggging -- 
+    #   logging levels are defined as strings (uppercase)
     numeric_level = getattr(logging, args.log.upper(), None)
     if not isinstance(numeric_level, int):
         raise ValueError("Invalid log level: " + args.log)
+
     logging.basicConfig(format="%(asctime)s - %(levelname)s - %(message)s",
                         level=numeric_level)
+
+    # execute main with all arguments
     main(args)

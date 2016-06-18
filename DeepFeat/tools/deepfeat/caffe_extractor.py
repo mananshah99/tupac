@@ -31,6 +31,7 @@ class CaffeExtractor(Extractor):
         #caffemodel = config.get('caffe', 'caffemodel')
         #meanv = [float(i.strip()) for i in config.get('caffe', 'meanv').split(',')]
 
+        # parameters from the resource array (for example {'use_gpu': args.gpu, 'device_id':args.device_ids[0] })
         use_gpu = resource.get('use_gpu', False)
         device_id = resource.get('device_id', 0)
 
@@ -42,8 +43,11 @@ class CaffeExtractor(Extractor):
             caffe.set_mode_cpu()
 
         print os.getcwd()
+
+        # Initialize the CNN
         self.net = caffe.Net(self.prototxt, self.caffemodel, caffe.TEST)
 
+        # Initialize caffe's online transformer
         self.transformer = caffe.io.Transformer(
             {'data': self.net.blobs['data'].data.shape}
         )

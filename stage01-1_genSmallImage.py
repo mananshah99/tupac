@@ -53,13 +53,13 @@ def getSmallImages(iDIR, oDIR, prefix, appendix, LEVEL, IDs):
 	# appendix	'' (none)
     
 	# (for reference)  wsi_name = '%s/%s_%03d%s.svs'%(iDIR, prefix, IDs, appendix)
+    #wsi_name = 'DeepFeat/example/Tumor_001.tif'
     wsi_name = '%s/%s%03d%s.svs'%(iDIR, prefix, IDs, appendix)
 	# (for reference)  output_name ='%s/%s_%03d%s.png'%(oDIR, prefix, IDs, appendix)
     output_name ='%s/%s%03d%s.png'%(oDIR, prefix, IDs, appendix)
 	
     getSmallImage(wsi_name, output_name, LEVEL)
 
-# For later, marked @ June 15, 2016
 def addMasks(IDs):
     print(IDs)
     imgName = 'tr_t/Tumor_%03d.png'%(IDs)
@@ -67,15 +67,14 @@ def addMasks(IDs):
     outputName = 'tr_t_ma/Tumor_%03d.png'%(IDs)
     tools.doAddMask(imgName, mskName, [0, 255, 0], outputName)
 
+
+# This stage of the pipeline is complete, marked @ June 17, 2016
+
 if __name__ == "__main__":
-    ID1, ID2, LEVEL = 1, 500, 2 #[0,4] but try 0 first
-    [getSmallImages('../data/TrainingData/training_image_data/', '../data/TrainingData/small_images-level-' + str(LEVEL) + '/', "TUPAC-TR-", "", LEVEL, IDs) for IDs in range(467,468)] #range(ID1, ID2+1)]
-
-    #ID1, ID2, LEVEL = 1, 110, 2
-    #[getSmallImages('../Train_Tumor', 'Tumor', "Tumor", "", LEVEL, IDs) for IDs in range(ID1, ID2+1)]
-
-    #ID1, ID2, LEVEL = 1, 110, 5
-    #[getSmallImages("Mask", "tr_t_m", "Tumor",  "_Mask", LEVEL, IDs) for IDs in range(ID1, ID2+1)]
-
-    #ID1, ID2, LEVEL = 1, 70, 5
-    #[addMasks(IDs) for IDs in range(ID1, ID2+1)]
+    ID1, ID2, LEVEL = 1, 500, 2
+    for IDs in range(ID1, ID2+1):
+        try: 
+            getSmallImages('../data/TrainingData/training_image_data/', '../data/TrainingData/small_images-level-' + str(LEVEL) + '/', "TUPAC-TR-", "", LEVEL, IDs)  #range(ID1, ID2+1)]
+        except:
+            print("[!] File read error on ID " + str(IDs))
+            pass
