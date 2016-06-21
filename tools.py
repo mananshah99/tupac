@@ -6,6 +6,15 @@ import numpy as np
 import skimage as ski
 import skimage.morphology as morp
 
+import pickle
+import functools
+import operator
+import pandas as pd
+import theano
+import theano.tensor as T
+from theano.tensor.nnet import conv
+from sklearn.metrics import confusion_matrix
+
 def img_show(img, title=None, margin=0.05, dpi=400, cmap = 'gray'):
     nda = img
     spacing = [1 ,1, 1]
@@ -89,3 +98,129 @@ def doAddMasks(imgName, mskName_list, color_list, outputName):
         msk = ski.io.imread(mskName, True) > 0
         img = addMask(img, msk, color)
     cv2.imwrite(outputName, img)
+
+def gaussian_filter(kernel_shape):
+    x = np.zeros((kernel_shape, kernel_shape), dtype=theano.config.floatX)
+
+    def gauss(x, y, sigma=2.0):
+        Z = 2 * np.pi * sigma**2
+        return  1./Z * np.exp(-(x**2 + y**2) / (2. * sigma**2))
+
+    for i in xrange(kernel_shape):
+        for j in xrange(kernel_shape):
+            x[i,j] = gauss(i-4., j-4.)
+
+    return x / np.sum(x)
+
+
+def lecun_lcn(input, img_shape, kernel_shape, threshold=1e-4):
+    """
+    Yann LeCun's local contrast normalization
+    This is performed per-colorchannel!!!
+
+    http://yann.lecun.com/exdb/publis/pdf/jarrett-iccv-09.pdf
+    """
+    input = input.reshape((input.shape[0], 1, input.shape[1], input.shape[2]))
+    X = T.matrix(dtype=input.dtype)
+    X = X.reshape((len(input), 1, img_shape[0], img_shape[1]))
+
+    filter_shape = (1, 1, kernel_shape, kernel_shape)
+    filters = theano.shared(gaussian_filter(kernel_shape).reshape(filter_shape))
+
+    convout = conv.conv2d(input=X,
+                          filters=filters,
+                          image_shape=(input.shape[0], 1, img_shape[0], img_shape[1]),
+                          filter_shape=filter_shape,
+                          border_mode='full')
+
+    # For each pixel, remove mean of 9x9 neighborhood
+    mid = int(np.floor(kernel_shape / 2.))
+    centered_X = X - convout[:, :, mid:-mid, mid:-mid]
+
+    # Scale down norm of 9x9 patch if norm is bigger than 1
+    sum_sqr_XX = conv.conv2d(input=T.sqr(X),
+                             filters=filters,
+                             image_shape=(input.shape[0], 1, img_shape[0], img_shape[1]),
+                             filter_shape=filter_shape,
+                             border_mode='full')
+
+    denom = T.sqrt(sum_sqr_XX[:, :, mid:-mid, mid:-mid])
+    per_img_mean = T.mean(denom, axis=(1, 2))
+    divisor = T.largest(per_img_mean.dimshuffle(0, 1, 'x', 'x'), denom)
+    divisor = T.maximum(divisor, threshold)
+
+    new_X = centered_X / divisor
+    #new_X = theano.tensor.flatten(new_X, outdim=3)
+
+    f = theano.function([X], new_X)
+    return f(input)
+
+
+def lcn_image(images, kernel_size=9):
+    """
+    This assumes image is 01c and the output will be c01 (compatible with conv2d)
+
+    :param image:
+    :param inplace:
+    :return:
+    """
+    image_shape = (images.shape[1], images.shape[2])
+    if len(images.shape) == 3:
+        # this is greyscale images
+        output = lecun_lcn(images, image_shape, kernel_size)
+    else:
+        # color image, assume RGB
+        r = images[:, :, :, 0]
+        g = images[:, :, :, 1]
+        b = images[:, :, :, 2]
+
+        output = np.concatenate((
+            lecun_lcn(r, image_shape, kernel_size),
+            lecun_lcn(g, image_shape, kernel_size),
+            lecun_lcn(b, image_shape, kernel_size)),
+            axis=1
+        )
+    return output
+
+
+def global_contrast_normalize(X, scale=1., subtract_mean=True, use_std=False,
+                              sqrt_bias=0., min_divisor=1e-8):
+    """ Code adopted from here: https://github.com/lisa-lab/pylearn2/blob/master/pylearn2/expr/preprocessing.py
+        but can work with b01c and bc01 orderings
+
+        An Analysis of Single-Layer
+       Networks in Unsupervised Feature Learning". AISTATS 14, 2011.
+       http://www.stanford.edu/~acoates/papers/coatesleeng_aistats_2011.pdf
+    """
+    assert X.ndim > 2, "X.ndim must be more than 2"
+    scale = float(scale)
+    assert scale >= min_divisor
+
+    # Note: this is per-example mean across pixels, not the
+    # per-pixel mean across examples. So it is perfectly fine
+    # to subtract this without worrying about whether the current
+    # object is the train, valid, or test set.
+    aggr_axis = tuple(np.arange(len(X.shape) - 1) + 1)
+    mean = np.mean(X, axis=aggr_axis, keepdims=True)
+    if subtract_mean:
+        X = X - mean[:, np.newaxis]  # Makes a copy.
+    else:
+        X = X.copy()
+
+    if use_std:
+        # ddof=1 simulates MATLAB's var() behaviour, which is what Adam
+        # Coates' code does.
+        ddof = 1
+
+        # If we don't do this, X.var will return nan.
+        if X.shape[1] == 1:
+            ddof = 0
+
+        normalizers = np.sqrt(sqrt_bias + np.var(X, axis=aggr_axis, ddof=ddof, keepdims=True)) / scale
+    else:
+        normalizers = np.sqrt(sqrt_bias + np.sum((X ** 2), axis=aggr_axis, keepdims=True)) / scale
+
+    # Don't normalize by anything too small.
+    normalizers[normalizers < min_divisor] = 1.
+    X /= normalizers[:, np.newaxis]  # Does not make a copy.
+    return X
