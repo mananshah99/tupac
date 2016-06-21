@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 #
+# call with (fix this) 
+# ---------------------
+# python ../../deepzoom/visual.py mitosis_06-21-16 --result tumor_06-21-16 -l 10.35.73.9 -p 5100
+# 
 # deepzoom_multiserver - Example web application for viewing multiple slides
 #
 # Copyright (c) 2010-2015 Carnegie Mellon University
