@@ -1,0 +1,57 @@
+<!doctype html>
+<title>{{ page_name }}</title>
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+$(window).load(function () {
+    $("#menu span").click(function(){
+        $(this).first().parent().children("ul").children().toggle();
+        if($(this).html().charAt(0)  == "\u25b6"){
+            $(this).html("&#x25b7;");
+        } else {
+            $(this).html("&#x25b6;");
+        }
+        return false;
+    });
+});
+</script>
+
+<style type="text/css">
+li {
+    list-style-type: none;
+    margin: 0.4em 0;
+}
+li.none {
+    font-style: italic;
+}
+#menu ul li {
+    display:none;
+}
+#menu span {
+    color: #ace;
+}
+li {
+    list-style-type: none;
+}
+</style>
+
+<h1>{{ page_name }}</h1>
+
+<ul id="menu">
+    {% for entry in root_dir.children recursive %}
+        <li>
+            {% if entry.url_path %}
+                <a href="{{ url_for('slide', path=entry.url_path) }}"> {{ entry.name }} </a>
+            {% else %}
+                <span> &#x25b6;</span> {{ entry.name }}
+            {% endif %}
+            {% if entry.children %}
+                <ul>
+                    {{ loop(entry.children) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% else %}
+        <li class="none">None</li>
+    {% endfor %}
+</ul>
