@@ -55,16 +55,27 @@ def get_extractor(name, conf_file, resource):
     elif name == 'caffe_hy':
       from caffe_extractor import CaffeExtractor_HY as caffeFeature
       CAFFE_PYTHON = 'external/caffe_hy/python'
+
+    elif name == 'lasagne':
+        from caffe_extractor import LasagneExtractor as lasagneFeature
     
     else:
       logging.error("Failed to set CAFFE_PYTHON")
       return None
+   
+    if name == 'caffe' or name == 'caffe_hy': 
+        sys.path.append(CAFFE_PYTHON)
+        logging.info("CAFFE_PYTHON: %s"%(CAFFE_PYTHON))
     
-    sys.path.append(CAFFE_PYTHON)
-    logging.info("CAFFE_PYTHON: %s"%(CAFFE_PYTHON))
+        import caffe
     
-    import caffe
+        extractor = caffeFeature(caffe, conf_file, resource)
+        logging.info("`%s` feature extractor created" % name)
+        return extractor
     
-    extractor = caffeFeature(caffe, conf_file, resource)
-    logging.info("`%s` feature extractor created" % name)
-    return extractor
+    elif name == 'lasagne':
+        extractor = lasagneFeature(conf_file, resource)
+        logging.info("`%s` feature extractor created" % name)
+    
+    return extractor 
+

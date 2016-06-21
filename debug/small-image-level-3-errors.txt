@@ -1,0 +1,1581 @@
+/home/manan/anaconda2/lib/python2.7/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn('Matplotlib is building the font cache using fc-list. This may take a moment.')
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-100.svs
+     Image dimensions @ level 0      (136935, 86323)
+     Image dimensions @ level 3  (2139, 1348)
+     RGB image dimensions (width, height)  2139 1348
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-101.svs
+     Image dimensions @ level 0      (93295, 80219)
+     Image dimensions @ level 3  (2915, 2506)
+     RGB image dimensions (width, height)  2915 2506
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-102.svs
+     Image dimensions @ level 0      (131536, 80453)
+     Image dimensions @ level 3  (2055, 1257)
+     RGB image dimensions (width, height)  2055 1257
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-103.svs
+     Image dimensions @ level 0      (99008, 94784)
+     Image dimensions @ level 3  (3094, 2962)
+     RGB image dimensions (width, height)  3094 2962
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-104.svs
+     Image dimensions @ level 0      (74256, 90104)
+     Image dimensions @ level 3  (2320, 2815)
+     RGB image dimensions (width, height)  2320 2815
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-105.svs
+     Image dimensions @ level 0      (117783, 92555)
+     Image dimensions @ level 3  (3680, 2892)
+     RGB image dimensions (width, height)  3680 2892
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-106.svs
+     Image dimensions @ level 0      (81394, 75937)
+     Image dimensions @ level 3  (2543, 2373)
+     RGB image dimensions (width, height)  2543 2373
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-107.svs
+     Image dimensions @ level 0      (147468, 93657)
+     Image dimensions @ level 3  (2304, 1463)
+     RGB image dimensions (width, height)  2304 1463
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-108.svs
+     Image dimensions @ level 0      (31872, 13347)
+[!] File read error on ID 108
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-109.svs
+     Image dimensions @ level 0      (68096, 40192)
+     Image dimensions @ level 3  (2128, 1256)
+     RGB image dimensions (width, height)  2128 1256
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-110.svs
+     Image dimensions @ level 0      (142800, 81791)
+     Image dimensions @ level 3  (2231, 1277)
+     RGB image dimensions (width, height)  2231 1277
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-111.svs
+     Image dimensions @ level 0      (102815, 33551)
+     Image dimensions @ level 3  (3212, 1048)
+     RGB image dimensions (width, height)  3212 1048
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-112.svs
+     Image dimensions @ level 0      (19920, 18542)
+[!] File read error on ID 112
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-113.svs
+     Image dimensions @ level 0      (40936, 74551)
+     Image dimensions @ level 3  (1279, 2329)
+     RGB image dimensions (width, height)  1279 2329
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-114.svs
+     Image dimensions @ level 0      (135377, 74380)
+     Image dimensions @ level 3  (2115, 1162)
+     RGB image dimensions (width, height)  2115 1162
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-115.svs
+     Image dimensions @ level 0      (151699, 66761)
+     Image dimensions @ level 3  (2370, 1043)
+     RGB image dimensions (width, height)  2370 1043
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-116.svs
+     Image dimensions @ level 0      (37632, 41216)
+[!] File read error on ID 116
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-117.svs
+     Image dimensions @ level 0      (99008, 66322)
+     Image dimensions @ level 3  (3094, 2072)
+     RGB image dimensions (width, height)  3094 2072
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-118.svs
+     Image dimensions @ level 0      (65688, 61262)
+     Image dimensions @ level 3  (2052, 1914)
+     RGB image dimensions (width, height)  2052 1914
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-119.svs
+     Image dimensions @ level 0      (196305, 90560)
+     Image dimensions @ level 3  (3067, 1415)
+     RGB image dimensions (width, height)  3067 1415
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-120.svs
+     Image dimensions @ level 0      (86632, 69822)
+     Image dimensions @ level 3  (2707, 2181)
+     RGB image dimensions (width, height)  2707 2181
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-121.svs
+     Image dimensions @ level 0      (95200, 75137)
+     Image dimensions @ level 3  (2975, 2348)
+     RGB image dimensions (width, height)  2975 2348
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-122.svs
+     Image dimensions @ level 0      (86632, 66041)
+     Image dimensions @ level 3  (2707, 2063)
+     RGB image dimensions (width, height)  2707 2063
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-123.svs
+     Image dimensions @ level 0      (119000, 88951)
+     Image dimensions @ level 3  (3718, 2779)
+     RGB image dimensions (width, height)  3718 2779
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-124.svs
+     Image dimensions @ level 0      (148426, 57180)
+     Image dimensions @ level 3  (2319, 893)
+     RGB image dimensions (width, height)  2319 893
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-125.svs
+     Image dimensions @ level 0      (113274, 72891)
+     Image dimensions @ level 3  (3539, 2277)
+     RGB image dimensions (width, height)  3539 2277
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-126.svs
+     Image dimensions @ level 0      (121856, 90588)
+     Image dimensions @ level 3  (3808, 2830)
+     RGB image dimensions (width, height)  3808 2830
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-127.svs
+     Image dimensions @ level 0      (70656, 90368)
+     Image dimensions @ level 3  (2208, 2824)
+     RGB image dimensions (width, height)  2208 2824
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-128.svs
+     Image dimensions @ level 0      (137088, 30980)
+     Image dimensions @ level 3  (2142, 484)
+     RGB image dimensions (width, height)  2142 484
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-129.svs
+     Image dimensions @ level 0      (88536, 73406)
+     Image dimensions @ level 3  (2766, 2293)
+     RGB image dimensions (width, height)  2766 2293
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-130.svs
+     Image dimensions @ level 0      (132147, 93747)
+     Image dimensions @ level 3  (2064, 1464)
+     RGB image dimensions (width, height)  2064 1464
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-131.svs
+     Image dimensions @ level 0      (125664, 66062)
+     Image dimensions @ level 3  (3927, 2064)
+     RGB image dimensions (width, height)  3927 2064
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-132.svs
+     Image dimensions @ level 0      (90251, 46184)
+     Image dimensions @ level 3  (2820, 1443)
+     RGB image dimensions (width, height)  2820 1443
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-133.svs
+     Image dimensions @ level 0      (81872, 73952)
+     Image dimensions @ level 3  (2558, 2311)
+     RGB image dimensions (width, height)  2558 2311
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-134.svs
+     Image dimensions @ level 0      (138991, 59190)
+     Image dimensions @ level 3  (2171, 924)
+     RGB image dimensions (width, height)  2171 924
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-135.svs
+     Image dimensions @ level 0      (72776, 69099)
+     Image dimensions @ level 3  (2274, 2159)
+     RGB image dimensions (width, height)  2274 2159
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-136.svs
+     Image dimensions @ level 0      (99960, 58094)
+     Image dimensions @ level 3  (3123, 1815)
+     RGB image dimensions (width, height)  3123 1815
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-137.svs
+     Image dimensions @ level 0      (116144, 40272)
+     Image dimensions @ level 3  (3629, 1258)
+     RGB image dimensions (width, height)  3629 1258
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-138.svs
+     Image dimensions @ level 0      (73734, 72663)
+     Image dimensions @ level 3  (2304, 2270)
+     RGB image dimensions (width, height)  2304 2270
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-139.svs
+     Image dimensions @ level 0      (111384, 90505)
+     Image dimensions @ level 3  (3480, 2828)
+[!] File read error on ID 139
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-140.svs
+     Image dimensions @ level 0      (105334, 78092)
+     Image dimensions @ level 3  (3291, 2440)
+     RGB image dimensions (width, height)  3291 2440
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-141.svs
+     Image dimensions @ level 0      (115192, 89294)
+     Image dimensions @ level 3  (3599, 2790)
+     RGB image dimensions (width, height)  3599 2790
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-142.svs
+     Image dimensions @ level 0      (124711, 93230)
+     Image dimensions @ level 3  (3897, 2913)
+     RGB image dimensions (width, height)  3897 2913
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-143.svs
+     Image dimensions @ level 0      (115868, 82107)
+     Image dimensions @ level 3  (3620, 2565)
+     RGB image dimensions (width, height)  3620 2565
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-144.svs
+     Image dimensions @ level 0      (125664, 90377)
+     Image dimensions @ level 3  (3927, 2824)
+     RGB image dimensions (width, height)  3927 2824
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-145.svs
+     Image dimensions @ level 0      (117783, 84396)
+     Image dimensions @ level 3  (3680, 2637)
+     RGB image dimensions (width, height)  3680 2637
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-146.svs
+     Image dimensions @ level 0      (108527, 89753)
+     Image dimensions @ level 3  (3391, 2804)
+     RGB image dimensions (width, height)  3391 2804
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-147.svs
+     Image dimensions @ level 0      (107576, 86527)
+     Image dimensions @ level 3  (3361, 2703)
+     RGB image dimensions (width, height)  3361 2703
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-148.svs
+     Image dimensions @ level 0      (102816, 90000)
+     Image dimensions @ level 3  (3213, 2812)
+     RGB image dimensions (width, height)  3213 2812
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-149.svs
+     Image dimensions @ level 0      (45816, 42965)
+[!] File read error on ID 149
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-150.svs
+     Image dimensions @ level 0      (121855, 85033)
+     Image dimensions @ level 3  (3807, 2657)
+     RGB image dimensions (width, height)  3807 2657
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-151.svs
+     Image dimensions @ level 0      (83776, 70579)
+     Image dimensions @ level 3  (2618, 2205)
+     RGB image dimensions (width, height)  2618 2205
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-152.svs
+     Image dimensions @ level 0      (155539, 64480)
+     Image dimensions @ level 3  (2430, 1007)
+     RGB image dimensions (width, height)  2430 1007
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-153.svs
+     Image dimensions @ level 0      (102816, 87531)
+     Image dimensions @ level 3  (3213, 2735)
+     RGB image dimensions (width, height)  3213 2735
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-154.svs
+     Image dimensions @ level 0      (125444, 90727)
+     Image dimensions @ level 3  (3920, 2835)
+     RGB image dimensions (width, height)  3920 2835
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-155.svs
+     Image dimensions @ level 0      (133280, 89392)
+     Image dimensions @ level 3  (2082, 1396)
+     RGB image dimensions (width, height)  2082 1396
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-156.svs
+     Image dimensions @ level 0      (151298, 93635)
+     Image dimensions @ level 3  (2364, 1463)
+     RGB image dimensions (width, height)  2364 1463
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-157.svs
+     Image dimensions @ level 0      (125444, 90981)
+     Image dimensions @ level 3  (3920, 2843)
+     RGB image dimensions (width, height)  3920 2843
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-158.svs
+     Image dimensions @ level 0      (145553, 89587)
+     Image dimensions @ level 3  (2274, 1399)
+     RGB image dimensions (width, height)  2274 1399
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-159.svs
+     Image dimensions @ level 0      (111374, 83027)
+     Image dimensions @ level 3  (3480, 2594)
+     RGB image dimensions (width, height)  3480 2594
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-160.svs
+     Image dimensions @ level 0      (178975, 75170)
+     Image dimensions @ level 3  (2796, 1174)
+     RGB image dimensions (width, height)  2796 1174
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-161.svs
+     Image dimensions @ level 0      (66640, 65949)
+     Image dimensions @ level 3  (2082, 2060)
+     RGB image dimensions (width, height)  2082 2060
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-162.svs
+     Image dimensions @ level 0      (158032, 55086)
+     Image dimensions @ level 3  (2469, 860)
+     RGB image dimensions (width, height)  2469 860
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-163.svs
+     Image dimensions @ level 0      (118047, 86173)
+     Image dimensions @ level 3  (3688, 2692)
+     RGB image dimensions (width, height)  3688 2692
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-164.svs
+     Image dimensions @ level 0      (132147, 71044)
+     Image dimensions @ level 3  (2064, 1110)
+     RGB image dimensions (width, height)  2064 1110
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-165.svs
+     Image dimensions @ level 0      (92344, 64003)
+     Image dimensions @ level 3  (2885, 2000)
+     RGB image dimensions (width, height)  2885 2000
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-166.svs
+     Image dimensions @ level 0      (80920, 86624)
+     Image dimensions @ level 3  (2528, 2707)
+     RGB image dimensions (width, height)  2528 2707
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-167.svs
+     Image dimensions @ level 0      (117096, 90605)
+     Image dimensions @ level 3  (3659, 2831)
+     RGB image dimensions (width, height)  3659 2831
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-168.svs
+     Image dimensions @ level 0      (135184, 86558)
+     Image dimensions @ level 3  (2112, 1352)
+     RGB image dimensions (width, height)  2112 1352
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-169.svs
+     Image dimensions @ level 0      (91928, 93215)
+     Image dimensions @ level 3  (2872, 2912)
+     RGB image dimensions (width, height)  2872 2912
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-170.svs
+     Image dimensions @ level 0      (188644, 68674)
+     Image dimensions @ level 3  (2947, 1073)
+     RGB image dimensions (width, height)  2947 1073
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-171.svs
+     Image dimensions @ level 0      (133104, 84302)
+     Image dimensions @ level 3  (2079, 1317)
+     RGB image dimensions (width, height)  2079 1317
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-172.svs
+     Image dimensions @ level 0      (95200, 63022)
+     Image dimensions @ level 3  (2975, 1969)
+     RGB image dimensions (width, height)  2975 1969
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-173.svs
+     Image dimensions @ level 0      (52480, 37632)
+[!] File read error on ID 173
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-174.svs
+     Image dimensions @ level 0      (119951, 92237)
+     Image dimensions @ level 3  (3748, 2882)
+     RGB image dimensions (width, height)  3748 2882
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-175.svs
+     Image dimensions @ level 0      (136136, 60100)
+     Image dimensions @ level 3  (2127, 939)
+     RGB image dimensions (width, height)  2127 939
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-176.svs
+     Image dimensions @ level 0      (130424, 38904)
+     Image dimensions @ level 3  (2037, 607)
+     RGB image dimensions (width, height)  2037 607
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-177.svs
+     Image dimensions @ level 0      (99852, 88865)
+     Image dimensions @ level 3  (3120, 2777)
+     RGB image dimensions (width, height)  3120 2777
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-178.svs
+     Image dimensions @ level 0      (104720, 42081)
+     Image dimensions @ level 3  (3272, 1315)
+     RGB image dimensions (width, height)  3272 1315
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-179.svs
+     Image dimensions @ level 0      (112336, 85688)
+     Image dimensions @ level 3  (3510, 2677)
+     RGB image dimensions (width, height)  3510 2677
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-180.svs
+     Image dimensions @ level 0      (98056, 76196)
+     Image dimensions @ level 3  (3064, 2381)
+     RGB image dimensions (width, height)  3064 2381
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-181.svs
+     Image dimensions @ level 0      (75849, 67443)
+     Image dimensions @ level 3  (2370, 2107)
+     RGB image dimensions (width, height)  2370 2107
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-182.svs
+     Image dimensions @ level 0      (121613, 83354)
+     Image dimensions @ level 3  (3800, 2604)
+     RGB image dimensions (width, height)  3800 2604
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-183.svs
+     Image dimensions @ level 0      (100546, 84748)
+     Image dimensions @ level 3  (3142, 2648)
+     RGB image dimensions (width, height)  3142 2648
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-184.svs
+     Image dimensions @ level 0      (102815, 75326)
+     Image dimensions @ level 3  (3212, 2353)
+     RGB image dimensions (width, height)  3212 2353
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-185.svs
+     Image dimensions @ level 0      (97104, 61214)
+     Image dimensions @ level 3  (3034, 1912)
+     RGB image dimensions (width, height)  3034 1912
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-186.svs
+     Image dimensions @ level 0      (88331, 70445)
+     Image dimensions @ level 3  (2760, 2201)
+     RGB image dimensions (width, height)  2760 2201
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-187.svs
+     Image dimensions @ level 0      (112995, 91820)
+     Image dimensions @ level 3  (3531, 2869)
+     RGB image dimensions (width, height)  3531 2869
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-188.svs
+     Image dimensions @ level 0      (80437, 72115)
+     Image dimensions @ level 3  (2513, 2253)
+     RGB image dimensions (width, height)  2513 2253
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-189.svs
+     Image dimensions @ level 0      (166600, 49413)
+     Image dimensions @ level 3  (2603, 772)
+     RGB image dimensions (width, height)  2603 772
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-190.svs
+     Image dimensions @ level 0      (114910, 72168)
+     Image dimensions @ level 3  (3590, 2255)
+     RGB image dimensions (width, height)  3590 2255
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-191.svs
+     Image dimensions @ level 0      (170408, 86460)
+     Image dimensions @ level 3  (2662, 1350)
+     RGB image dimensions (width, height)  2662 1350
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-192.svs
+     Image dimensions @ level 0      (102461, 84228)
+     Image dimensions @ level 3  (3201, 2632)
+     RGB image dimensions (width, height)  3201 2632
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-193.svs
+     Image dimensions @ level 0      (77111, 79199)
+     Image dimensions @ level 3  (2409, 2474)
+     RGB image dimensions (width, height)  2409 2474
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-194.svs
+     Image dimensions @ level 0      (90440, 88610)
+     Image dimensions @ level 3  (2826, 2769)
+     RGB image dimensions (width, height)  2826 2769
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-195.svs
+     Image dimensions @ level 0      (40704, 58624)
+     Image dimensions @ level 3  (1272, 1832)
+     RGB image dimensions (width, height)  1272 1832
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-196.svs
+     Image dimensions @ level 0      (105671, 63865)
+     Image dimensions @ level 3  (3302, 1995)
+     RGB image dimensions (width, height)  3302 1995
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-197.svs
+     Image dimensions @ level 0      (95758, 76873)
+     Image dimensions @ level 3  (2992, 2402)
+     RGB image dimensions (width, height)  2992 2402
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-198.svs
+     Image dimensions @ level 0      (91391, 88569)
+     Image dimensions @ level 3  (2855, 2767)
+     RGB image dimensions (width, height)  2855 2767
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-199.svs
+     Image dimensions @ level 0      (108527, 80580)
+     Image dimensions @ level 3  (3391, 2518)
+     RGB image dimensions (width, height)  3391 2518
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-200.svs
+     Image dimensions @ level 0      (94075, 80287)
+     Image dimensions @ level 3  (2939, 2508)
+     RGB image dimensions (width, height)  2939 2508
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-201.svs
+     Image dimensions @ level 0      (151298, 78583)
+     Image dimensions @ level 3  (2364, 1227)
+     RGB image dimensions (width, height)  2364 1227
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-202.svs
+     Image dimensions @ level 0      (91928, 80211)
+     Image dimensions @ level 3  (2872, 2506)
+     RGB image dimensions (width, height)  2872 2506
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-203.svs
+     Image dimensions @ level 0      (50432, 34048)
+[!] File read error on ID 203
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-204.svs
+     Image dimensions @ level 0      (96152, 37492)
+     Image dimensions @ level 3  (3004, 1171)
+     RGB image dimensions (width, height)  3004 1171
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-205.svs
+     Image dimensions @ level 0      (67592, 56646)
+     Image dimensions @ level 3  (2112, 1770)
+[!] File read error on ID 205
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-206.svs
+     Image dimensions @ level 0      (64736, 58946)
+     Image dimensions @ level 3  (2023, 1842)
+     RGB image dimensions (width, height)  2023 1842
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-207.svs
+     Image dimensions @ level 0      (68946, 59686)
+     Image dimensions @ level 3  (2154, 1865)
+     RGB image dimensions (width, height)  2154 1865
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-208.svs
+     Image dimensions @ level 0      (121935, 88814)
+     Image dimensions @ level 3  (3810, 2775)
+     RGB image dimensions (width, height)  3810 2775
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-209.svs
+     Image dimensions @ level 0      (104720, 75118)
+     Image dimensions @ level 3  (3272, 2347)
+     RGB image dimensions (width, height)  3272 2347
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-210.svs
+     Image dimensions @ level 0      (73929, 72247)
+     Image dimensions @ level 3  (2310, 2257)
+     RGB image dimensions (width, height)  2310 2257
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-211.svs
+     Image dimensions @ level 0      (158002, 81097)
+     Image dimensions @ level 3  (2468, 1267)
+     RGB image dimensions (width, height)  2468 1267
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-212.svs
+     Image dimensions @ level 0      (102815, 88431)
+     Image dimensions @ level 3  (3212, 2763)
+     RGB image dimensions (width, height)  3212 2763
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-213.svs
+     Image dimensions @ level 0      (150415, 48894)
+     Image dimensions @ level 3  (2350, 763)
+     RGB image dimensions (width, height)  2350 763
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-214.svs
+     Image dimensions @ level 0      (147858, 85469)
+     Image dimensions @ level 3  (2310, 1335)
+     RGB image dimensions (width, height)  2310 1335
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-215.svs
+     Image dimensions @ level 0      (146608, 82106)
+     Image dimensions @ level 3  (2290, 1282)
+     RGB image dimensions (width, height)  2290 1282
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-216.svs
+     Image dimensions @ level 0      (171359, 56804)
+     Image dimensions @ level 3  (2677, 887)
+     RGB image dimensions (width, height)  2677 887
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-217.svs
+     Image dimensions @ level 0      (100912, 78818)
+     Image dimensions @ level 3  (3153, 2463)
+     RGB image dimensions (width, height)  3153 2463
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-218.svs
+     Image dimensions @ level 0      (100812, 69911)
+     Image dimensions @ level 3  (3150, 2184)
+     RGB image dimensions (width, height)  3150 2184
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-219.svs
+     Image dimensions @ level 0      (117134, 88825)
+     Image dimensions @ level 3  (3660, 2775)
+     RGB image dimensions (width, height)  3660 2775
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-220.svs
+     Image dimensions @ level 0      (108207, 81900)
+     Image dimensions @ level 3  (3381, 2559)
+     RGB image dimensions (width, height)  3381 2559
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-221.svs
+     Image dimensions @ level 0      (174742, 72773)
+     Image dimensions @ level 3  (2730, 1137)
+     RGB image dimensions (width, height)  2730 1137
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-222.svs
+     Image dimensions @ level 0      (92344, 77536)
+     Image dimensions @ level 3  (2885, 2423)
+     RGB image dimensions (width, height)  2885 2423
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-223.svs
+     Image dimensions @ level 0      (73303, 52486)
+     Image dimensions @ level 3  (2290, 1640)
+     RGB image dimensions (width, height)  2290 1640
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-224.svs
+     Image dimensions @ level 0      (106624, 86201)
+     Image dimensions @ level 3  (3332, 2693)
+     RGB image dimensions (width, height)  3332 2693
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-225.svs
+     Image dimensions @ level 0      (115191, 42754)
+     Image dimensions @ level 3  (3599, 1336)
+     RGB image dimensions (width, height)  3599 1336
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-226.svs
+     Image dimensions @ level 0      (113294, 86054)
+     Image dimensions @ level 3  (3540, 2689)
+     RGB image dimensions (width, height)  3540 2689
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-227.svs
+     Image dimensions @ level 0      (112037, 88255)
+     Image dimensions @ level 3  (3501, 2757)
+     RGB image dimensions (width, height)  3501 2757
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-228.svs
+     Image dimensions @ level 0      (119952, 24046)
+     Image dimensions @ level 3  (3748, 751)
+     RGB image dimensions (width, height)  3748 751
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-229.svs
+     Image dimensions @ level 0      (92344, 72764)
+     Image dimensions @ level 3  (2885, 2273)
+     RGB image dimensions (width, height)  2885 2273
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-230.svs
+     Image dimensions @ level 0      (94801, 85804)
+     Image dimensions @ level 3  (2962, 2681)
+     RGB image dimensions (width, height)  2962 2681
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-231.svs
+     Image dimensions @ level 0      (87583, 88560)
+     Image dimensions @ level 3  (2736, 2767)
+     RGB image dimensions (width, height)  2736 2767
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-232.svs
+     Image dimensions @ level 0      (72969, 57596)
+     Image dimensions @ level 3  (2280, 1799)
+     RGB image dimensions (width, height)  2280 1799
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-233.svs
+     Image dimensions @ level 0      (130424, 86726)
+     Image dimensions @ level 3  (2037, 1355)
+     RGB image dimensions (width, height)  2037 1355
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-234.svs
+     Image dimensions @ level 0      (142098, 85231)
+     Image dimensions @ level 3  (2220, 1331)
+     RGB image dimensions (width, height)  2220 1331
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-235.svs
+     Image dimensions @ level 0      (75208, 84093)
+     Image dimensions @ level 3  (2350, 2627)
+     RGB image dimensions (width, height)  2350 2627
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-236.svs
+     Image dimensions @ level 0      (107576, 72543)
+     Image dimensions @ level 3  (3361, 2266)
+     RGB image dimensions (width, height)  3361 2266
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-237.svs
+     Image dimensions @ level 0      (109480, 68589)
+     Image dimensions @ level 3  (3421, 2143)
+     RGB image dimensions (width, height)  3421 2143
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-238.svs
+     Image dimensions @ level 0      (43264, 34560)
+[!] File read error on ID 238
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-239.svs
+     Image dimensions @ level 0      (118740, 83879)
+     Image dimensions @ level 3  (3710, 2621)
+     RGB image dimensions (width, height)  3710 2621
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-240.svs
+     Image dimensions @ level 0      (103419, 84731)
+     Image dimensions @ level 3  (3231, 2647)
+     RGB image dimensions (width, height)  3231 2647
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-241.svs
+     Image dimensions @ level 0      (103693, 65863)
+     Image dimensions @ level 3  (3240, 2058)
+     RGB image dimensions (width, height)  3240 2058
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-242.svs
+     Image dimensions @ level 0      (43824, 51986)
+     Image dimensions @ level 3  (1369, 1624)
+[!] File read error on ID 242
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-243.svs
+     Image dimensions @ level 0      (62832, 86855)
+     Image dimensions @ level 3  (1963, 2714)
+     RGB image dimensions (width, height)  1963 2714
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-244.svs
+     Image dimensions @ level 0      (122571, 76971)
+     Image dimensions @ level 3  (3830, 2405)
+     RGB image dimensions (width, height)  3830 2405
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-245.svs
+     Image dimensions @ level 0      (80437, 78490)
+     Image dimensions @ level 3  (2513, 2452)
+     RGB image dimensions (width, height)  2513 2452
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-246.svs
+     Image dimensions @ level 0      (134417, 62758)
+     Image dimensions @ level 3  (2100, 980)
+     RGB image dimensions (width, height)  2100 980
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-247.svs
+     Image dimensions @ level 0      (119000, 83360)
+     Image dimensions @ level 3  (3718, 2605)
+     RGB image dimensions (width, height)  3718 2605
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-248.svs
+     Image dimensions @ level 0      (111384, 88192)
+     Image dimensions @ level 3  (3480, 2756)
+[!] File read error on ID 248
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-249.svs
+     Image dimensions @ level 0      (44049, 47334)
+[!] File read error on ID 249
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-250.svs
+     Image dimensions @ level 0      (101864, 78486)
+     Image dimensions @ level 3  (3183, 2452)
+     RGB image dimensions (width, height)  3183 2452
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-251.svs
+     Image dimensions @ level 0      (93295, 76122)
+     Image dimensions @ level 3  (2915, 2378)
+     RGB image dimensions (width, height)  2915 2378
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-252.svs
+     Image dimensions @ level 0      (85680, 47955)
+     Image dimensions @ level 3  (2677, 1498)
+     RGB image dimensions (width, height)  2677 1498
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-253.svs
+     Image dimensions @ level 0      (99008, 77456)
+     Image dimensions @ level 3  (3094, 2420)
+     RGB image dimensions (width, height)  3094 2420
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-254.svs
+     Image dimensions @ level 0      (99959, 80069)
+     Image dimensions @ level 3  (3123, 2502)
+     RGB image dimensions (width, height)  3123 2502
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-255.svs
+     Image dimensions @ level 0      (117096, 82872)
+     Image dimensions @ level 3  (3659, 2589)
+     RGB image dimensions (width, height)  3659 2589
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-256.svs
+     Image dimensions @ level 0      (36451, 57504)
+     Image dimensions @ level 3  (1139, 1797)
+[!] File read error on ID 256
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-257.svs
+     Image dimensions @ level 0      (191352, 58998)
+     Image dimensions @ level 3  (2989, 921)
+     RGB image dimensions (width, height)  2989 921
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-258.svs
+     Image dimensions @ level 0      (142800, 34647)
+     Image dimensions @ level 3  (2231, 541)
+     RGB image dimensions (width, height)  2231 541
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-259.svs
+     Image dimensions @ level 0      (163743, 87914)
+     Image dimensions @ level 3  (2558, 1373)
+     RGB image dimensions (width, height)  2558 1373
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-260.svs
+     Image dimensions @ level 0      (97103, 76787)
+     Image dimensions @ level 3  (3034, 2399)
+     RGB image dimensions (width, height)  3034 2399
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-261.svs
+     Image dimensions @ level 0      (79690, 75773)
+     Image dimensions @ level 3  (2490, 2367)
+     RGB image dimensions (width, height)  2490 2367
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-262.svs
+     Image dimensions @ level 0      (77564, 57339)
+     Image dimensions @ level 3  (2423, 1791)
+     RGB image dimensions (width, height)  2423 1791
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-263.svs
+     Image dimensions @ level 0      (33024, 85248)
+     Image dimensions @ level 3  (1032, 2664)
+     RGB image dimensions (width, height)  1032 2664
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-264.svs
+     Image dimensions @ level 0      (98892, 80275)
+     Image dimensions @ level 3  (3090, 2508)
+     RGB image dimensions (width, height)  3090 2508
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-265.svs
+     Image dimensions @ level 0      (126616, 90405)
+     Image dimensions @ level 3  (3956, 2825)
+     RGB image dimensions (width, height)  3956 2825
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-266.svs
+     Image dimensions @ level 0      (92343, 91192)
+     Image dimensions @ level 3  (2885, 2849)
+     RGB image dimensions (width, height)  2885 2849
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-267.svs
+     Image dimensions @ level 0      (108527, 85330)
+     Image dimensions @ level 3  (3391, 2666)
+     RGB image dimensions (width, height)  3391 2666
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-268.svs
+     Image dimensions @ level 0      (105334, 93907)
+     Image dimensions @ level 3  (3291, 2934)
+     RGB image dimensions (width, height)  3291 2934
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-269.svs
+     Image dimensions @ level 0      (64735, 39690)
+[!] File read error on ID 269
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-270.svs
+     Image dimensions @ level 0      (142799, 63621)
+     Image dimensions @ level 3  (2231, 994)
+     RGB image dimensions (width, height)  2231 994
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-271.svs
+     Image dimensions @ level 0      (90440, 80681)
+     Image dimensions @ level 3  (2826, 2521)
+     RGB image dimensions (width, height)  2826 2521
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-272.svs
+     Image dimensions @ level 0      (154224, 91488)
+     Image dimensions @ level 3  (2409, 1429)
+     RGB image dimensions (width, height)  2409 1429
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-273.svs
+     Image dimensions @ level 0      (89055, 75378)
+     Image dimensions @ level 3  (2782, 2355)
+     RGB image dimensions (width, height)  2782 2355
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-274.svs
+     Image dimensions @ level 0      (75207, 50035)
+     Image dimensions @ level 3  (2350, 1563)
+     RGB image dimensions (width, height)  2350 1563
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-275.svs
+     Image dimensions @ level 0      (137087, 99647)
+     Image dimensions @ level 3  (2141, 1556)
+     RGB image dimensions (width, height)  2141 1556
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-276.svs
+     Image dimensions @ level 0      (138850, 42695)
+     Image dimensions @ level 3  (2169, 667)
+     RGB image dimensions (width, height)  2169 667
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-277.svs
+     Image dimensions @ level 0      (97673, 51865)
+     Image dimensions @ level 3  (3052, 1620)
+     RGB image dimensions (width, height)  3052 1620
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-278.svs
+     Image dimensions @ level 0      (49794, 65923)
+     Image dimensions @ level 3  (1556, 2060)
+     RGB image dimensions (width, height)  1556 2060
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-279.svs
+     Image dimensions @ level 0      (88536, 57546)
+     Image dimensions @ level 3  (2766, 1798)
+     RGB image dimensions (width, height)  2766 1798
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-280.svs
+     Image dimensions @ level 0      (63310, 30341)
+[!] File read error on ID 280
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-281.svs
+     Image dimensions @ level 0      (58412, 66635)
+     Image dimensions @ level 3  (1825, 2082)
+     RGB image dimensions (width, height)  1825 2082
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-282.svs
+     Image dimensions @ level 0      (81872, 84152)
+     Image dimensions @ level 3  (2558, 2629)
+     RGB image dimensions (width, height)  2558 2629
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-283.svs
+     Image dimensions @ level 0      (145655, 65430)
+     Image dimensions @ level 3  (2275, 1022)
+     RGB image dimensions (width, height)  2275 1022
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-284.svs
+     Image dimensions @ level 0      (112336, 74817)
+     Image dimensions @ level 3  (3510, 2338)
+     RGB image dimensions (width, height)  3510 2338
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-285.svs
+     Image dimensions @ level 0      (78064, 78794)
+     Image dimensions @ level 3  (2439, 2462)
+     RGB image dimensions (width, height)  2439 2462
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-286.svs
+     Image dimensions @ level 0      (39168, 39168)
+[!] File read error on ID 286
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-287.svs
+     Image dimensions @ level 0      (96151, 82354)
+     Image dimensions @ level 3  (3004, 2573)
+     RGB image dimensions (width, height)  3004 2573
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-288.svs
+     Image dimensions @ level 0      (109434, 90504)
+     Image dimensions @ level 3  (3419, 2828)
+     RGB image dimensions (width, height)  3419 2828
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-289.svs
+     Image dimensions @ level 0      (99960, 65334)
+     Image dimensions @ level 3  (3123, 2041)
+     RGB image dimensions (width, height)  3123 2041
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-290.svs
+     Image dimensions @ level 0      (102733, 83047)
+     Image dimensions @ level 3  (3210, 2595)
+     RGB image dimensions (width, height)  3210 2595
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-291.svs
+     Image dimensions @ level 0      (120904, 73319)
+     Image dimensions @ level 3  (3778, 2291)
+     RGB image dimensions (width, height)  3778 2291
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-292.svs
+     Image dimensions @ level 0      (42240, 44288)
+[!] File read error on ID 292
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-293.svs
+     Image dimensions @ level 0      (54264, 70636)
+     Image dimensions @ level 3  (1695, 2207)
+     RGB image dimensions (width, height)  1695 2207
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-294.svs
+     Image dimensions @ level 0      (70144, 82176)
+     Image dimensions @ level 3  (2192, 2568)
+     RGB image dimensions (width, height)  2192 2568
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-295.svs
+     Image dimensions @ level 0      (136337, 86760)
+     Image dimensions @ level 3  (2130, 1355)
+     RGB image dimensions (width, height)  2130 1355
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-296.svs
+     Image dimensions @ level 0      (93295, 41721)
+     Image dimensions @ level 3  (2915, 1303)
+     RGB image dimensions (width, height)  2915 1303
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-297.svs
+     Image dimensions @ level 0      (184688, 94468)
+     Image dimensions @ level 3  (2885, 1476)
+     RGB image dimensions (width, height)  2885 1476
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-298.svs
+     Image dimensions @ level 0      (85450, 84350)
+     Image dimensions @ level 3  (2670, 2635)
+     RGB image dimensions (width, height)  2670 2635
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-299.svs
+     Image dimensions @ level 0      (62831, 86047)
+     Image dimensions @ level 3  (1963, 2688)
+     RGB image dimensions (width, height)  1963 2688
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-300.svs
+     Image dimensions @ level 0      (135977, 87349)
+     Image dimensions @ level 3  (2124, 1364)
+     RGB image dimensions (width, height)  2124 1364
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-301.svs
+     Image dimensions @ level 0      (72969, 73766)
+     Image dimensions @ level 3  (2280, 2305)
+     RGB image dimensions (width, height)  2280 2305
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-302.svs
+     Image dimensions @ level 0      (105613, 88852)
+     Image dimensions @ level 3  (3300, 2776)
+     RGB image dimensions (width, height)  3300 2776
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-303.svs
+     Image dimensions @ level 0      (173323, 78453)
+     Image dimensions @ level 3  (2708, 1225)
+     RGB image dimensions (width, height)  2708 1225
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-304.svs
+     Image dimensions @ level 0      (109453, 72418)
+     Image dimensions @ level 3  (3420, 2263)
+     RGB image dimensions (width, height)  3420 2263
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-305.svs
+     Image dimensions @ level 0      (70448, 72681)
+     Image dimensions @ level 3  (2201, 2271)
+     RGB image dimensions (width, height)  2201 2271
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-306.svs
+     Image dimensions @ level 0      (36096, 39168)
+[!] File read error on ID 306
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-307.svs
+     Image dimensions @ level 0      (100912, 83588)
+     Image dimensions @ level 3  (3153, 2612)
+     RGB image dimensions (width, height)  3153 2612
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-308.svs
+     Image dimensions @ level 0      (128316, 47859)
+     Image dimensions @ level 3  (4009, 1495)
+     RGB image dimensions (width, height)  4009 1495
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-309.svs
+     Image dimensions @ level 0      (73304, 64442)
+     Image dimensions @ level 3  (2290, 2013)
+     RGB image dimensions (width, height)  2290 2013
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-310.svs
+     Image dimensions @ level 0      (100812, 77998)
+     Image dimensions @ level 3  (3150, 2437)
+     RGB image dimensions (width, height)  3150 2437
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-311.svs
+     Image dimensions @ level 0      (93131, 81301)
+     Image dimensions @ level 3  (2910, 2540)
+     RGB image dimensions (width, height)  2910 2540
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-312.svs
+     Image dimensions @ level 0      (106623, 65505)
+     Image dimensions @ level 3  (3331, 2047)
+     RGB image dimensions (width, height)  3331 2047
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-313.svs
+     Image dimensions @ level 0      (47935, 39697)
+[!] File read error on ID 313
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-314.svs
+     Image dimensions @ level 0      (72352, 42241)
+     Image dimensions @ level 3  (2261, 1320)
+     RGB image dimensions (width, height)  2261 1320
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-315.svs
+     Image dimensions @ level 0      (103693, 76727)
+     Image dimensions @ level 3  (3240, 2397)
+     RGB image dimensions (width, height)  3240 2397
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-316.svs
+     Image dimensions @ level 0      (182784, 54503)
+     Image dimensions @ level 3  (2856, 851)
+     RGB image dimensions (width, height)  2856 851
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-317.svs
+     Image dimensions @ level 0      (92344, 88617)
+     Image dimensions @ level 3  (2885, 2769)
+     RGB image dimensions (width, height)  2885 2769
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-318.svs
+     Image dimensions @ level 0      (123528, 62423)
+     Image dimensions @ level 3  (3860, 1950)
+     RGB image dimensions (width, height)  3860 1950
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-319.svs
+     Image dimensions @ level 0      (172311, 91538)
+     Image dimensions @ level 3  (2692, 1430)
+     RGB image dimensions (width, height)  2692 1430
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-320.svs
+     Image dimensions @ level 0      (117096, 77610)
+     Image dimensions @ level 3  (3659, 2425)
+     RGB image dimensions (width, height)  3659 2425
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-321.svs
+     Image dimensions @ level 0      (149383, 93642)
+     Image dimensions @ level 3  (2334, 1463)
+     RGB image dimensions (width, height)  2334 1463
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-322.svs
+     Image dimensions @ level 0      (107249, 93893)
+     Image dimensions @ level 3  (3351, 2934)
+     RGB image dimensions (width, height)  3351 2934
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-323.svs
+     Image dimensions @ level 0      (93296, 65523)
+     Image dimensions @ level 3  (2915, 2047)
+     RGB image dimensions (width, height)  2915 2047
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-324.svs
+     Image dimensions @ level 0      (108528, 82573)
+     Image dimensions @ level 3  (3391, 2580)
+     RGB image dimensions (width, height)  3391 2580
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-325.svs
+     Image dimensions @ level 0      (113952, 93597)
+     Image dimensions @ level 3  (3561, 2924)
+     RGB image dimensions (width, height)  3561 2924
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-326.svs
+     Image dimensions @ level 0      (45312, 53504)
+     Image dimensions @ level 3  (1416, 1672)
+     RGB image dimensions (width, height)  1416 1672
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-327.svs
+     Image dimensions @ level 0      (129472, 90209)
+     Image dimensions @ level 3  (4046, 2819)
+     RGB image dimensions (width, height)  4046 2819
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-328.svs
+     Image dimensions @ level 0      (105334, 80638)
+     Image dimensions @ level 3  (3291, 2519)
+     RGB image dimensions (width, height)  3291 2519
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-329.svs
+     Image dimensions @ level 0      (45938, 35350)
+[!] File read error on ID 329
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-330.svs
+     Image dimensions @ level 0      (142800, 30325)
+     Image dimensions @ level 3  (2231, 473)
+     RGB image dimensions (width, height)  2231 473
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-331.svs
+     Image dimensions @ level 0      (115214, 69373)
+     Image dimensions @ level 3  (3600, 2167)
+     RGB image dimensions (width, height)  3600 2167
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-332.svs
+     Image dimensions @ level 0      (102733, 80772)
+     Image dimensions @ level 3  (3210, 2524)
+     RGB image dimensions (width, height)  3210 2524
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-333.svs
+     Image dimensions @ level 0      (126616, 76587)
+     Image dimensions @ level 3  (3956, 2393)
+     RGB image dimensions (width, height)  3956 2393
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-334.svs
+     Image dimensions @ level 0      (187687, 81433)
+     Image dimensions @ level 3  (2932, 1272)
+     RGB image dimensions (width, height)  2932 1272
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-335.svs
+     Image dimensions @ level 0      (37128, 32746)
+[!] File read error on ID 335
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-336.svs
+     Image dimensions @ level 0      (113288, 74662)
+     Image dimensions @ level 3  (3540, 2333)
+     RGB image dimensions (width, height)  3540 2333
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-337.svs
+     Image dimensions @ level 0      (100794, 80501)
+     Image dimensions @ level 3  (3149, 2515)
+     RGB image dimensions (width, height)  3149 2515
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-338.svs
+     Image dimensions @ level 0      (94248, 63197)
+     Image dimensions @ level 3  (2945, 1974)
+     RGB image dimensions (width, height)  2945 1974
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-339.svs
+     Image dimensions @ level 0      (97103, 71054)
+     Image dimensions @ level 3  (3034, 2220)
+     RGB image dimensions (width, height)  3034 2220
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-340.svs
+     Image dimensions @ level 0      (97673, 72522)
+     Image dimensions @ level 3  (3052, 2266)
+     RGB image dimensions (width, height)  3052 2266
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-341.svs
+     Image dimensions @ level 0      (122807, 34744)
+     Image dimensions @ level 3  (3837, 1085)
+     RGB image dimensions (width, height)  3837 1085
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-342.svs
+     Image dimensions @ level 0      (101772, 74206)
+     Image dimensions @ level 3  (3180, 2318)
+     RGB image dimensions (width, height)  3180 2318
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-343.svs
+     Image dimensions @ level 0      (150341, 83694)
+     Image dimensions @ level 3  (2349, 1307)
+     RGB image dimensions (width, height)  2349 1307
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-344.svs
+     Image dimensions @ level 0      (53784, 70894)
+     Image dimensions @ level 3  (1680, 2215)
+     RGB image dimensions (width, height)  1680 2215
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-345.svs
+     Image dimensions @ level 0      (144018, 60462)
+     Image dimensions @ level 3  (2250, 944)
+     RGB image dimensions (width, height)  2250 944
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-346.svs
+     Image dimensions @ level 0      (72969, 87411)
+     Image dimensions @ level 3  (2280, 2731)
+     RGB image dimensions (width, height)  2280 2731
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-347.svs
+     Image dimensions @ level 0      (127568, 81025)
+     Image dimensions @ level 3  (3986, 2532)
+     RGB image dimensions (width, height)  3986 2532
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-348.svs
+     Image dimensions @ level 0      (141137, 84475)
+     Image dimensions @ level 3  (2205, 1319)
+     RGB image dimensions (width, height)  2205 1319
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-349.svs
+     Image dimensions @ level 0      (102461, 83465)
+     Image dimensions @ level 3  (3201, 2608)
+     RGB image dimensions (width, height)  3201 2608
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-350.svs
+     Image dimensions @ level 0      (130424, 24335)
+     Image dimensions @ level 3  (2037, 380)
+     RGB image dimensions (width, height)  2037 380
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-351.svs
+     Image dimensions @ level 0      (106292, 84971)
+     Image dimensions @ level 3  (3321, 2655)
+     RGB image dimensions (width, height)  3321 2655
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-352.svs
+     Image dimensions @ level 0      (75208, 56013)
+     Image dimensions @ level 3  (2350, 1750)
+     RGB image dimensions (width, height)  2350 1750
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-353.svs
+     Image dimensions @ level 0      (121855, 90275)
+     Image dimensions @ level 3  (3807, 2821)
+     RGB image dimensions (width, height)  3807 2821
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-354.svs
+     Image dimensions @ level 0      (89055, 66452)
+     Image dimensions @ level 3  (2782, 2076)
+     RGB image dimensions (width, height)  2782 2076
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-355.svs
+     Image dimensions @ level 0      (129471, 96355)
+     Image dimensions @ level 3  (4045, 3011)
+     RGB image dimensions (width, height)  4045 3011
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-356.svs
+     Image dimensions @ level 0      (159935, 45475)
+     Image dimensions @ level 3  (2498, 710)
+     RGB image dimensions (width, height)  2498 710
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-357.svs
+     Image dimensions @ level 0      (83775, 61030)
+     Image dimensions @ level 3  (2617, 1907)
+     RGB image dimensions (width, height)  2617 1907
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-358.svs
+     Image dimensions @ level 0      (134232, 41193)
+     Image dimensions @ level 3  (2097, 643)
+     RGB image dimensions (width, height)  2097 643
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-359.svs
+     Image dimensions @ level 0      (104720, 72226)
+     Image dimensions @ level 3  (3272, 2257)
+     RGB image dimensions (width, height)  3272 2257
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-360.svs
+     Image dimensions @ level 0      (125753, 75078)
+     Image dimensions @ level 3  (3929, 2346)
+     RGB image dimensions (width, height)  3929 2346
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-361.svs
+     Image dimensions @ level 0      (185303, 83614)
+     Image dimensions @ level 3  (2895, 1306)
+     RGB image dimensions (width, height)  2895 1306
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-362.svs
+     Image dimensions @ level 0      (120656, 77492)
+     Image dimensions @ level 3  (3770, 2421)
+     RGB image dimensions (width, height)  3770 2421
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-363.svs
+     Image dimensions @ level 0      (68543, 43467)
+     Image dimensions @ level 3  (2141, 1358)
+     RGB image dimensions (width, height)  2141 1358
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-364.svs
+     Image dimensions @ level 0      (133104, 77417)
+     Image dimensions @ level 3  (2079, 1209)
+     RGB image dimensions (width, height)  2079 1209
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-365.svs
+     Image dimensions @ level 0      (28560, 40756)
+[!] File read error on ID 365
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-366.svs
+     Image dimensions @ level 0      (128520, 67038)
+     Image dimensions @ level 3  (4016, 2094)
+     RGB image dimensions (width, height)  4016 2094
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-367.svs
+     Image dimensions @ level 0      (135183, 88669)
+     Image dimensions @ level 3  (2112, 1385)
+     RGB image dimensions (width, height)  2112 1385
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-368.svs
+     Image dimensions @ level 0      (33863, 25780)
+[!] File read error on ID 368
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-369.svs
+     Image dimensions @ level 0      (107576, 71331)
+     Image dimensions @ level 3  (3361, 2229)
+     RGB image dimensions (width, height)  3361 2229
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-370.svs
+     Image dimensions @ level 0      (89488, 68661)
+     Image dimensions @ level 3  (2796, 2145)
+     RGB image dimensions (width, height)  2796 2145
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-371.svs
+     Image dimensions @ level 0      (46336, 39680)
+[!] File read error on ID 371
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-372.svs
+     Image dimensions @ level 0      (152320, 88335)
+     Image dimensions @ level 3  (2380, 1380)
+     RGB image dimensions (width, height)  2380 1380
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-373.svs
+     Image dimensions @ level 0      (197263, 83673)
+     Image dimensions @ level 3  (3082, 1307)
+     RGB image dimensions (width, height)  3082 1307
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-374.svs
+     Image dimensions @ level 0      (115191, 66180)
+     Image dimensions @ level 3  (3599, 2068)
+     RGB image dimensions (width, height)  3599 2068
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-375.svs
+     Image dimensions @ level 0      (98874, 89810)
+     Image dimensions @ level 3  (3089, 2806)
+     RGB image dimensions (width, height)  3089 2806
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-376.svs
+     Image dimensions @ level 0      (139943, 51819)
+     Image dimensions @ level 3  (2186, 809)
+     RGB image dimensions (width, height)  2186 809
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-377.svs
+     Image dimensions @ level 0      (159380, 73062)
+     Image dimensions @ level 3  (2490, 1141)
+     RGB image dimensions (width, height)  2490 1141
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-378.svs
+     Image dimensions @ level 0      (116825, 93579)
+     Image dimensions @ level 3  (3650, 2924)
+     RGB image dimensions (width, height)  3650 2924
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-379.svs
+     Image dimensions @ level 0      (110432, 81580)
+     Image dimensions @ level 3  (3451, 2549)
+     RGB image dimensions (width, height)  3451 2549
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-380.svs
+     Image dimensions @ level 0      (114910, 84920)
+     Image dimensions @ level 3  (3590, 2653)
+     RGB image dimensions (width, height)  3590 2653
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-381.svs
+     Image dimensions @ level 0      (55216, 74440)
+     Image dimensions @ level 3  (1725, 2326)
+     RGB image dimensions (width, height)  1725 2326
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-382.svs
+     Image dimensions @ level 0      (108474, 89504)
+     Image dimensions @ level 3  (3389, 2797)
+     RGB image dimensions (width, height)  3389 2797
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-383.svs
+     Image dimensions @ level 0      (121856, 89104)
+     Image dimensions @ level 3  (3808, 2784)
+     RGB image dimensions (width, height)  3808 2784
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-384.svs
+     Image dimensions @ level 0      (119952, 89277)
+     Image dimensions @ level 3  (3748, 2789)
+     RGB image dimensions (width, height)  3748 2789
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-385.svs
+     Image dimensions @ level 0      (44743, 55044)
+     Image dimensions @ level 3  (1398, 1720)
+     RGB image dimensions (width, height)  1398 1720
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-386.svs
+     Image dimensions @ level 0      (148511, 80015)
+     Image dimensions @ level 3  (2320, 1250)
+     RGB image dimensions (width, height)  2320 1250
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-387.svs
+     Image dimensions @ level 0      (139008, 256256)
+     Image dimensions @ level 3  (2172, 4004)
+     RGB image dimensions (width, height)  2172 4004
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-388.svs
+     Image dimensions @ level 0      (187544, 66002)
+     Image dimensions @ level 3  (2930, 1031)
+     RGB image dimensions (width, height)  2930 1031
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-389.svs
+     Image dimensions @ level 0      (103768, 87197)
+     Image dimensions @ level 3  (3242, 2724)
+     RGB image dimensions (width, height)  3242 2724
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-390.svs
+     Image dimensions @ level 0      (107249, 87769)
+     Image dimensions @ level 3  (3351, 2742)
+     RGB image dimensions (width, height)  3351 2742
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-391.svs
+     Image dimensions @ level 0      (69128, 55582)
+     Image dimensions @ level 3  (2160, 1736)
+     RGB image dimensions (width, height)  2160 1736
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-392.svs
+     Image dimensions @ level 0      (107533, 80761)
+     Image dimensions @ level 3  (3360, 2523)
+     RGB image dimensions (width, height)  3360 2523
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-393.svs
+     Image dimensions @ level 0      (106292, 74771)
+     Image dimensions @ level 3  (3321, 2336)
+     RGB image dimensions (width, height)  3321 2336
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-394.svs
+     Image dimensions @ level 0      (144595, 93675)
+     Image dimensions @ level 3  (2259, 1463)
+     RGB image dimensions (width, height)  2259 1463
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-395.svs
+     Image dimensions @ level 0      (121855, 96009)
+     Image dimensions @ level 3  (3807, 3000)
+     RGB image dimensions (width, height)  3807 3000
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-396.svs
+     Image dimensions @ level 0      (145656, 49405)
+     Image dimensions @ level 3  (2275, 771)
+     RGB image dimensions (width, height)  2275 771
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-397.svs
+     Image dimensions @ level 0      (85680, 74386)
+     Image dimensions @ level 3  (2677, 2324)
+     RGB image dimensions (width, height)  2677 2324
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-398.svs
+     Image dimensions @ level 0      (85680, 79038)
+     Image dimensions @ level 3  (2677, 2469)
+     RGB image dimensions (width, height)  2677 2469
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-399.svs
+     Image dimensions @ level 0      (155175, 96085)
+     Image dimensions @ level 3  (2424, 1501)
+     RGB image dimensions (width, height)  2424 1501
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-400.svs
+     Image dimensions @ level 0      (136136, 57370)
+     Image dimensions @ level 3  (2127, 896)
+     RGB image dimensions (width, height)  2127 896
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-401.svs
+     Image dimensions @ level 0      (102816, 82101)
+     Image dimensions @ level 3  (3213, 2565)
+     RGB image dimensions (width, height)  3213 2565
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-402.svs
+     Image dimensions @ level 0      (99960, 79809)
+     Image dimensions @ level 3  (3123, 2494)
+     RGB image dimensions (width, height)  3123 2494
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-403.svs
+     Image dimensions @ level 0      (90439, 80048)
+     Image dimensions @ level 3  (2826, 2501)
+     RGB image dimensions (width, height)  2826 2501
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-404.svs
+     Image dimensions @ level 0      (85450, 72222)
+     Image dimensions @ level 3  (2670, 2256)
+     RGB image dimensions (width, height)  2670 2256
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-405.svs
+     Image dimensions @ level 0      (122807, 86510)
+     Image dimensions @ level 3  (3837, 2703)
+     RGB image dimensions (width, height)  3837 2703
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-406.svs
+     Image dimensions @ level 0      (21896, 76792)
+     Image dimensions @ level 3  (684, 2399)
+     RGB image dimensions (width, height)  684 2399
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-407.svs
+     Image dimensions @ level 0      (108527, 90737)
+     Image dimensions @ level 3  (3391, 2835)
+     RGB image dimensions (width, height)  3391 2835
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-408.svs
+     Image dimensions @ level 0      (75208, 83190)
+     Image dimensions @ level 3  (2350, 2599)
+     RGB image dimensions (width, height)  2350 2599
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-409.svs
+     Image dimensions @ level 0      (49408, 64256)
+     Image dimensions @ level 3  (1544, 2008)
+     RGB image dimensions (width, height)  1544 2008
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-410.svs
+     Image dimensions @ level 0      (108207, 73484)
+     Image dimensions @ level 3  (3381, 2296)
+     RGB image dimensions (width, height)  3381 2296
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-411.svs
+     Image dimensions @ level 0      (121613, 93807)
+     Image dimensions @ level 3  (3800, 2931)
+     RGB image dimensions (width, height)  3800 2931
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-412.svs
+     Image dimensions @ level 0      (99959, 73680)
+     Image dimensions @ level 3  (3123, 2302)
+     RGB image dimensions (width, height)  3123 2302
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-413.svs
+     Image dimensions @ level 0      (96152, 56466)
+     Image dimensions @ level 3  (3004, 1764)
+     RGB image dimensions (width, height)  3004 1764
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-414.svs
+     Image dimensions @ level 0      (84267, 75920)
+     Image dimensions @ level 3  (2633, 2372)
+     RGB image dimensions (width, height)  2633 2372
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-415.svs
+     Image dimensions @ level 0      (67208, 55081)
+     Image dimensions @ level 3  (2100, 1721)
+     RGB image dimensions (width, height)  2100 1721
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-416.svs
+     Image dimensions @ level 0      (71819, 81606)
+     Image dimensions @ level 3  (2244, 2550)
+     RGB image dimensions (width, height)  2244 2550
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-417.svs
+     Image dimensions @ level 0      (138257, 88776)
+     Image dimensions @ level 3  (2160, 1387)
+     RGB image dimensions (width, height)  2160 1387
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-418.svs
+     Image dimensions @ level 0      (103768, 89171)
+     Image dimensions @ level 3  (3242, 2786)
+     RGB image dimensions (width, height)  3242 2786
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-419.svs
+     Image dimensions @ level 0      (40704, 45824)
+[!] File read error on ID 419
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-420.svs
+     Image dimensions @ level 0      (110431, 93199)
+     Image dimensions @ level 3  (3450, 2912)
+     RGB image dimensions (width, height)  3450 2912
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-421.svs
+     Image dimensions @ level 0      (39168, 54016)
+     Image dimensions @ level 3  (1224, 1688)
+     RGB image dimensions (width, height)  1224 1688
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-422.svs
+     Image dimensions @ level 0      (92343, 89063)
+     Image dimensions @ level 3  (2885, 2783)
+     RGB image dimensions (width, height)  2885 2783
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-423.svs
+     Image dimensions @ level 0      (100720, 79590)
+     Image dimensions @ level 3  (3147, 2487)
+     RGB image dimensions (width, height)  3147 2487
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-424.svs
+     Image dimensions @ level 0      (74752, 89856)
+     Image dimensions @ level 3  (2336, 2808)
+     RGB image dimensions (width, height)  2336 2808
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-425.svs
+     Image dimensions @ level 0      (156128, 94572)
+     Image dimensions @ level 3  (2439, 1477)
+     RGB image dimensions (width, height)  2439 1477
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-426.svs
+     Image dimensions @ level 0      (122807, 96830)
+     Image dimensions @ level 3  (3837, 3025)
+     RGB image dimensions (width, height)  3837 3025
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-427.svs
+     Image dimensions @ level 0      (136136, 39222)
+     Image dimensions @ level 3  (2127, 612)
+     RGB image dimensions (width, height)  2127 612
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-428.svs
+     Image dimensions @ level 0      (126401, 90976)
+     Image dimensions @ level 3  (3950, 2843)
+     RGB image dimensions (width, height)  3950 2843
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-429.svs
+     Image dimensions @ level 0      (121935, 88814)
+     Image dimensions @ level 3  (3810, 2775)
+     RGB image dimensions (width, height)  3810 2775
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-430.svs
+     Image dimensions @ level 0      (133104, 93741)
+     Image dimensions @ level 3  (2079, 1464)
+     RGB image dimensions (width, height)  2079 1464
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-431.svs
+     Image dimensions @ level 0      (98874, 64427)
+     Image dimensions @ level 3  (3089, 2013)
+     RGB image dimensions (width, height)  3089 2013
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-432.svs
+     Image dimensions @ level 0      (76160, 60807)
+     Image dimensions @ level 3  (2380, 1900)
+     RGB image dimensions (width, height)  2380 1900
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-433.svs
+     Image dimensions @ level 0      (93296, 78682)
+     Image dimensions @ level 3  (2915, 2458)
+     RGB image dimensions (width, height)  2915 2458
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-434.svs
+     Image dimensions @ level 0      (81610, 75768)
+     Image dimensions @ level 3  (2550, 2367)
+     RGB image dimensions (width, height)  2550 2367
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-435.svs
+     Image dimensions @ level 0      (130576, 87784)
+     Image dimensions @ level 3  (2040, 1371)
+     RGB image dimensions (width, height)  2040 1371
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-436.svs
+     Image dimensions @ level 0      (52480, 43264)
+[!] File read error on ID 436
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-437.svs
+     Image dimensions @ level 0      (117783, 85157)
+     Image dimensions @ level 3  (3680, 2661)
+     RGB image dimensions (width, height)  3680 2661
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-438.svs
+     Image dimensions @ level 0      (125444, 90978)
+     Image dimensions @ level 3  (3920, 2843)
+     RGB image dimensions (width, height)  3920 2843
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-439.svs
+     Image dimensions @ level 0      (86632, 86118)
+     Image dimensions @ level 3  (2707, 2691)
+     RGB image dimensions (width, height)  2707 2691
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-440.svs
+     Image dimensions @ level 0      (88536, 49122)
+     Image dimensions @ level 3  (2766, 1535)
+     RGB image dimensions (width, height)  2766 1535
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-441.svs
+     Image dimensions @ level 0      (103768, 85061)
+     Image dimensions @ level 3  (3242, 2658)
+     RGB image dimensions (width, height)  3242 2658
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-442.svs
+     Image dimensions @ level 0      (152319, 56763)
+     Image dimensions @ level 3  (2379, 886)
+     RGB image dimensions (width, height)  2379 886
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-443.svs
+     Image dimensions @ level 0      (89291, 72971)
+     Image dimensions @ level 3  (2790, 2280)
+     RGB image dimensions (width, height)  2790 2280
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-444.svs
+     Image dimensions @ level 0      (86632, 80946)
+     Image dimensions @ level 3  (2707, 2529)
+     RGB image dimensions (width, height)  2707 2529
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-445.svs
+     Image dimensions @ level 0      (118047, 92889)
+     Image dimensions @ level 3  (3688, 2902)
+     RGB image dimensions (width, height)  3688 2902
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-446.svs
+     Image dimensions @ level 0      (68543, 62306)
+     Image dimensions @ level 3  (2141, 1947)
+     RGB image dimensions (width, height)  2141 1947
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-447.svs
+     Image dimensions @ level 0      (78064, 68245)
+     Image dimensions @ level 3  (2439, 2132)
+     RGB image dimensions (width, height)  2439 2132
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-448.svs
+     Image dimensions @ level 0      (133280, 86925)
+     Image dimensions @ level 3  (2082, 1358)
+     RGB image dimensions (width, height)  2082 1358
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-449.svs
+     Image dimensions @ level 0      (84267, 76940)
+     Image dimensions @ level 3  (2633, 2404)
+     RGB image dimensions (width, height)  2633 2404
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-450.svs
+     Image dimensions @ level 0      (79016, 86139)
+     Image dimensions @ level 3  (2469, 2691)
+     RGB image dimensions (width, height)  2469 2691
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-451.svs
+     Image dimensions @ level 0      (121613, 87178)
+     Image dimensions @ level 3  (3800, 2724)
+     RGB image dimensions (width, height)  3800 2724
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-452.svs
+     Image dimensions @ level 0      (71400, 67084)
+     Image dimensions @ level 3  (2231, 2096)
+     RGB image dimensions (width, height)  2231 2096
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-453.svs
+     Image dimensions @ level 0      (87584, 77882)
+     Image dimensions @ level 3  (2737, 2433)
+     RGB image dimensions (width, height)  2737 2433
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-454.svs
+     Image dimensions @ level 0      (117095, 93049)
+     Image dimensions @ level 3  (3659, 2907)
+     RGB image dimensions (width, height)  3659 2907
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-455.svs
+     Image dimensions @ level 0      (70861, 79312)
+     Image dimensions @ level 3  (2214, 2478)
+     RGB image dimensions (width, height)  2214 2478
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-456.svs
+     Image dimensions @ level 0      (122895, 81484)
+     Image dimensions @ level 3  (3840, 2546)
+     RGB image dimensions (width, height)  3840 2546
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-457.svs
+     Image dimensions @ level 0      (148426, 69929)
+     Image dimensions @ level 3  (2319, 1092)
+     RGB image dimensions (width, height)  2319 1092
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-458.svs
+     Image dimensions @ level 0      (126616, 68857)
+     Image dimensions @ level 3  (3956, 2151)
+     RGB image dimensions (width, height)  3956 2151
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-459.svs
+     Image dimensions @ level 0      (48896, 54016)
+     Image dimensions @ level 3  (1528, 1688)
+     RGB image dimensions (width, height)  1528 1688
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-460.svs
+     Image dimensions @ level 0      (87140, 84575)
+     Image dimensions @ level 3  (2723, 2642)
+     RGB image dimensions (width, height)  2723 2642
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-461.svs
+     Image dimensions @ level 0      (40704, 57088)
+     Image dimensions @ level 3  (1272, 1784)
+     RGB image dimensions (width, height)  1272 1784
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-462.svs
+     Image dimensions @ level 0      (70448, 76478)
+     Image dimensions @ level 3  (2201, 2389)
+     RGB image dimensions (width, height)  2201 2389
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-463.svs
+     Image dimensions @ level 0      (135184, 67838)
+     Image dimensions @ level 3  (2112, 1059)
+     RGB image dimensions (width, height)  2112 1059
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-464.svs
+     Image dimensions @ level 0      (106624, 87188)
+     Image dimensions @ level 3  (3332, 2724)
+     RGB image dimensions (width, height)  3332 2724
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-465.svs
+     Image dimensions @ level 0      (133456, 88787)
+     Image dimensions @ level 3  (2085, 1387)
+     RGB image dimensions (width, height)  2085 1387
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-466.svs
+     Image dimensions @ level 0      (90970, 88630)
+     Image dimensions @ level 3  (2842, 2769)
+     RGB image dimensions (width, height)  2842 2769
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-467.svs
+     Image dimensions @ level 0      (19920, 26420)
+[!] File read error on ID 467
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-468.svs
+     Image dimensions @ level 0      (110414, 63320)
+     Image dimensions @ level 3  (3450, 1978)
+     RGB image dimensions (width, height)  3450 1978
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-469.svs
+     Image dimensions @ level 0      (93296, 58121)
+     Image dimensions @ level 3  (2915, 1816)
+     RGB image dimensions (width, height)  2915 1816
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-470.svs
+     Image dimensions @ level 0      (122807, 71603)
+     Image dimensions @ level 3  (3837, 2237)
+     RGB image dimensions (width, height)  3837 2237
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-471.svs
+     Image dimensions @ level 0      (192475, 82678)
+     Image dimensions @ level 3  (3007, 1291)
+     RGB image dimensions (width, height)  3007 1291
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-472.svs
+     Image dimensions @ level 0      (69496, 67911)
+     Image dimensions @ level 3  (2171, 2122)
+     RGB image dimensions (width, height)  2171 2122
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-473.svs
+     Image dimensions @ level 0      (99960, 56617)
+     Image dimensions @ level 3  (3123, 1769)
+     RGB image dimensions (width, height)  3123 1769
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-474.svs
+     Image dimensions @ level 0      (133280, 88407)
+     Image dimensions @ level 3  (2082, 1381)
+     RGB image dimensions (width, height)  2082 1381
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-475.svs
+     Image dimensions @ level 0      (99959, 81052)
+     Image dimensions @ level 3  (3123, 2532)
+     RGB image dimensions (width, height)  3123 2532
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-476.svs
+     Image dimensions @ level 0      (67592, 53300)
+     Image dimensions @ level 3  (2112, 1665)
+     RGB image dimensions (width, height)  2112 1665
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-477.svs
+     Image dimensions @ level 0      (102461, 50306)
+     Image dimensions @ level 3  (3201, 1572)
+     RGB image dimensions (width, height)  3201 1572
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-478.svs
+     Image dimensions @ level 0      (92344, 79179)
+     Image dimensions @ level 3  (2885, 2474)
+     RGB image dimensions (width, height)  2885 2474
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-479.svs
+     Image dimensions @ level 0      (66073, 62511)
+     Image dimensions @ level 3  (2064, 1953)
+     RGB image dimensions (width, height)  2064 1953
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-480.svs
+     Image dimensions @ level 0      (103419, 93913)
+     Image dimensions @ level 3  (3231, 2934)
+     RGB image dimensions (width, height)  3231 2934
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-481.svs
+     Image dimensions @ level 0      (35584, 48896)
+[!] File read error on ID 481
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-482.svs
+     Image dimensions @ level 0      (97104, 81862)
+     Image dimensions @ level 3  (3034, 2558)
+     RGB image dimensions (width, height)  3034 2558
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-483.svs
+     Image dimensions @ level 0      (120903, 93550)
+     Image dimensions @ level 3  (3778, 2923)
+     RGB image dimensions (width, height)  3778 2923
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-484.svs
+     Image dimensions @ level 0      (71400, 62110)
+     Image dimensions @ level 3  (2231, 1940)
+     RGB image dimensions (width, height)  2231 1940
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-485.svs
+     Image dimensions @ level 0      (77564, 66779)
+     Image dimensions @ level 3  (2423, 2086)
+     RGB image dimensions (width, height)  2423 2086
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-486.svs
+     Image dimensions @ level 0      (107575, 83036)
+     Image dimensions @ level 3  (3361, 2594)
+     RGB image dimensions (width, height)  3361 2594
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-487.svs
+     Image dimensions @ level 0      (50840, 65234)
+     Image dimensions @ level 3  (1588, 2038)
+     RGB image dimensions (width, height)  1588 2038
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-488.svs
+     Image dimensions @ level 0      (92344, 81017)
+     Image dimensions @ level 3  (2885, 2531)
+     RGB image dimensions (width, height)  2885 2531
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-489.svs
+     Image dimensions @ level 0      (124712, 78731)
+     Image dimensions @ level 3  (3897, 2460)
+     RGB image dimensions (width, height)  3897 2460
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-490.svs
+     Image dimensions @ level 0      (56576, 38656)
+[!] File read error on ID 490
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-491.svs
+     Image dimensions @ level 0      (107533, 87584)
+     Image dimensions @ level 3  (3360, 2737)
+     RGB image dimensions (width, height)  3360 2737
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-492.svs
+     Image dimensions @ level 0      (114240, 71204)
+     Image dimensions @ level 3  (3570, 2225)
+     RGB image dimensions (width, height)  3570 2225
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-493.svs
+     Image dimensions @ level 0      (106573, 76215)
+     Image dimensions @ level 3  (3330, 2381)
+     RGB image dimensions (width, height)  3330 2381
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-494.svs
+     Image dimensions @ level 0      (38144, 93440)
+     Image dimensions @ level 3  (1192, 2920)
+     RGB image dimensions (width, height)  1192 2920
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-495.svs
+     Image dimensions @ level 0      (115868, 82108)
+     Image dimensions @ level 3  (3620, 2565)
+     RGB image dimensions (width, height)  3620 2565
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-496.svs
+     Image dimensions @ level 0      (98304, 97536)
+     Image dimensions @ level 3  (1536, 1524)
+     RGB image dimensions (width, height)  1536 1524
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-497.svs
+     Image dimensions @ level 0      (84727, 89863)
+     Image dimensions @ level 3  (2647, 2808)
+     RGB image dimensions (width, height)  2647 2808
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-498.svs
+     Image dimensions @ level 0      (38079, 44871)
+[!] File read error on ID 498
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-499.svs
+     Image dimensions @ level 0      (102461, 35513)
+     Image dimensions @ level 3  (3201, 1109)
+     RGB image dimensions (width, height)  3201 1109
+Whole slide image name   ../data/TrainingData/training_image_data//TUPAC-TR-500.svs
+     Image dimensions @ level 0      (70448, 60290)
+     Image dimensions @ level 3  (2201, 1884)
+     RGB image dimensions (width, height)  2201 1884

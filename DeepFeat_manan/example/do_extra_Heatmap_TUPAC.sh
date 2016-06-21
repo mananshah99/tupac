@@ -9,8 +9,8 @@ inifile="$root/conf.ini"
 inputFolder="$curdir"
 inputList="$curdir/wsi.lst"
 
-modelLevel=1
-outputDir="$root/results"
+modelLevel=0
+outputDir="$root/mitosis_results"
 cmd="python ./tools/extract_wsi_tupac.py caffe ${inifile} prob ${inputFolder} ${inputList} ${modelLevel} ${outputDir} \
     --heatmap_level 2 \
     --mask_image_level 2 \

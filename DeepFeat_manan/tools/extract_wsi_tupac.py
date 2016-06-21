@@ -333,6 +333,8 @@ def main(args):
         # must be generated 
         
         heatmap_level = max(args.deep_model_level, args.heatmap_level)
+        
+        print("Found " + str(len(lines)) + " lines.")
 
         for l in lines:
             if len(l) > 1:
