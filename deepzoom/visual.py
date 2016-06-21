@@ -2,7 +2,7 @@
 #
 # call with (in results folder) 
 # -----------------------------
-# python ../../deepzoom/visual.py mitosis_06-21-16 --result tumor_06-21-16 -l 10.35.73.9 -p 5100
+# python ../../deepzoom/visual.py ../../../data/TrainingData/small_images-level-2 --result tumor_06-21-16 -l 10.35.73.9 -p 5100 --debug
 # 
 # deepzoom_multiserver - Example web application for viewing multiple slides
 #
@@ -84,7 +84,7 @@ def get_osr(path):
     hp, hp_name = get_hp()
     print "Loading mask image: ", hp_name
     hp_jet = cv2.applyColorMap(hp, cv2.COLORMAP_JET)
-    alpha = 0.5
+    alpha = 0.3
     img = cv2.addWeighted(img_ori, alpha, hp_jet, 1 - alpha, 1);
     img = img[:, :, (2, 1, 0)] # b,g,r -> r,g,b
     ##
