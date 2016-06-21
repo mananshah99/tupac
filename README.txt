@@ -5,10 +5,12 @@ Stage 1: Whole Slide Image Processing
     => Step 2: Extract tissue regions within the WSI PNG images to alleviate 
         computational demand later on
 
+
 Stage 2: Region of Interest Extraction
     => Used to further minimize computational power by finding potential regions of
         interest within tissue regions of WSIs
     => TBD, may not be needed
+
 
 Stage 3: Tumor & Mitosis Feature Extraction
     => Utilize multiple convolutional models to determine heatmaps of locations of both
@@ -20,14 +22,16 @@ Stage 3: Tumor & Mitosis Feature Extraction
             takes approximately 5 minutes to extract heatmaps from any given image (this
             is currently in development)
 
+
 Stage 4: Classical Feature Extraction
     => Utilize mitosis and tumor heatmaps to generate a feature vector of relevant information
         that characterizes each image (and can be used for the classification problem in stage 1
         as well as the regression problem in stage 2)
     => Basic idea is to use locations (centroids) of each mitosis and extract small patches around
-        the mitosis from which to get positional/etc. features as well as features determined directly
-        from the heatmap itself
+        the mitosis from which to get positional/etc. features as well as features determined
+        directly from the heatmap itself
     => Additionally, follow the rules of the challenge (10 in a row is stage 3, etc.)
+
 
 Stage 5: Fully Convolutional Feature Extraction
     => Utilize previously developed heatmaps (and pass them through fully convolutional network
