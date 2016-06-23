@@ -1,0 +1,24 @@
+#!/bin/bash
+
+curdir=`pwd`
+root='/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/run'
+
+cd ..
+inifile="$root/../caffe/mitosis_06-21-16/conf.ini"
+
+inputFolder="$curdir"
+inputList="$curdir/roi.lst"
+
+modelLevel=0
+outputDir="$root/../results/mitosis_06-21-16"
+cmd="python ./tools/extract_wsi_tupac.py caffe ${inifile} prob ${inputFolder} ${inputList} ${modelLevel} ${outputDir} \
+    --step_size 50 \
+    --heatmap_level 2 \
+    --mask_image_level 2 \
+    --augmentation 1 \
+    --device_ids 2 \
+    --gpu \
+    --mitosis_policy fill"
+
+echo $cmd
+exec $cmd

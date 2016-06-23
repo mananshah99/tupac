@@ -54,6 +54,8 @@ def create_parser():
     parser.add_argument('--gpu', action='store_true',
                         help='config file')
     parser.add_argument("--log", type=str, default="INFO", help="log level")
+    parser.add_argument('--mitosis_policy', type=str, default='none', help='Either none (not mitosis), fill, or gaussian. Fill is replacing the entire prediction \
+                            array with the prediction of the mitosis center, and gaussian leaves the filling as a postprocessing step')
 
     return parser
 
@@ -170,6 +172,8 @@ def gen_heatmap_wsi(
             logging.info("\t\t\t sub-group %d (%d)"%(i, len(v_img_i)))
             values_i = extractor.batch_extract_numpy(v_img_i, [feat_name])
             values_i = values_i[0] # get the first feature group
+            #print("DEBUG")
+            #print(values_i)
             values_i = values_i[:, 1].reshape(-1) # get the possibility of positive
             values_i[values_i<1e-4] = 0.0
             values = np.concatenate((values, values_i))
