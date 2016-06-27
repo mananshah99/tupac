@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 #
-# call with (in results folder) 
+# call with (in results folder)
 # -----------------------------
 # python ../../deepzoom/visual.py ../../../data/TrainingData/small_images-level-2 --result tumor_06-21-16 -l 10.35.73.9 -p 5100 --debug
-# 
+#
 # deepzoom_multiserver - Example web application for viewing multiple slides
 #
 # Copyright (c) 2010-2015 Carnegie Mellon University
@@ -73,21 +73,28 @@ def get_osr(path):
         elif slide_type == 'Test':
                 hp_path = '%s/re/%s.png'%(ROOT, slide_name)
         '''
-        hp_path = '%s/%s.png'%(ROOT, slide_name)
-        hp = cv2.imread(hp_path, cv2.IMREAD_GRAYSCALE)
-        return hp, hp_path
+        try:
+            hp_path = '%s/%s.png'%(ROOT, slide_name)
+            hp = cv2.imread(hp_path, cv2.IMREAD_GRAYSCALE)
+            return hp, hp_path
+        except Exception as e:
+            print e
+            return None, None
     ##
     print "Loading image ori: ", path
     img_ori = cv2.imread(path)
 
     ##
     hp, hp_name = get_hp()
-    print "Loading mask image: ", hp_name
-    hp_jet = cv2.applyColorMap(hp, cv2.COLORMAP_JET)
-    alpha = 0.5
-    img = cv2.addWeighted(img_ori, alpha, hp_jet, 1 - alpha, 1);
-    img = img[:, :, (2, 1, 0)] # b,g,r -> r,g,b
-    ##
+    if hp is None or hp_name is None:
+        img = img_ori
+    else:
+        print "Loading mask image: ", hp_name
+        hp_jet = cv2.applyColorMap(hp, cv2.COLORMAP_JET)
+        alpha = 0.5
+        img = cv2.addWeighted(img_ori, alpha, hp_jet, 1 - alpha, 1);
+        img = img[:, :, (2, 1, 0)] # b,g,r -> r,g,b
+
     img_output = Image.fromarray(img)
     osr = ImageSlide(img_output)
     return osr

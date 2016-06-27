@@ -70,7 +70,7 @@ def list_split(l, n):
 def gen_heatmap(extractor, feat_name, img_name, mask_name, mask_image_level, deep_model_level, heatmap_level, window_size, augmentation, batch_size, group_size, step_size, patchmask):
     def extend_inds_to_level0(input_level, h, w):
         gap = input_level - 0
-        v = np.power(2, gap)
+        v = np.power(4, gap)
         hlist = h * v + np.arange(v)
         wlist = w * v + np.arange(v)
         hw = []
@@ -80,7 +80,7 @@ def gen_heatmap(extractor, feat_name, img_name, mask_name, mask_image_level, dee
         return hw
 
     def get_tl_pts_in_level0(outputLevel, h_level0, w_level0, window_size):
-        scale = np.power(2, outputLevel)
+        scale = np.power(4, outputLevel)
         window_size_level0 = window_size * scale
         window_size_level0_half = window_size_level0 / 2
 
@@ -191,7 +191,7 @@ def gen_heatmap(extractor, feat_name, img_name, mask_name, mask_image_level, dee
         # hl -> heatmap level 2
         img_w, img_h, channel = img.shape
         heatmap = np.zeros((img_h, img_w, 2))
-        print("Size:", img.shape, msk.shape, heatmap.shape)
+        print("Size:", img.shape, heatmap.shape)
         # generate all the patches locations
         inds_list = []
         for h1 in range(0, img_h, step_size):

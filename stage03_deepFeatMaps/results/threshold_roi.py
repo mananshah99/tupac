@@ -1,3 +1,5 @@
+# RUN THIS, THEN EXTRACT MITOTIC PATCHES
+
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
@@ -15,4 +17,4 @@ for image in onlyfiles:
     print "On image " + str(image)
     image = cv2.imread(join(PATH, image), cv2.CV_LOAD_IMAGE_GRAYSCALE)
     _, thresholded = cv2.threshold(image, int(255 * threshold_decimal), 255, cv2.THRESH_BINARY)
-    cv2.imwrite(join(str(PATH + '/thresholded'), name), thresholded)
+    cv2.imwrite(join(str(PATH + '/thresholded-' + str(threshold_decimal)), name), thresholded)
