@@ -74,7 +74,7 @@ if __name__ == "__main__":
     ID1, ID2, LEVEL = 1, 500, 2
     for IDs in range(ID1, ID2+1):
         try: 
-            getSmallImages('../data/TrainingData/training_image_data/', '../data/TrainingData/small_images-level-' + str(LEVEL) + '/', "TUPAC-TR-", "", LEVEL, IDs)  #range(ID1, ID2+1)]
+            getSmallImages('../../data/TrainingData/training_image_data/', '../../data/TrainingData/small_images-level-' + str(LEVEL) + '/', "TUPAC-TR-", "", LEVEL, IDs)  #range(ID1, ID2+1)]
         except:
             print("[!] File read error on ID " + str(IDs))
             pass
