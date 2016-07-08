@@ -1,3 +1,5 @@
+[OLD, needs some updating]
+
 This repository implements numerous stages in the pipeline for the TUPAC 2016 Challenge. 
 
 Stage 1: Whole Slide Image Processing
@@ -22,8 +24,9 @@ Stage 3: Tumor & Mitosis Feature Extraction
             takes approximately 5 minutes to extract heatmaps from any given image (this
             is currently in development)
 
+Stage 4: Mitosis Detection (technically a part of stage 3)
 
-Stage 4: Classical Feature Extraction
+Stage 5: Classical Feature Extraction
     => Utilize mitosis and tumor heatmaps to generate a feature vector of relevant information
         that characterizes each image (and can be used for the classification problem in stage 1
         as well as the regression problem in stage 2)
@@ -33,6 +36,6 @@ Stage 4: Classical Feature Extraction
     => Additionally, follow the rules of the challenge (10 in a row is stage 3, etc.)
 
 
-Stage 5: Fully Convolutional Feature Extraction
+Stage 6: Fully Convolutional Feature Extraction
     => Utilize previously developed heatmaps (and pass them through fully convolutional network
         architectures) to make more salient predictions 
