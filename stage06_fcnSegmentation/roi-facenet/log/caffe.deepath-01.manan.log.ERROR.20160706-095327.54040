@@ -1,0 +1,4 @@
+Log file created at: 2016/07/06 09:53:27
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0706 09:53:27.431329 54040 io.cpp:54] Check failed: fd != -1 (-1 vs. -1) File not found: models/cnn10_iter_180000.caffemodel
