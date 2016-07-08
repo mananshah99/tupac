@@ -1,3 +1,4 @@
+*.solverstate
 *.pyc
 *.caffemodel
 *.tif
