@@ -8,7 +8,7 @@ from os import listdir
 from os.path import isfile, join
 
 PATH = 'roi-level1_06-24-16'
-threshold_decimal = 0.85
+threshold_decimal = 0.75
 
 onlyfiles = [f for f in listdir(PATH) if isfile(join(PATH, f))]
 

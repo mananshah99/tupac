@@ -58,15 +58,15 @@ def get_image(wsi, h1_level0, w1_level0, OUT_LEVEL, wsize):
     return img
 
 def extract_patches(image_number, # A STRING
-                    n_patches = 10,
-                    area_threshold = 1500,
+                    n_patches = 50,
+                    area_threshold = 100,
                     patch_size = 1000,
                     input_level = 2,
                     output_level = 0,
                     output_directory = "patches", # ALWAYS change this default
                     interactive = True):
 
-    image = imread('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.85/TUPAC-TR-' + image_number + '.png')
+    image = imread('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.75/TUPAC-TR-' + image_number + '.png')
     wsi = osi.open_slide('/data/dywang/Database/Proliferation/data/TrainingData/training_image_data/TUPAC-TR-' + image_number + '.svs')
 
     print "Loaded " + image_number
@@ -89,8 +89,10 @@ def extract_patches(image_number, # A STRING
     A = []
     final_regions = []
 
-    for region in regionprops(label_image):
-        if region.area < area_threshold:
+    rp = regionprops(label_image)
+
+    for region in rp:
+        if region.area < area_threshold and len(rp) > 5: #if there aren't any regions, just use the ones we have
             continue
 
         A.append(region.area)
@@ -105,10 +107,19 @@ def extract_patches(image_number, # A STRING
         plt.show()
 
     tot_area = sum(A)
+
     # K is the number of patches
+
     K = n_patches
     final_regions.sort(key=lambda x: x.area)
 
+    if len(final_regions) > 50:
+        A.sort()
+        final_regions = final_regions[-50:]
+        tot_area = sum(A[-50:])
+
+    if len(final_regions) == 0:
+        print image_number + " -- no mitotic regions."
 ### STAGE 3: SECOND PASS FOR (SELECTED) REGION PATCH EXTRACTION
     n_remaining = K
     for i, region in enumerate(final_regions):
@@ -117,7 +128,8 @@ def extract_patches(image_number, # A STRING
         if i == len(final_regions)-1:
             # largest object
             to_extract = n_remaining # if there are too few otherwise, catch them here
-
+            if to_extract < 0:
+                to_extract = 1
         else:
             # these are sorted -- start with the smallest patch
             to_extract = int( K * (float(region.area) / tot_area) )
@@ -126,7 +138,7 @@ def extract_patches(image_number, # A STRING
 
             n_remaining -= to_extract
 
-        print region.area, to_extract
+        #print region.area, to_extract
 
         centers = []
 
@@ -153,17 +165,31 @@ def extract_patches(image_number, # A STRING
 
             img_name = output_directory + "/TUPAC-TR-" + image_number + "-(" + str(h1_level0) + "," + str(w1_level0) + ").png"
             imsave(img_name, img)
-            print "\t => " + img_name
+            # print "\t => " + img_name
 
 
 ####
 
+
+save_directory = "patches_06-29-16"
+def do_extraction_parallel(num):
+    try:
+        extract_patches(num,output_directory=save_directory, interactive=False)
+    except Exception as e:
+        print e
+        print "[!] " + num + " does not exist"
+
 from os import listdir
 from os.path import isfile, join
 
-save_directory = "patches_06-27-16"
-image_numbers = ["{0:0>3}".format(n) for n in xrange(500)]
+image_numbers = ["{0:0>3}".format(n) for n in range(1, 500)]
 
+from multiprocessing import Pool
+
+pool = Pool(20)
+pool.map(do_extraction_parallel, image_numbers)
+
+'''
 count = 0
 for num in image_numbers:
     try:
@@ -175,6 +201,7 @@ for num in image_numbers:
 
 print "[X] Done, count is " + str(count)
 
+'''
 ###
 
 # extract_patches('039', interactive=False)
