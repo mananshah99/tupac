@@ -15,7 +15,7 @@ cmd="python ./tools/extract_wsi_tupac.py caffe ${inifile} prob ${inputFolder} ${
     --heatmap_level 2 \
     --mask_image_level 2 \
     --augmentation 1 \
-    --device_ids 1 \
+    --device_ids 2 \
     --gpu"
 
 echo $cmd
