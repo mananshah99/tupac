@@ -159,6 +159,7 @@ class CaffeExtractor(Extractor):
     def transform_numpy(self, img_numpy):
         r,g,b = cv2.split(img_numpy)
         img = cv2.merge((b,g,r)).astype(np.float32) / 255.0
+        img = cv2.resize(img, (256, 256)) # for googlenet input we need 256 x 256
         return self.transformer.preprocess('data', img)
 
     def extract(self, img, v_feat):
