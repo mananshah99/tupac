@@ -1,3 +1,4 @@
+*.npy
 *.solverstate
 *.pyc
 *.caffemodel
