@@ -1,3 +1,11 @@
+METHOD1/training_ground_truth.csv
+stage03_deepFeatMaps/external/
+stage03_deepFeatMaps/lasagne/
+stage04_mitosisDetection/mitoses_ground_truth/
+stage06_fcnSegmentation/external/
+stage06_fcnSegmentation/roi-resnet-lasagne/data/
+stage06_fcnSegmentation/roi-vgg-13/external/
+vis/
 *.npy
 *.solverstate
 *.pyc
