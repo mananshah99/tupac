@@ -1,3 +1,4 @@
+*.pyc
 *.caffemodel
 *.tif
 *.png
