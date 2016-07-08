@@ -1,0 +1,1 @@
+function PA=RieszPrefilter(A,config);if length(find(config.prefilter.filter==0))>0,    disp('Prefilter has zeros. No prefiltering performed.')	PA = A;else 		FA = fftn(A);	FA = FA.*config.prefilter.filter;  	PA = ifftn(FA);end;	
