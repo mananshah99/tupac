@@ -8,9 +8,13 @@ import csv
 from skimage.measure import label, regionprops
 import random
 
-def keep_in_bounds(coordinate, patch_size=100):
+def keep_in_bounds(coordinate, patch_size=100, img_x=2000, img_y=2000, ctype='x'):
     if coordinate < int(patch_size/2):
         coordinate = int(patch_size/2) 
+    elif ctype=='x' and coordinate > img_x - int(patch_size/2):
+        coordinate = img_x - int(patch_size/2)
+    elif ctype=='y' and coordinate > img_y - int(patch_size/2):
+        coordinate = img_y - int(patch_size/2)
 
     return coordinate
 
@@ -38,7 +42,7 @@ def find_false_negatives(image_name, ground_truth_points):
     for p in ground_truth_points:
         center_x = p[0]
         center_y = p[1]        
-        radius = 20  # patches are 100 x 100
+        radius = 40  # patches are 100 x 100
 
         # generate a rectangle, we'll get the circle from this rectangle
         potential_x_values = range(center_x - radius, center_x + radius)
@@ -48,13 +52,13 @@ def find_false_negatives(image_name, ground_truth_points):
             x = potential_x_values[i]
             y = potential_y_values[i]
             
-            x = keep_in_bounds(x)
-            y = keep_in_bounds(y)
+            x = keep_in_bounds(x, img_x = image.shape[1], img_y = image.shape[0], ctype='x')
+            y = keep_in_bounds(y, img_x = image.shape[1], img_y = image.shape[0], ctype='y')
 
-            if (x-center_x)**2 + (y-center_y)**2 <= radius**2:
+            if (x-center_x)**2 + (y-center_y)**2 <= radius**2: #within the initial defined circle
                 try:
-                    if mask_image[y,x] > 0 or (x-center_x)**2 + (y-center_y)**2 <= 5**2: # part of the nucleus, is a mitosis
-                        if mitosis_mask_image[y,x] == 0: # didn't catch it in the mitosis mask
+                    if mask_image[y,x] > 0 or (x-center_x)**2 + (y-center_y)**2 <= 5**2: # part of the nucleus, is a mitosis, or within too small of a circle not to be
+                        if mitosis_mask_image[y,x] < 0.5 * 255: # didn't catch it in the mitosis mask
                             # false negative
                             patch = create_patch(image, (x, y), 100) # patch_size = 100
                             cv2.imwrite('training_examples/pos_stage2' + '/' + name + '-(' + str(x) + ',' + str(y) + ').png', patch)
@@ -80,6 +84,8 @@ def gen_augmented_patches(image_name, ground_truth_points):
     thresh = 0.5 * 255
    
     positive_y, positive_x = (mitosis_mask_image > thresh).nonzero()
+    if len(positive_y)==0:
+        return
 
     false_pos = 0
     true_pos = 0
@@ -123,7 +129,8 @@ def gen_augmented_patches(image_name, ground_truth_points):
             cv2.imwrite('training_examples/neg_stage2' + '/' + name + '-(' + str(x) + ',' + str(y) + ').png', patch)
             false_pos += 1
 
-    print false_pos, true_pos
+    print "False positives: ", false_pos
+#    print false_pos, true_pos
 
 def create_patch(img, center_pixel, patch_size):
     center_x = center_pixel[0]
@@ -150,12 +157,17 @@ image_paths = open('images.lst')
 ground_truth_lines = ground_truth.readlines()
 ground_truth.close()
 
+ct = 0
 #  mitoses_ground_truth/02/23.csv
 #  ../../data/mitoses/mitoses_image_data/02/20.tif
 for i in range(0, 587): # really just all of the lines, cut down for testing
-    line = ground_truth_lines[i].strip('\n')
-    image_path = '../../data/mitoses/mitoses_image_data' + line[-10:-4] + '.tif'
-    ground_truth_points = load_pts(line)
-    print image_path
-    find_false_negatives(image_path, ground_truth_points)
-#    gen_augmented_patches(image_path, ground_truth_points)
+    try:
+        line = ground_truth_lines[i].strip('\n')
+        image_path = '../../data/mitoses/mitoses_image_data' + line[-10:-4] + '.tif'
+        ground_truth_points = load_pts(line)
+        ct += 1
+        print (ct, image_path)
+        find_false_negatives(image_path, ground_truth_points)
+        gen_augmented_patches(image_path, ground_truth_points)
+    except Exception as e:
+        print e
