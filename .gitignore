@@ -1,4 +1,4 @@
-METHOD1/training_ground_truth.csv
+METHOD3/external
 stage03_deepFeatMaps/external/
 stage03_deepFeatMaps/lasagne/
 stage04_mitosisDetection/mitoses_ground_truth/
