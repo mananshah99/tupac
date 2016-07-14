@@ -15,7 +15,7 @@ layer {
     mean_value: 123
   }
   image_data_param {
-    source: "/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/train2.lst"
+    source: "/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/train3.lst"
     batch_size: 32
     shuffle: true
     new_width:256
@@ -38,7 +38,7 @@ layer {
     mean_value: 123
   }
   image_data_param {
-    source: "/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/val2.lst"
+    source: "/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/val3.lst"
     batch_size: 100
     shuffle: true
     new_width:256

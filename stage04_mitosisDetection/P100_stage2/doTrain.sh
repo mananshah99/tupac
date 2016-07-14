@@ -10,5 +10,5 @@ GLOG_alsologtostderr=1 \
 GLOG_stderrthreshold=1 \
 GLOG_log_dir=$LOG \
     $TOOLS/caffe train --solver=./solver.prototxt \
-    --snapshot=models/gnet_iter_125605.solverstate \
+    --snapshot=models/gnet_iter_144410.solverstate \
     --gpu=3
