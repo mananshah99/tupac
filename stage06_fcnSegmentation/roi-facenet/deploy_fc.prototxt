@@ -1,50 +1,12 @@
 name: "FaceNN"
 
-layers {
-  name: "data"
-  type: IMAGE_DATA
-  top: "data"
-  top: "label"
-  include {
-    phase: TRAIN
-  }
-  transform_param {
-    mirror: true
-    crop_size: 100
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
-  }
-  image_data_param {
-    source: "../lists/roi-train-L0.lst"
-    batch_size: 128 
-    shuffle: true
-    new_width:110
-    new_height:110
-  }
-}
-layers {
-  name: "data"
-  type: IMAGE_DATA
-  top: "data"
-  top: "label"
-  include {
-    phase: TEST
-  }
-  transform_param {
-    mirror: false
-    crop_size: 100
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
-  }
-  image_data_param {
-    source: "../lists/roi-val-L0.lst"
-    batch_size: 100
-    shuffle: true
-    new_width:110
-    new_height:110
-  }
+input: "data"
+
+input_shape {
+  dim: 1 
+  dim: 3
+  dim: 1000
+  dim: 1000
 }
 
 layers {name: "conv11" type: CONVOLUTION bottom: "data" top: "conv11"
@@ -288,17 +250,8 @@ layers {name: "conv54" type: CONVOLUTION bottom: "drop6" top: "conv54"
 }
 
 layers {
-  name: "accuracy"
-  type: ACCURACY
+  name: "prob"
+  type: SOFTMAX
   bottom: "conv54"
-  bottom: "label"
-  top: "accuracy"
-}
-
-layers {
-  name: "loss"
-  type: SOFTMAX_LOSS
-  bottom: "conv54"
-  bottom: "label"
-  top: "loss"
+  top: "prob"
 }
