@@ -20,8 +20,8 @@ args = vars(parser.parse_args())
 balance_classes=args["balance_classes"]
 
 # 90/10 split of mitotic patches
-TRAIN_OUT = '/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/train2.lst'
-VAL_OUT   = '/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/val2.lst'
+TRAIN_OUT = '/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/train3.lst'
+VAL_OUT   = '/data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/val3.lst'
 
 # there are very few false negatives so let's use all we have
 posfiles = [l.strip() for l in os.popen('find /data/dywang/Database/Proliferation/libs/stage04_mitosisDetection/training_examples/pos* -name "*.png"').readlines()]
@@ -31,7 +31,7 @@ negfiles = [l.strip() for l in os.popen('find /data/dywang/Database/Proliferatio
 if balance_classes:
     #negfiles, _ = split_percentage(negfiles, float(len(posfiles))/len(negfiles))
     shuffle(negfiles) # for this one only
-    negfiles = negfiles[0:2*len(posfiles) + 5000]
+    negfiles = negfiles[0:4*len(posfiles)]
 print "INFO: Found " + str(len(posfiles)) + " mitosis patches and " + str(len(negfiles)) + " non-mitotic patches."
 
 train_pos, val_pos = split_percentage(posfiles, .90)
