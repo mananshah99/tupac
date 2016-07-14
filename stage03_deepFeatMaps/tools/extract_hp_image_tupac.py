@@ -239,7 +239,13 @@ def gen_heatmap(extractor, feat_name, img_name, mask_name, mask_image_level, dee
 
     ## begin of function : gen_heatmap_wsi ##
     logging.info("Processing: %s ..." % (img_name))
-    img = skio.imread(img_name)
+    try:
+        img = skio.imread(img_name)
+    except Exception as e:
+        print(e)
+        return
+        # don't want to deal with this image again
+        # future steps only check the folders anyway, so they just won't see anything
     ori_h, ori_w, ori_c = img.shape
     pad_size = int(window_size/2)
 
