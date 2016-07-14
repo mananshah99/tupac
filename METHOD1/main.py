@@ -9,9 +9,22 @@ Testing (July 5, 2016): Use
 Generate heatmaps for these images using googlenet, and generate feature vectors.
 Make sure this is easily extensible to utilize all images
 '''
-
+import matplotlib
+matplotlib.use('Agg')
+import numpy as np
 import mitosis_predict
-# import rna_predict
+from random import shuffle
+import numpy as np
+
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+import itertools
+
+from quadratic_weighted_kappa import *
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from mlxtend.classifier import EnsembleVoteClassifier
 
 def read_groundtruth(filename = 'training_ground_truth.csv'):
     import csv
@@ -42,23 +55,36 @@ for row in groundtruth:
     image_mitosis = row[1]
     image_RNA     = row[2]
     
-    mitosis_dictionary[int(image_mitosis)].append(image_number)
+    # for now
+    if image_number < '100': 
+        mitosis_dictionary[int(image_mitosis)].append(image_number)
 
 ### Iterate through the dictionary and select samples, or select all
-SAMPLE_SIZE = 10
+SAMPLE_SIZE = -1 # 10
 GEN_HEATMAPS = 1 # if this is set to 0, images that don't have corresponding heatmaps will be ignored
+
+print mitosis_dictionary
 
 import random
 image_ids = []
 for key in mitosis_dictionary:
     tmp =  mitosis_dictionary[key] if SAMPLE_SIZE == -1 else random.sample(mitosis_dictionary[key], len(mitosis_dictionary[key]))[0:SAMPLE_SIZE]
+    
+    # this example is guaranteed to work
+    
     if key == 1:
         tmp = ['001','006','008','009','010','014','015','016','017','018']
     elif key == 2:
         tmp = ['003','004','005','011','013','021','024','026','027','032']
     elif key == 3:
         tmp = ['007','012','019','023','029','030','036','041','046','047']
+    
+
     image_ids.extend(tmp)
+
+
+X = []
+y = []
 
 for image_id in image_ids:
     import glob
@@ -66,5 +92,54 @@ for image_id in image_ids:
     patches = []
     for patch_name in glob.glob(globname):
         patches.append(patch_name)
-    
+
     features = mitosis_predict.extract_features(patches)
+
+    print (image_id, features)
+    
+    image_level = 1 if (image_id in mitosis_dictionary[1]) else 2 if (image_id in mitosis_dictionary[2]) else 3
+    if len(features) == 0:
+        while len(features) != 30*10:
+            features.append(0)
+    
+    X.append(features) #np.append(X, np.array(features), axis=0)#np.vstack((X, features))# .append(features)
+    y.append(image_level)# = np.append(y, np.array([image_level]), axis=0)#np.vstack((y, image_level))#y.append(image_level)
+
+X = np.vstack(X)
+y = np.array(y)
+
+#### Perform prediction. X and y are the arrays which are split into tr and tst
+
+import random
+
+indices = [i for i in range(0, len(X))]
+shuffle(indices)
+
+Xtr = X[indices[0:int(len(indices) * 0.8)]]
+ytr = y[indices[0:int(len(indices) * 0.8)]]
+
+Xtst = X[indices[int(len(indices) * 0.8):]]
+ytst = y[indices[int(len(indices) * 0.8):]]
+
+print ("Xtr, ytr, Xtst, ytst")
+print (Xtr.shape, ytr.shape, Xtst.shape, ytst.shape)
+
+# Initializing Classifiers
+clf1 = LogisticRegression(random_state=0)
+clf2 = RandomForestClassifier(n_estimators=50, random_state=0)
+clf3 = SVC(random_state=0, probability=True)
+eclf = EnsembleVoteClassifier(clfs=[clf1, clf2, clf3], weights=[2, 1, 1], voting='soft')
+
+from sklearn.metrics import *
+ypred = []
+for clf, lab, grd in zip([clf1, clf2, clf3, eclf],
+                         ['Logistic Regression', 'Random Forest', 'RBF kernel SVM', 'Ensemble'],
+                         itertools.product([0, 1], repeat=2)):
+    clf.fit(Xtr, ytr)
+    print lab
+    ypred = clf.predict(Xtst)
+    print ytst
+    print ypred
+    print classification_report(ytst, ypred)
+    print kappa(ytst, ypred)
+    # kappa(rater_a, rater_b, min_rating=None, max_rating=None)
