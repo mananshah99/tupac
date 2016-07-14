@@ -23,7 +23,11 @@ TRAIN_OUT = 'roi-train-L0.lst'
 VAL_OUT = 'roi-val-L0.lst'
 TEST_OUT = 'roi-test-L0.lst'
 
-negfiles = [l.strip() for l in os.popen('find /data/dzhu1/LEVEL00/sample_W256_P0000000999/img-Normal/ -name "*.png"').readlines()]
+# Level 1
+#negfiles = [l.strip() for l in os.popen('find /data/dzhu1/LEVEL00/sample_W256_P0000000999/img-Normal/ -name "*.png"').readlines()]
+
+# Level 0 -- the negative files are the negs that aren't in the high thresholded regions, pos files are teh same as before
+negfiles = [l.strip() for l in os.popen('find ../../stage02_genROIPatches/ROI-Stage2/ -name "*.png"').readlines()]
 posfiles = [l.strip() for l in os.popen('find /data/dzhu1/LEVEL00/sample_W256_P0000000999/img-ROI/ -name "*.png"').readlines()]
 
 if balance_classes:
