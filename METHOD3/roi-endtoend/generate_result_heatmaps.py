@@ -16,6 +16,7 @@ import caffe
 caffe.set_device(2)
 caffe.set_mode_gpu()
 
+# this uses the FULLY CONVOLUTIONAL roi detection model
 model_def = 'deploy_fc.prototxt'
 model_weights = 'models/cnn10_iter_217316.caffemodel'
 
@@ -30,7 +31,7 @@ transformer.set_raw_scale('data', 255)      # rescale from [0, 1] to [0, 255]
 transformer.set_channel_swap('data', (2,1,0))  # swap channels from RGB to BGR
 transformer.set_mean('data', np.array([104, 117, 123]))
 
-f = open('../lists/mitosis.lst')
+f = open('../lists/mitosis.lst') #aim is to predict mitosis, not roi
 
 i = 0
 # THESE ARE ALL OF THE PATCHES
