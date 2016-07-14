@@ -1,0 +1,1 @@
+python /data/dywang/Database/Proliferation/libs/deepzoom/visual.py .  --result /data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/mitosis-train_07-07-16 -l 10.35.73.88 -p 5300 --debug
