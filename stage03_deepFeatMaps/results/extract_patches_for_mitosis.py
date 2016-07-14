@@ -66,7 +66,7 @@ def extract_patches(image_number, # A STRING
                     output_directory = "patches", # ALWAYS change this default
                     interactive = True):
 
-    image = imread('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.75/TUPAC-TR-' + image_number + '.png')
+    image = imread('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.65/TUPAC-TR-' + image_number + '.png')
     wsi = osi.open_slide('/data/dywang/Database/Proliferation/data/TrainingData/training_image_data/TUPAC-TR-' + image_number + '.svs')
 
     print "Loaded " + image_number
@@ -119,29 +119,36 @@ def extract_patches(image_number, # A STRING
         tot_area = sum(A[-50:])
 
     if len(final_regions) == 0:
-        print image_number + " -- no mitotic regions."
+        print image_number + " -- no ROI regions."
+
 ### STAGE 3: SECOND PASS FOR (SELECTED) REGION PATCH EXTRACTION
     n_remaining = K
+    final_regions = reversed(final_regions)
     for i, region in enumerate(final_regions):
-        to_extract = 0 # initialize
+        to_extract = int(K * (float(region.area) / tot_area))
+        if n_remaining <= 0:
+            break
+        if to_extract == 0 and n_remaining > 0:
+            to_extract = 1
+        n_remaining -= to_extract
 
-        if i == len(final_regions)-1:
-            # largest object
-            to_extract = n_remaining # if there are too few otherwise, catch them here
-            if to_extract < 0:
-                to_extract = 1
-        else:
-            # these are sorted -- start with the smallest patch
-            to_extract = int( K * (float(region.area) / tot_area) )
-            if to_extract == 0:
-                to_extract = 1
-
-            n_remaining -= to_extract
-
-        #print region.area, to_extract
-
+        #to_extract = 0 # initialize
+        #
+        #if i == len(final_regions)-1:
+        #    # largest object
+        #    to_extract = n_remaining # if there are too few otherwise, catch them here
+        #    if to_extract < 0:
+        #        to_extract = 1
+        #else:
+        #    # these are sorted -- start with the smallest patch
+        #    to_extract = int( K * (float(region.area) / tot_area) )
+        #    if to_extract == 0:
+        #        to_extract = 1
+        #
+        #    n_remaining -= to_extract
+        # print region.area, to_extract, n_remaining
         centers = []
-
+        
         if to_extract == 1: # in this case, let's take the centroid
             centers = [region.centroid]
 
@@ -167,11 +174,10 @@ def extract_patches(image_number, # A STRING
             imsave(img_name, img)
             # print "\t => " + img_name
 
-
 ####
 
+save_directory = "patches_07-14-16" #06-29-16
 
-save_directory = "patches_06-29-16"
 def do_extraction_parallel(num):
     try:
         extract_patches(num,output_directory=save_directory, interactive=False)
@@ -204,4 +210,4 @@ print "[X] Done, count is " + str(count)
 '''
 ###
 
-# extract_patches('039', interactive=False)
+#extract_patches('137', output_directory=save_directory, interactive=False)
