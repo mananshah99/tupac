@@ -1,4 +1,0 @@
-Log file created at: 2016/07/12 18:20:31
-Running on machine: deepath-01
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-F0712 18:20:31.118098 45059 syncedmem.cpp:64] Check failed: error == cudaSuccess (2 vs. 0)  out of memory

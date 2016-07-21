@@ -1,4 +1,0 @@
-Log file created at: 2016/07/12 18:15:03
-Running on machine: deepath-01
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-F0712 18:15:03.880622 44835 blob.cpp:32] Check failed: shape[i] >= 0 (-6 vs. 0) 
