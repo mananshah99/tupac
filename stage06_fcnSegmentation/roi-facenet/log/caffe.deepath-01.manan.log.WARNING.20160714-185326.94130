@@ -1,0 +1,4 @@
+Log file created at: 2016/07/14 18:53:26
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0714 18:53:26.660491 94130 io.cpp:54] Check failed: fd != -1 (-1 vs. -1) File not found: models/cnn10_iter_202741.solverstate
