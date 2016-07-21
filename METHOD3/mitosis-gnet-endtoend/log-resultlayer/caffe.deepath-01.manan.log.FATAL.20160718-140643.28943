@@ -1,0 +1,4 @@
+Log file created at: 2016/07/18 14:06:43
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0718 14:06:43.658944 28943 base_conv_layer.cpp:28] Check failed: num_spatial_axes_ == 2 (0 vs. 2) kernel_h & kernel_w can only be used for 2D convolution.

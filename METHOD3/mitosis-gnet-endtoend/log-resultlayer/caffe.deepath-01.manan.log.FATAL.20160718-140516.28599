@@ -1,0 +1,4 @@
+Log file created at: 2016/07/18 14:05:16
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0718 14:05:16.435889 28599 upgrade_proto.cpp:68] Check failed: ReadProtoFromTextFile(param_file, param) Failed to parse NetParameter file: train_val-resultlayer-3stack.prototxt

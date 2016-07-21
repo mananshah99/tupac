@@ -1,0 +1,24 @@
+Log file created at: 2016/07/18 14:05:15
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0718 14:05:15.885833 28599 caffe.cpp:184] Using GPUs 0, 1, 2
+I0718 14:05:16.432720 28599 solver.cpp:47] Initializing solver from parameters: 
+test_iter: 500
+test_interval: 1500
+base_lr: 0.01
+display: 50
+max_iter: 180000
+lr_policy: "step"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 0.0005
+stepsize: 60000
+snapshot: 5000
+snapshot_prefix: "models-resultlayer"
+solver_mode: GPU
+device_id: 0
+net: "train_val-resultlayer-3stack.prototxt"
+test_initialization: false
+average_loss: 50
+I0718 14:05:16.435719 28599 solver.cpp:90] Creating training net from net file: train_val-resultlayer-3stack.prototxt
+F0718 14:05:16.435889 28599 upgrade_proto.cpp:68] Check failed: ReadProtoFromTextFile(param_file, param) Failed to parse NetParameter file: train_val-resultlayer-3stack.prototxt

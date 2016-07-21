@@ -1,0 +1,4 @@
+Log file created at: 2016/07/18 14:28:29
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0718 14:28:29.678171 32802 insert_splits.cpp:35] Unknown bottom blob 'loss3/loss3' (layer 'conv61', bottom index 0)
