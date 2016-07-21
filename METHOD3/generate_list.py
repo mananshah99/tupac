@@ -40,15 +40,20 @@ val_lst_name = MODE + '_val.lst'
 train_lst = open(train_lst_name, 'wb+')
 val_lst = open(val_lst_name, 'wb+')
 
-prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/patches_06-29-16/'
+prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/patches_07-14-16/'
 
 patches = glob.glob(prefix + '*).png')
 
 lines = []
+from tqdm import tqdm
+bar = tqdm(total=len(patches))
+
 for patch in patches:
     number = patch[patch.index('TUPAC') + 9 : patch.index('TUPAC') + 12]
     output = groundtruth_map[number]
     lines.append(patch + ' ' + str(int(output)-1) + '\n')
+    bar.update(1)
+bar.close()
 
 shuffle(lines)
 
