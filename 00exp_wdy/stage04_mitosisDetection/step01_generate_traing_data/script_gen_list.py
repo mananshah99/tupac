@@ -8,9 +8,8 @@
 import os,sys,argparse
 import logging
 
-ROOT = 'training_examples'
 
-def gen_initial_list():
+def gen_initial_list(ROOT, prefix):
     fdlist = ['pos', 'neg']
     # draw ground truth
     for fd in fdlist:
@@ -26,12 +25,12 @@ def gen_initial_list():
                 for img in imgs:
                     lines.append('%s/%s/%s/%s'%(fd, wsi_name, hpf_name, img))
         print "%s -> #img = %d"%(fd, len(lines))
-        with open('%s.lst'%(fd), 'w') as f:
+        with open('%s_%s.lst'%(prefix, fd), 'w') as f:
             f.write('\n'.join(lines))
 
-def gen_train_data_stage_01():
-    p = ['%s 1'%(l.strip()) for l in open('pos.lst')]
-    n = ['%s 0'%(l.strip()) for l in open('neg.lst')]
+def gen_train_data_stage_01(prefix):
+    p = ['%s 1'%(l.strip()) for l in open('%s_pos.lst'%(prefix))]
+    n = ['%s 0'%(l.strip()) for l in open('%s_neg.lst'%(prefix))]
     import random
 
     r = 0.9
@@ -42,15 +41,20 @@ def gen_train_data_stage_01():
     p_tr_s = int(p_s * r)
     n_tr_s = int(n_s * r)
 
-    with open('stage1_tr.lst', 'w') as f:
+    with open('list_%s_tr.lst'%(prefix), 'w') as f:
         f.write('\n'.join(p[:p_tr_s]))
         f.write('\n')
         f.write('\n'.join(n[:n_tr_s]))
 
-    with open('stage1_te.lst', 'w') as f:
+    with open('list_%s_te.lst'%(prefix), 'w') as f:
         f.write('\n'.join(p[p_tr_s+1:]))
         f.write('\n')
         f.write('\n'.join(n[n_tr_s+1:]))
 
-#gen_initial_list()
-gen_train_data_stage_01()
+#ROOT = 'training_examples'
+#gen_initial_list(ROOT, 'stage1')
+#gen_train_data_stage_01('stage1')
+
+ROOT = 'training_examples_s2'
+gen_initial_list(ROOT, 'stage2')
+gen_train_data_stage_01('stage2')
