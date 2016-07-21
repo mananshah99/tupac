@@ -56,7 +56,7 @@ layer {
   }
   convolution_param {
     num_output: 32
-    pad: 1
+    pad: 0
     stride: 1
     weight_filler {
       type: "xavier"
@@ -89,7 +89,7 @@ layer {
   }
   convolution_param {
     num_output: 64
-    pad: 1
+    pad: 0
     stride: 1
     weight_filler {
       type: "xavier"

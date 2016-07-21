@@ -8,17 +8,19 @@ layer {
     phase: TEST
   }
   transform_param {
-    mirror: false
+    mirror: true
     crop_size: 224
-    mean_value: 185
-    mean_value: 150
-    mean_value: 186
+    mean_value: 163
+    mean_value: 116
+    mean_value: 181
   }
   image_data_param {
-    root_folder: "/home/dywang/data/Database/Camelyon16/TrainingData/Train/training_data/"
-    source: "/home/dywang/data/Database/Camelyon16/TrainingData/Train/training_data/LEVEL00/te_P0000010000.lst"
-    batch_size: 100
+    root_folder: "../../step01_generate_traing_data/training_examples/"
+    source: "../../step01_generate_traing_data/list_stage1_tr.lst"
+    batch_size: 32
     shuffle: true
+    new_height: 256
+    new_width: 256
   }
 }
 
@@ -2124,13 +2126,27 @@ layer {
 }
 layer {
   name: "pool5/7x7_s1"
-  type: "Pooling"
+  type: "Convolution"
   bottom: "inception_5b/output"
   top: "pool5/7x7_s1"
-  pooling_param {
-    pool: AVE
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
     kernel_size: 7
-    stride: 1
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.2
+    }
   }
 }
 layer {

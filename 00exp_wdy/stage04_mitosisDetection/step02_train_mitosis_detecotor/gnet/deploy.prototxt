@@ -2108,13 +2108,27 @@ layer {
 }
 layer {
   name: "pool5/7x7_s1"
-  type: "Pooling"
+  type: "Convolution"
   bottom: "inception_5b/output"
   top: "pool5/7x7_s1"
-  pooling_param {
-    pool: AVE
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
     kernel_size: 7
-    stride: 1
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.2
+    }
   }
 }
 layer {
