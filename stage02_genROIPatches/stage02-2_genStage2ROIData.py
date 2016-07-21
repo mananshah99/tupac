@@ -56,7 +56,7 @@ def nearest_neighbors(im, i, j, d=4):
     return n
 
 # ROI level 1 is done on level 1 small images
-thresholded_roi = [f for f in os.listdir('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.85/')]
+thresholded_roi = [f for f in os.listdir('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.65/')]
 
 patch_size = 256
 n_patches_per = 256
@@ -65,9 +65,13 @@ n_patches_per = 256
 #   ../../train/ROI_stage01_LEVEL00/imglist_stage01.lst
 #
 
+from tqdm import tqdm
+
+bar = tqdm(total=len(thresholded_roi))
+
 for f in thresholded_roi:
-    print f
-    roi_locations = cv2.imread('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.85/' + f, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+#    print f
+    roi_locations = cv2.imread('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/roi-level1_06-24-16/thresholded-0.65/' + f, cv2.CV_LOAD_IMAGE_GRAYSCALE)
     original_image = cv2.imread('/data/dywang/Database/Proliferation/data/TrainingData/small_images-level-2-mask/' + f)
     wsi_image = osi.OpenSlide('/data/dywang/Database/Proliferation/data/TrainingData/training_image_data/' + f[:-4] + '.svs')
     
@@ -101,3 +105,6 @@ for f in thresholded_roi:
 
             if internalct >= 50:
                 break
+    bar.update(1)
+bar.close()
+
