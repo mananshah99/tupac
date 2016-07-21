@@ -1,0 +1,5 @@
+Log file created at: 2016/07/15 15:20:14
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0715 15:20:14.237582  9237 io.cpp:80] Could not open or find file /data/dywang/Database/Proliferation/libs/METHOD3/pos_result_maps/TUPAC-TR-122-(24953,12989)_class=2.png
+F0715 15:20:14.237788  9237 image_data_layer.cpp:117] Check failed: cv_img.data Could not load /data/dywang/Database/Proliferation/libs/METHOD3/pos_result_maps/TUPAC-TR-122-(24953,12989)_class=2.png

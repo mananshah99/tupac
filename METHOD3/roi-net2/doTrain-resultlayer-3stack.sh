@@ -11,4 +11,4 @@ GLOG_alsologtostderr=1 \
 GLOG_stderrthreshold=1 \
 GLOG_log_dir=$LOG \
     $TOOLS/caffe train --solver=./solver-resultlayer-3stack.prototxt \
-    --gpu=0
+    --gpu=0,1,3

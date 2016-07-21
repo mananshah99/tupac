@@ -9,9 +9,6 @@ layer {
   }
   transform_param {
     mirror: true
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
   }
   image_data_param {
     source: "../lists/pos_result_map_train.lst"
@@ -29,13 +26,10 @@ layer {
   }
   transform_param {
     mirror: false
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
   }
   image_data_param {
     source: "../lists/pos_result_map_val.lst"
-    batch_size: 128
+    batch_size: 64 
     shuffle: true
   }
 }
