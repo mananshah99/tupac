@@ -1,0 +1,4 @@
+Log file created at: 2016/07/15 14:06:21
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0715 14:06:21.274063 144951 data_transformer.cpp:240] Check failed: height <= img_height (1000 vs. 56) 

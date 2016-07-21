@@ -11,10 +11,10 @@ base_lr: 0.02 # 0.015
 lr_policy: "step"
 gamma: 0.1
 stepsize: 60000
-max_iter: 500000 #180000
+max_iter: 180000
 
-momentum: 0.85
-weight_decay: 0.015
+momentum: 0.9
+weight_decay: 0.0005
 
 snapshot: 5000
 snapshot_prefix: "models/featurelayer3"

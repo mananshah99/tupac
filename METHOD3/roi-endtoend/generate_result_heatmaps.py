@@ -18,7 +18,7 @@ caffe.set_mode_gpu()
 
 # this uses the FULLY CONVOLUTIONAL roi detection model
 model_def = 'deploy_fc.prototxt'
-model_weights = 'models/cnn10_iter_217316.caffemodel'
+model_weights = 'models/cnn10_iter_227000.caffemodel'
 
 net = caffe.Net(model_def,      # defines the structure of the model
                 model_weights,  # contains the trained weights
@@ -31,10 +31,15 @@ transformer.set_raw_scale('data', 255)      # rescale from [0, 1] to [0, 255]
 transformer.set_channel_swap('data', (2,1,0))  # swap channels from RGB to BGR
 transformer.set_mean('data', np.array([104, 117, 123]))
 
-f = open('../lists/mitosis.lst') #aim is to predict mitosis, not roi
+f = open('../lists/mitosis.lst') #aim is to predict mitosis, not rna
 
 i = 0
 # THESE ARE ALL OF THE PATCHES
+
+from tqdm import tqdm
+
+bar = tqdm(total = sum(1 for line in open('../lists/mitosis.lst')))
+
 for line in f:
     sample_image_name = line.strip('\n').split(' ')[0]
     sample_image_output = line.strip('\n').split(' ')[1]
@@ -50,10 +55,11 @@ for line in f:
     sample_image_name = sample_image_name[sample_image_name.index('TUPAC-TR-'):-4]
     a = output['prob']
 
-    print (float(i)/26000, sample_image_name)
     i += 1
 
     # (1, 2, 57, 57), the positive one
     im = a[0][0]
     
     plt.imsave('../pos_result_maps/' + sample_image_name + '_class=' + str(sample_image_output) + '.png', im)
+    bar.update(1)
+bar.close()

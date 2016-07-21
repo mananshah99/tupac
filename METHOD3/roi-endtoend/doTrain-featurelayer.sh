@@ -12,4 +12,4 @@ GLOG_stderrthreshold=1 \
 GLOG_log_dir=$LOG \
     $TOOLS/caffe train --solver=./solver-featurelayer.prototxt \
     --weights=models/cnn10_iter_217316.caffemodel  \
-    --gpu=2
+    --gpu=0
