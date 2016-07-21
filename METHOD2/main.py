@@ -42,7 +42,6 @@ def read_groundtruth(filename = 'training_ground_truth.csv'):
 def generate_input_list(samples_per_class = 10):
     print '__implement__'
 
-
 groundtruth = read_groundtruth()
 
 ### Define a dictionary of class : image number
@@ -61,8 +60,6 @@ for row in groundtruth:
 ### Iterate through the dictionary and select samples, or select all
 SAMPLE_SIZE = -1 # 10
 GEN_HEATMAPS = 1 # if this is set to 0, images that don't have corresponding heatmaps will be ignored
-
-print mitosis_dictionary
 
 import random
 image_ids = []
@@ -88,7 +85,7 @@ caffe.set_device(2)
 caffe.set_mode_gpu()
 
 model_def = 'deploy.prototxt'
-model_weights = 'mitosis_stage1.caffemodel'
+model_weights = 'mitosis_stage1.caffemodel' # this is the caffemodel of the MITOSIS predictor (used to generate the mitosis heatmaps)
 
 net = caffe.Net(model_def,      # defines the structure of the model
                 model_weights,  # contains the trained weights
@@ -102,9 +99,16 @@ transformer.set_channel_swap('data', (2,1,0))  # swap channels from RGB to BGR
 transformer.set_mean('data', np.array([104, 117, 123]))
 net.blobs['data'].reshape(1, 3, 224, 224)
 
+patch_directory = 'patches_06-29-16'
 
-print ">> Executing phase 1 -- Caffe feature extraction & KMeans"
+print "Executing phase 1 -- Caffe feature extraction & KMeans"
 ##### FIRST PHASE: FIT KMEANS
+
+image_ids = image_ids[0:5] + image_ids[10:15] + image_ids[-5:]
+
+from tqdm import tqdm
+bar = tqdm(total=len(image_ids))
+
 for image_id in image_ids:
     import glob
     globname = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/patches_06-29-16/TUPAC-TR-' + image_id + '*'
@@ -115,10 +119,13 @@ for image_id in image_ids:
     features = extract_cnn_features.extract_features(net, transformer,  patches)
     image_level = 1 if (image_id in mitosis_dictionary[1]) else 2 if (image_id in mitosis_dictionary[2]) else 3
 
-    X.extend(features) #np.append(X, np.array(features), axis=0)#np.vstack((X, features))# .append(features)
-    y.append(image_level)# = np.append(y, np.array([image_level]), axis=0)#np.vstack((y, image_level))#y.append(image_level)
-    print (image_id, len(features))
-    
+    X.extend(features) 
+    y.append(image_level)
+#    print (image_id, len(features))
+    bar.update(1)
+
+bar.close()
+ 
 kmeans_input = []
 for i in range(0, len(X), 1024):
     kmeans_input.append(X[i : i +  1024])
@@ -128,11 +135,12 @@ N_CLUSTERS = 50
 km = KMeans(n_clusters=N_CLUSTERS, n_jobs=-1)
 km.fit(kmeans_input)
 
-print ">> Executing phase 2 -- Bin counting (bag-of-words)"
+print "Executing phase 2 -- Bin counting (bag-of-words)"
 ##### SECOND PHASE: COUNT BINS
 
 X_norm = []
 y_norm = []
+bar = tqdm(total=len(image_ids))
 
 for image_id in image_ids:
     import glob
@@ -160,10 +168,13 @@ for image_id in image_ids:
 
     features_normalized = histogram 
     
-    X_norm.extend(features_normalized)
+    X_norm.append(features_normalized)
     y_norm.append(image_level)
 
-    print (image_id, features_normalized)
+#    print (image_id, features_normalized)
+    bar.update(1)
+
+bar.close()
 
 X = np.vstack(X_norm)
 y = np.array(y_norm)
