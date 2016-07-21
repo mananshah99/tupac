@@ -42,7 +42,8 @@ class Extractor(object):
             self.caffemodel = self.update_root(conf_file_path, caffemodel)
             self.meanv = [float(i.strip()) for i in config.get('caffe', 'meanv').split(',')]
             print("[OK] Caffe config loaded")
-        except:
+        except Exception as e:
+            print e
             print("[!] Caffe config not loaded")
 
 def get_extractor(name, conf_file, resource):
