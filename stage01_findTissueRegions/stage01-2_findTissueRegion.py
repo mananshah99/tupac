@@ -105,12 +105,12 @@ def run_findROI(ID):
     print("On ID " + str(ID))
     
     try: 
-        imgName = '../../data/TrainingData/small_images-level-3/TUPAC-TR-%03d.png'%(ID)	
-        mskName1 ='../../data/TrainingData/small_images-level-3-mask/TUPAC-TR-%03d.png'%(ID)
+        imgName = '../../data/TrainingData/small_images-level-2/TUPAC-TR-%03d.png'%(ID)	
+        mskName1 ='../../data/TrainingData/small_images-level-2-mask/TUPAC-TR-%03d.png'%(ID)
     
         doFindROI(imgName, mskName1)
 
-        outputName = '../../data/TrainingData/small_images-level-3-overlay/TUPAC-TR-%03d.png'%(ID)
+        outputName = '../../data/TrainingData/small_images-level-2-overlay/TUPAC-TR-%03d.png'%(ID)
 
         tools.doAddMask(imgName,
                      mskName1,
