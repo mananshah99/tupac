@@ -125,8 +125,8 @@ def notMitosis(pt, gpts, r = 30):
     else:
         return True
 
-IMG_DATA_ROOT = '../../data/mitoses/mitoses_image_data'
-CSV_DATA_ROOT = '../../data/mitoses/mitoses_ground_truth'
+IMG_DATA_ROOT = '../../../../data/mitoses/mitoses_image_data'
+CSV_DATA_ROOT = '../../../../data/mitoses/mitoses_ground_truth'
 for line in [l.strip() for l in open('groundtruth.lst').readlines()]:
     wsi_name, csv_name = line.split('/')
     name_root = csv_name.split('.')[0]
@@ -151,7 +151,7 @@ for line in [l.strip() for l in open('groundtruth.lst').readlines()]:
         # other points
         if 1:
             #for i in range(0, 100): # 100 negative patches
-            ct, NegNUM = 0, 50
+            ct, NegNUM = 0, 150
             #while True:
                 #chosen_contour = random.choice(cnts)
             random.shuffle(cnts)
