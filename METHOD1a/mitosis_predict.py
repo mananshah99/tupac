@@ -28,10 +28,16 @@ def extract_features(patches, gen_heatmaps = 1):
     os.chdir('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/run')
     for patch in patches:
         patch_name = patch.split('/')[-1]
+
+        part1 = patch_name.split('(')[0][:-1]
+        num1 = patch_name.split('(')[1].split(',')[0].zfill(10)
+        num2 = patch_name.split('(')[1].split(',')[1].split(')')[0].zfill(10)
+
+        patch_name = part1 + '_level0_x' + num1 + '_y' + num2 + '.png'
         
         # where are the heatmaps stored?
         #prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/mitosis-full_07-07-16/'
-        prefix = '/data/dywang/Database/Proliferation/evaluation/mitko-fcn-heatmaps/'   
+        prefix = '/data/dywang/Database/Proliferation/evaluation/mitko-fcn-heatmaps-norm/'   
         
         full_name = prefix + patch_name
 
@@ -65,8 +71,6 @@ def extract_features(patches, gen_heatmaps = 1):
             ### FOR FULLY CONV HEATMAPS, CONVERT TO GRAYSCALE
             im = color.rgb2gray(imread(heatmap))
             
-            white_pixels = count_nonblack_np(im)
-            
             #thresh = threshold_otsu(im)
             thresh = MANUAL_THRESHOLD
             
@@ -84,6 +88,8 @@ def extract_features(patches, gen_heatmaps = 1):
             label_image[borders] = -1
 
             num_mitoses = len(regionprops(label_image))
+            
+            white_pixels = count_nonblack_np(im)
 
             individual_vector.append(num_mitoses)
             individual_vector.append(white_pixels)
