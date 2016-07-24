@@ -4,6 +4,7 @@ import subprocess
 
 import numpy as np
 
+from skimage import color
 from skimage import data
 from skimage.filters import threshold_otsu
 from skimage.segmentation import clear_border
@@ -59,8 +60,16 @@ def extract_features(patches, gen_heatmaps = 1):
         patch_name = patch.split('/')[-1]
         # where are the heatmaps stored?
         #prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/mitosis-full_07-07-16/'
-        prefix = '/data/dywang/Database/Proliferation/evaluation/mitko-pixel-heatmaps/'   
         
+        # make patch name the new standard
+        part1 = patch_name.split('(')[0][:-1]
+        num1 = patch_name.split('(')[1].split(',')[0].zfill(10)
+        num2 = patch_name.split('(')[1].split(',')[1].split(')')[0].zfill(10)
+
+        patch_name = part1 + '_level0_x' + num1 + '_y' + num2 + '.png'
+        prefix = '/data/dywang/Database/Proliferation/evaluation/mitko-fcn-heatmaps-norm/'
+
+        #/data/dywang/Database/Proliferation/evaluation/mitko-fcn-heatmaps-norm/TUPAC-TR-261-(9300,22460).png        
         full_name = prefix + patch_name
         X1, Y1 = getXY(full_name)
 
@@ -68,16 +77,16 @@ def extract_features(patches, gen_heatmaps = 1):
             heatmaps.append(full_name)
     
     vector = []
-    for threshold_decimal in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
-        MANUAL_THRESHOLD = int(255 * threshold_decimal)
+    for threshold_decimal in np.arange(0, 1, 0.01):
+        MANUAL_THRESHOLD = threshold_decimal
         individual_vector = [] 
         tot_mitoses = 0 
 
         for heatmap in heatmaps: # use 15
-            im = imread(heatmap)
-
+            im = color.rgb2gray(imread(heatmap))
+            
             thresh = MANUAL_THRESHOLD
-            bw = closing(im > thresh, square(3))
+            bw = closing(im < thresh, square(3))
 
             # remove artifacts connected to image border
             cleared = bw.copy()
@@ -90,7 +99,7 @@ def extract_features(patches, gen_heatmaps = 1):
 
             num_mitoses = len(regionprops(label_image))
             tot_mitoses += num_mitoses
-        
+
         try:
             individual_vector.append(float(tot_mitoses/(len(heatmaps)))) #scaling for area
         except: #0 heatmaps?
