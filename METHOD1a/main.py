@@ -14,7 +14,7 @@ Make sure this is easily extensible to utilize all images
 import matplotlib
 matplotlib.use('Agg')
 import numpy as np
-import mitosis_predict_regular as mp
+import mitosis_predict as mp
 from random import shuffle
 import numpy as np
 
@@ -58,27 +58,27 @@ for row in groundtruth:
     image_RNA     = row[2]
     
     # for now
-    if image_number < '100': 
+    if int(image_number) < 500: 
         mitosis_dictionary[int(image_mitosis)].append(image_number)
 
 ### Iterate through the dictionary and select samples, or select all
 SAMPLE_SIZE = -1 # 10
-GEN_HEATMAPS = 1 # if this is set to 0, images that don't have corresponding heatmaps will be ignored (currently assigned [0...0] as feature vecs)
+GEN_HEATMAPS = 0 # if this is set to 0, images that don't have corresponding heatmaps will be ignored (currently assigned [0...0] as feature vecs)
 
 import random
 image_ids = []
 for key in mitosis_dictionary:
     tmp =  mitosis_dictionary[key] if SAMPLE_SIZE == -1 else random.sample(mitosis_dictionary[key], len(mitosis_dictionary[key]))[0:SAMPLE_SIZE]
-    
+
     # this example is guaranteed to work
-    
+    '''    
     if key == 1:
         tmp = ['001','006','008','009','010','014','015','016','017','018']
     elif key == 2:
         tmp = ['003','004','005','011','013','021','024','026','027','032']
     elif key == 3:
         tmp = ['007','012','019','023','029','030','036','041','046','047']
-    
+    '''
     image_ids.extend(tmp)
 
 X = []
@@ -101,14 +101,14 @@ for image_id in image_ids:
 
     features = mp.extract_features(patches)
 
-    #print (image_id, features)
+    # print (image_id, features)
     
     image_level = 1 if (image_id in mitosis_dictionary[1]) else 2 if (image_id in mitosis_dictionary[2]) else 3
     if len(features) == 0:
-        while len(features) != 20*10:
-            features.append(0)
+        continue
+        #while len(features) != 30*10:
+        #    features.append(0)
 
-#    print len(features)    
     X.append(np.array(features, dtype=np.float32)) #np.append(X, np.array(features), axis=0)#np.vstack((X, features))# .append(features)
     y.append(image_level)# = np.append(y, np.array([image_level]), axis=0)#np.vstack((y, image_level))#y.append(image_level)
     bar.update(1)
