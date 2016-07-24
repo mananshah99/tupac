@@ -14,7 +14,7 @@ Make sure this is easily extensible to utilize all images
 import matplotlib
 matplotlib.use('Agg')
 import numpy as np
-import mitosis_predict
+import mitosis_predict as mp
 from random import shuffle
 import numpy as np
 
@@ -58,7 +58,7 @@ for row in groundtruth:
     image_RNA     = row[2]
     
     # for now
-    if image_number < '100': 
+    if int(image_number) < 500:
         mitosis_dictionary[int(image_mitosis)].append(image_number)
 
 ### Iterate through the dictionary and select samples, or select all
@@ -69,15 +69,14 @@ import random
 image_ids = []
 for key in mitosis_dictionary:
     tmp =  mitosis_dictionary[key] if SAMPLE_SIZE == -1 else random.sample(mitosis_dictionary[key], len(mitosis_dictionary[key]))[0:SAMPLE_SIZE]
-    
     # this example is guaranteed to work
     
-    if key == 1:
-        tmp = ['001','006','008','009','010','014','015','016','017','018']
-    elif key == 2:
-        tmp = ['003','004','005','011','013','021','024','026','027','032']
-    elif key == 3:
-        tmp = ['007','012','019','023','029','030','036','041','046','047']
+#    if key == 1:
+#        tmp = ['001','006','008','009','010','014','015','016','017','018']
+#    elif key == 2:
+#        tmp = ['003','004','005','011','013','021','024','026','027','032']
+#    elif key == 3:
+#        tmp = ['007','012','019','023','029','030','036','041','046','047']
     
     image_ids.extend(tmp)
 
@@ -99,15 +98,10 @@ for image_id in image_ids:
     for patch_name in glob.glob(globname):
         patches.append(patch_name)
 
-    features = mitosis_predict.extract_features(patches)
-
-    print (image_id, features)
+    features = mp.extract_features(patches)
+#    print (image_id, features)
     
     image_level = 1 if (image_id in mitosis_dictionary[1]) else 2 if (image_id in mitosis_dictionary[2]) else 3
-    # CHANGE THIS LATER
-    if len(features) == 0:
-        while len(features) != 10:
-            features.append(0)
 
     X.append(np.array(features, dtype=np.float32)) #np.append(X, np.array(features), axis=0)#np.vstack((X, features))# .append(features)
     y.append(image_level)# = np.append(y, np.array([image_level]), axis=0)#np.vstack((y, image_level))#y.append(image_level)
@@ -136,7 +130,7 @@ print (Xtr.shape, ytr.shape, Xtst.shape, ytst.shape)
 
 # Initializing Classifiers
 clf1 = LogisticRegression(random_state=0)
-clf2 = RandomForestClassifier(n_estimators=50, random_state=0)
+clf2 = RandomForestClassifier(n_estimators=70, random_state=0)
 clf3 = SVC(random_state=0, probability=True)
 eclf = EnsembleVoteClassifier(clfs=[clf1, clf2, clf3], weights=[2, 1, 1], voting='soft')
 
