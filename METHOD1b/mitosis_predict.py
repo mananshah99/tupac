@@ -3,7 +3,7 @@ import sys
 import subprocess
 
 import numpy as np
-
+import random
 from skimage import color
 from skimage import data
 from skimage.filters import threshold_otsu
@@ -49,7 +49,7 @@ def check_intersection(arr, X1, Y1):
             return True
     return False
 
-def extract_features(patches, gen_heatmaps = 1):
+def extract_features(patches, outlier_method = 'group', gen_heatmaps = 1):
     # each patch has an associated heatmap
   
     heatmaps = []
@@ -77,11 +77,12 @@ def extract_features(patches, gen_heatmaps = 1):
             heatmaps.append(full_name)
     
     vector = []
-    for threshold_decimal in np.arange(0, 1, 0.01):
+    for threshold_decimal in np.arange(0.01, 0.99, 0.01):
         MANUAL_THRESHOLD = threshold_decimal
         individual_vector = [] 
         tot_mitoses = 0 
 
+        _internal_mitoses = []
         for heatmap in heatmaps: # use 15
             im = color.rgb2gray(imread(heatmap))
             
@@ -98,12 +99,22 @@ def extract_features(patches, gen_heatmaps = 1):
             label_image[borders] = -1
 
             num_mitoses = len(regionprops(label_image))
-            tot_mitoses += num_mitoses
+            # tot_mitoses += num_mitoses
+            _internal_mitoses.append(num_mitoses)
 
         try:
-            individual_vector.append(float(tot_mitoses/(len(heatmaps)))) #scaling for area
+            _internal_mitoses = sorted(_internal_mitoses)
+            _internal_mitoses = _internal_mitoses[int(0.1 * len(_internal_mitoses)) : int(0.9 * len(_internal_mitoses))]
+            total_mitoses = sum(i for i in _internal_mitoses)
+            
+            individual_vector.extend([total_mitoses, np.median(_internal_mitoses), np.average(_internal_mitoses), np.amin(_internal_mitoses), np.amax(_internal_mitoses), np.std(_internal_mitoses)])
+            #individual_vector.append(float(tot_mitoses/(len(heatmaps)))) #scaling for area
         except: #0 heatmaps?
-            individual_vector.append(0.0)
-
+            individual_vector.append(-1.0)
         vector.extend(individual_vector) 
+
+    vector = sorted(vector)
+    # remove outliers
+    # vector = vector[int(0.15 * len(vector)) : int(0.85 * len(vector))]
+    # vector.extend([np.median(vector), np.average(vector), np.amin(vector), np.amax(vector), np.std(vector), np.var(vector)])
     return vector

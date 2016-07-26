@@ -25,7 +25,7 @@ import itertools
 from quadratic_weighted_kappa import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from mlxtend.classifier import EnsembleVoteClassifier
 
 def read_groundtruth(filename = 'training_ground_truth.csv'):
@@ -45,12 +45,12 @@ def read_groundtruth(filename = 'training_ground_truth.csv'):
 def generate_input_list(samples_per_class = 10):
     print '__implement__'
 
-
 groundtruth = read_groundtruth()
 
 ### Define a dictionary of class : image number
 
 mitosis_dictionary = {1 : [], 2 : [], 3 : []}
+image_rna_dict = {i : [] for i in range(0, 501)}
 
 for row in groundtruth:
     image_number  = row[0]
@@ -60,6 +60,7 @@ for row in groundtruth:
     # for now
     if int(image_number) < 500:
         mitosis_dictionary[int(image_mitosis)].append(image_number)
+        image_rna_dict[int(image_number)].append(float(image_RNA))
 
 ### Iterate through the dictionary and select samples, or select all
 SAMPLE_SIZE = -1 # 10
@@ -98,19 +99,30 @@ for image_id in image_ids:
     for patch_name in glob.glob(globname):
         patches.append(patch_name)
 
-    features = mp.extract_features(patches)
-#    print (image_id, features)
-    
     image_level = 1 if (image_id in mitosis_dictionary[1]) else 2 if (image_id in mitosis_dictionary[2]) else 3
+    
+    if image_level == 2:
+        bar.update(1)
+        continue
 
-    X.append(np.array(features, dtype=np.float32)) #np.append(X, np.array(features), axis=0)#np.vstack((X, features))# .append(features)
-    y.append(image_level)# = np.append(y, np.array([image_level]), axis=0)#np.vstack((y, image_level))#y.append(image_level)
+    features = mp.extract_features(patches, outlier_method='indiv')
+    #print (image_id, features)
+
+    if any(a == -1 for a in features):
+        # print "Ignoring ", image_id
+        bar.update(1)
+        continue #ignore crap data
+
+    image_level_RNA = image_rna_dict[int(image_id)][0]
+
+    X.append(np.array(features, dtype=np.float32))
+    y.append(image_level)
     bar.update(1)
 
 bar.close()
 
 X = np.vstack(X)
-y = np.array(y)
+y = np.array(y, dtype=np.dtype(int))  #, dtype=np.float32)
 
 #### Perform prediction. X and y are the arrays which are split into tr and tst
 
@@ -129,20 +141,27 @@ print ("Xtr, ytr, Xtst, ytst")
 print (Xtr.shape, ytr.shape, Xtst.shape, ytst.shape)
 
 # Initializing Classifiers
+
 clf1 = LogisticRegression(random_state=0)
-clf2 = RandomForestClassifier(n_estimators=70, random_state=0)
+clf2 = RandomForestClassifier(n_estimators=30, random_state=0)
+clf2_1 = RandomForestClassifier(n_estimators=50, random_state=0)
+clf2_2 = RandomForestClassifier(n_estimators=70, random_state=0)
 clf3 = SVC(random_state=0, probability=True)
-eclf = EnsembleVoteClassifier(clfs=[clf1, clf2, clf3], weights=[2, 1, 1], voting='soft')
+
+eclf = EnsembleVoteClassifier(clfs=[clf1, clf2, clf2_1, clf2_2, clf3], weights=[1,1.2,1.5,1.2,1], voting='soft')
 
 from sklearn.metrics import *
 ypred = []
-for clf, lab, grd in zip([clf1, clf2, clf3, eclf],
-                         ['Logistic Regression', 'Random Forest', 'RBF kernel SVM', 'Ensemble'],
+print "Test ground truth ", ytst
+for clf, lab, grd in zip([clf1, clf2, clf2_1, clf2_2, clf3, eclf],
+                         ['Logistic Regression', 'Random Forest (30)', 'Random Forest (50)', 'Random Forest (70)', 'RBF kernel SVM', 'Ensemble'],
                          itertools.product([0, 1], repeat=2)):
     clf.fit(Xtr, ytr)
     print lab
     ypred = clf.predict(Xtst)
-    print ytst
     print ypred
     print classification_report(ytst, ypred)
-    print kappa(ytst, ypred)
+    print confusion_matrix(ytst, ypred)
+    print "Accuracy is ", accuracy_score(ytst, ypred) 
+    print "Quadratic weighted kappa is ", kappa(ytst, ypred)
+
