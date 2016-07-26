@@ -52,7 +52,11 @@ def get_extractor(name, conf_file, resource):
     if name == 'caffe':
       CAFFE_PYTHON = 'external/caffe/python'
       from caffe_extractor import CaffeExtractor as caffeFeature
-    
+
+    elif name == 'caffe-no-resize':
+      CAFFE_PYTHON = 'external/caffe/python'
+      from caffe_extractor_full import CaffeExtractor as caffeFeature
+ 
     elif name == 'caffe_hy':
       from caffe_extractor import CaffeExtractor_HY as caffeFeature
       CAFFE_PYTHON = 'external/caffe_hy/python'
@@ -64,7 +68,7 @@ def get_extractor(name, conf_file, resource):
       logging.error("Failed to set CAFFE_PYTHON")
       return None
    
-    if name == 'caffe' or name == 'caffe_hy': 
+    if name == 'caffe' or name == 'caffe-no-resize' or name == 'caffe_hy': 
         sys.path.append(CAFFE_PYTHON)
         logging.info("CAFFE_PYTHON: %s"%(CAFFE_PYTHON))
     
