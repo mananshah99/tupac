@@ -54,8 +54,8 @@ for row in groundtruth:
     image_RNA     = row[2]
     
     # for now
-    if image_number < '100': 
-        mitosis_dictionary[int(image_mitosis)].append(image_number)
+    #if image_number < '100': 
+    #    mitosis_dictionary[int(image_mitosis)].append(image_number)
 
 ### Iterate through the dictionary and select samples, or select all
 SAMPLE_SIZE = -1 # 10
@@ -96,10 +96,10 @@ transformer = caffe.io.Transformer({'data': net.blobs['data'].data.shape})
 transformer.set_transpose('data', (2,0,1))  # move image channels to outermost dimension
 transformer.set_raw_scale('data', 255)      # rescale from [0, 1] to [0, 255]
 transformer.set_channel_swap('data', (2,1,0))  # swap channels from RGB to BGR
-transformer.set_mean('data', np.array([104, 117, 123]))
-net.blobs['data'].reshape(1, 3, 224, 224)
+transformer.set_mean('data', np.array([150, 150, 150])) #np.array([104, 117, 123]))
+net.blobs['data'].reshape(1, 3, 63, 63) #224, 224) # -- mitko's model is 63x63
 
-patch_directory = 'patches_06-29-16'
+patch_directory = 'patches_07-14-16'#'patches_06-29-16'
 
 print "Executing phase 1 -- Caffe feature extraction & KMeans"
 ##### FIRST PHASE: FIT KMEANS
@@ -111,7 +111,7 @@ bar = tqdm(total=len(image_ids))
 
 for image_id in image_ids:
     import glob
-    globname = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/patches_06-29-16/TUPAC-TR-' + image_id + '*'
+    globname = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/' + patch_directory + '/TUPAC-TR-' + image_id + '*'
     patches = []
     for patch_name in glob.glob(globname):
         patches.append(patch_name)
@@ -144,7 +144,7 @@ bar = tqdm(total=len(image_ids))
 
 for image_id in image_ids:
     import glob
-    globname = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/patches_06-29-16/TUPAC-TR-' + image_id + '*'
+    globname = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/' + patch_directory + '/TUPAC-TR-' + image_id + '*'
     patches = []
     for patch_name in glob.glob(globname):
         patches.append(patch_name)
