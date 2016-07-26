@@ -34,15 +34,17 @@ for x in groundtruth:
     else:
         groundtruth_map[x[0]] = x[2]
 
-train_lst_name = MODE + '_train.lst'
-val_lst_name = MODE + '_val.lst'
+train_lst_name = MODE + '_train-norm.lst'
+val_lst_name = MODE + '_val-norm.lst'
 
 train_lst = open(train_lst_name, 'wb+')
 val_lst = open(val_lst_name, 'wb+')
 
-prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/patches_07-14-16/'
+#prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/patches_07-14-16/'
+#patches = glob.glob(prefix + '*).png')
 
-patches = glob.glob(prefix + '*).png')
+prefix = '/data/dywang/Database/Proliferation/evaluation/patches-full-normalized/*/*.png'
+patches = glob.glob(prefix)
 
 lines = []
 from tqdm import tqdm

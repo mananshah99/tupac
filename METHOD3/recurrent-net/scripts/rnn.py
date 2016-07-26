@@ -108,7 +108,7 @@ model.add(GRU(output_dim=50,return_sequences=False))
 model.add(Dropout(.2))
 model.add(Dense(output_dim=3, activation='softmax')) #categorical
 
-rmsprop = RMSprop(lr=0.00001)
+rmsprop = RMSprop(lr=1)
 model.compile(loss='mean_squared_error', optimizer=rmsprop, metrics=['accuracy'], class_mode='categorical')
 print("Done building model")
 #run epochs of sampling data then training
