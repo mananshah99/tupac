@@ -60,14 +60,18 @@ for line in f:
 
     #print a[0,:,0,0].shape
     probs = a[0,:,0,0]
-    prediction = probs.argmax(axis=0) + 1
+    prediction = probs.argmax(axis=0)
     true_value = int(sample_image_output)
     
-    if true_value == 2:
+    if true_value == 1:
         continue
     else:
-        if prediction == 2:
-            prediction = 1
+        if prediction == 1:
+            prediction = 0
+        if prediction > 1:
+            prediction -= 1
+        if true_value > 1:
+            true_value -= 1
         y_pred.append(prediction)
         y_true.append(true_value)
         idx += 1

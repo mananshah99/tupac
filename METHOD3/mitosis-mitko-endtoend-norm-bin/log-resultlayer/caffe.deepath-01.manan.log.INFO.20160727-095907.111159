@@ -1898,3 +1898,12 @@ I0727 11:43:41.082541 111159 solver.cpp:252]     Train net output #0: accuracy =
 I0727 11:43:41.082563 111159 solver.cpp:252]     Train net output #1: loss = 0.620258 (* 1 = 0.620258 loss)
 I0727 11:43:42.668464 111159 sgd_solver.cpp:106] Iteration 990, lr = 0.01
 I0727 11:44:32.191870 111159 solver.cpp:461] Snapshotting to binary proto file models-resultlayer/_iter_1000.caffemodel
+I0727 11:44:32.205612 111159 sgd_solver.cpp:269] Snapshotting solver state to binary proto file models-resultlayer/_iter_1000.solverstate
+I0727 11:44:32.210139 111159 solver.cpp:340] Iteration 1000, Testing net (#0)
+I0727 11:48:04.971881 111159 solver.cpp:408]     Test net output #0: accuracy = 0.67
+I0727 11:48:04.972010 111159 solver.cpp:408]     Test net output #1: loss = 0.628411 (* 1 = 0.628411 loss)
+I0727 11:48:08.342813 111159 solver.cpp:236] Iteration 1000, loss = 0.655781
+I0727 11:48:08.342870 111159 solver.cpp:252]     Train net output #0: accuracy = 0.6875
+I0727 11:48:08.342891 111159 solver.cpp:252]     Train net output #1: loss = 0.617147 (* 1 = 0.617147 loss)
+I0727 11:48:08.342929 111159 sgd_solver.cpp:106] Iteration 1000, lr = 0.01
+I0727 11:49:03.843358 111159 solver.cpp:236] Iteration 1010, loss = 0.641425

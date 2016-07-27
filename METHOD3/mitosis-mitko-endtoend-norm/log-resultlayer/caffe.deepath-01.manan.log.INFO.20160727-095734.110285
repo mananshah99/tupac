@@ -1994,3 +1994,11 @@ I0727 11:45:36.625339 110285 solver.cpp:252]     Train net output #0: accuracy =
 I0727 11:45:36.625372 110285 solver.cpp:252]     Train net output #1: loss = 0.764891 (* 1 = 0.764891 loss)
 I0727 11:45:37.121940 110285 sgd_solver.cpp:106] Iteration 8670, lr = 0.01
 I0727 11:46:20.063021 110285 solver.cpp:236] Iteration 8680, loss = 0.939132
+I0727 11:46:20.063194 110285 solver.cpp:252]     Train net output #0: accuracy = 0.4375
+I0727 11:46:20.063223 110285 solver.cpp:252]     Train net output #1: loss = 1.16046 (* 1 = 1.16046 loss)
+I0727 11:46:20.872416 110285 sgd_solver.cpp:106] Iteration 8680, lr = 0.01
+I0727 11:47:07.257457 110285 solver.cpp:236] Iteration 8690, loss = 0.9378
+I0727 11:47:07.257575 110285 solver.cpp:252]     Train net output #0: accuracy = 0.4375
+I0727 11:47:07.257599 110285 solver.cpp:252]     Train net output #1: loss = 0.950354 (* 1 = 0.950354 loss)
+I0727 11:47:07.851601 110285 sgd_solver.cpp:106] Iteration 8690, lr = 0.01
+I0727 11:47:51.085908 110285 solver.cpp:340] Iteration 8700, Testing net (#0)
