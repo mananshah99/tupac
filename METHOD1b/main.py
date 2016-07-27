@@ -14,7 +14,7 @@ Make sure this is easily extensible to utilize all images
 import matplotlib
 matplotlib.use('Agg')
 import numpy as np
-import mitosis_predict as mp
+import mitosis_predict_regular as mp
 from random import shuffle
 import numpy as np
 
@@ -41,9 +41,6 @@ def read_groundtruth(filename = 'training_ground_truth.csv'):
             output.append(row)
     
     return output
-
-def generate_input_list(samples_per_class = 10):
-    print '__implement__'
 
 groundtruth = read_groundtruth()
 
@@ -101,12 +98,12 @@ for image_id in image_ids:
 
     image_level = 1 if (image_id in mitosis_dictionary[1]) else 2 if (image_id in mitosis_dictionary[2]) else 3
     
-    if image_level == 2:
-        bar.update(1)
-        continue
+#    if image_level == 2:
+#        bar.update(1)
+#        continue
 
-    features = mp.extract_features(patches, outlier_method='indiv')
-    #print (image_id, features)
+    features = mp.extract_features(patches)
+#    print (image_id, features)
 
     if any(a == -1 for a in features):
         # print "Ignoring ", image_id

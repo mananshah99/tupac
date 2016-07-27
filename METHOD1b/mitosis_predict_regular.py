@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-
+import cv2
 import numpy as np
 
 from skimage import data
@@ -23,7 +23,7 @@ def getXY(name):
         # new format; uses x__y__
         tmp = name.split('x')[1].split('_')
         h1_level0 = int(tmp[0])
-        w1_level0 = int(tmp[1][1:-4])
+        w1_level0 = int(tmp[1][1:-8]) #.png.png mistake
 
             # X         Y
     return (w1_level0, h1_level0)
@@ -62,11 +62,11 @@ def extract_features(patches, gen_heatmaps = 1):
         num1 = patch_name.split('(')[1].split(',')[0].zfill(10)
         num2 = patch_name.split('(')[1].split(',')[1].split(')')[0].zfill(10)
 
-        patch_name = part1 + '_level0_x' + num1 + '_y' + num2 + '.png'
+        patch_name = part1 + '_level0_x' + num1 + '_y' + num2 + '.png.png' #there was a mistake in the naming of files
 
         # where are the heatmaps stored?
         #prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/mitosis-full_07-07-16/'
-        prefix = '/data/dywang/Database/Proliferation/evaluation/mitko-picel-heatmaps-norm/'   
+        prefix = '/data/dywang/Database/Proliferation/evaluation/mitko-picel-heatmaps-norm-full/'   
         
         full_name = prefix + patch_name
 
@@ -74,35 +74,48 @@ def extract_features(patches, gen_heatmaps = 1):
 
         if os.path.exists(full_name) and check_intersection(heatmaps, X1, Y1) == False and "mask" not in full_name:
             heatmaps.append(full_name)
- 
+    
     vector = []
-    for threshold_decimal in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
+    for threshold_decimal in [0.1, 0.2, 0.3, 0.4, 0.5, 0.67, 0.83, 0.85, 0.91, 0.95, 0.97]: #based on mitko's threhsolds #np.arange(0.1, 1, 0.1): #much slower with larger images
         MANUAL_THRESHOLD = int(255 * threshold_decimal)
         individual_vector = [] 
-        tot_mitoses = 0 
 
+        _internal_mitoses = []
+        _internal_only_mitoses = []
         for heatmap in heatmaps: # use 15
-            im = imread(heatmap)
+            im = imread(heatmap, cv2.IMREAD_GRAYSCALE)
 
             thresh = MANUAL_THRESHOLD
-            bw = closing(im > thresh, square(3))
-
-            # remove artifacts connected to image border
-            cleared = bw.copy()
-            clear_border(cleared)
+            
+            _, bw = cv2.threshold(im, thresh, 255, cv2.THRESH_BINARY)
 
             # label image regions
-            label_image = label(cleared)
-            borders = np.logical_xor(bw, cleared)
-            label_image[borders] = -1
+            label_image = label(bw)
 
-            num_mitoses = len(regionprops(label_image))
-            tot_mitoses += num_mitoses
-        
+            _potential_mitoses = regionprops(label_image)
+            
+            num_mitoses = len(_potential_mitoses) 
+            _internal_mitoses.append(num_mitoses)
+
+            # add to vector for only mitoses            
+            if num_mitoses > 0:
+                _internal_only_mitoses.append(num_mitoses)
+
         try:
-            individual_vector.append(float(tot_mitoses/(len(heatmaps)))) #scaling for area
-        except: #0 heatmaps?
-            individual_vector.append(0.0)
+            _internal_mitoses = sorted(_internal_mitoses)
+            _internal_mitoses = _internal_mitoses[int(0.1 * len(_internal_mitoses)) : int(0.9 * len(_internal_mitoses))]
+            
+            if len(_internal_only_mitoses) == 0:
+                _internal_only_mitoses = [0]
 
-        vector.extend(individual_vector) 
-    return vector
+            total_mitoses = sum(i for i in _internal_mitoses)
+ 
+            individual_vector.extend([np.median(_internal_mitoses), np.average(_internal_mitoses), np.amin(_internal_mitoses), np.amax(_internal_mitoses), np.std(_internal_mitoses)])
+            individual_vector.extend([np.median(_internal_only_mitoses), np.average(_internal_only_mitoses), np.amin(_internal_only_mitoses), np.amax(_internal_only_mitoses), np.std(_internal_only_mitoses)])
+
+        except Exception as e: #0 heatmaps?
+            print e
+            individual_vector.append(-1.0)
+
+        vector.extend(individual_vector)
+    return vector 
