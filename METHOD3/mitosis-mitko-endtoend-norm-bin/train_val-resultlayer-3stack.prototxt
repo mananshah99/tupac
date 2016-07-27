@@ -39,7 +39,7 @@ layer {
   }
   image_data_param {
     source: "../lists/mitosis_val-norm-bin.lst"
-    batch_size: 16
+    batch_size: 10
     shuffle: true
     new_height: 1000
     new_width: 1000
