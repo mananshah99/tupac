@@ -238,35 +238,11 @@ layer {
       top: "ip1"
     }
 
-    ##### Fully connected 2 (output layer) #####
-
-    layer {
-      name: "ip2_c"
-      type: "Convolution"
-      bottom: "ip1"
-      top: "ip2"
-      convolution_param {
-        num_output: 2
-        kernel_size: 1
-        stride: 1
-        pad: 0
-      }
-    }
-
-    ##### Probability #####
-
-
-layer {
-  name: "interloss"
-  type: "Softmax"
-  bottom: "ip2"
-  top: "interloss"
-}
 
 layer {
   name: "conv61"
   type: "Convolution"
-  bottom: "interloss"
+  bottom: "ip1"
   top: "conv61"
   param {
     lr_mult: 1
