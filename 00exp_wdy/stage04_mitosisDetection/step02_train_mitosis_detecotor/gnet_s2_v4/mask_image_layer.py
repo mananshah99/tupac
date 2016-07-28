@@ -137,7 +137,6 @@ class random_patches_from_images_withlabel(caffe.Layer):
     def load_data(self, idx):
         img = cv2.imread(self.images[idx])
         msk = cv2.imread(self.labels[idx], cv2.CV_LOAD_IMAGE_GRAYSCALE)
-
         #print "Load Image:%s"%(self.images[idx])
         #print "Load Mask Image:%s"%(self.labels[idx])
 
@@ -228,7 +227,7 @@ class random_patches_from_images_withlabel(caffe.Layer):
         return imgs, lals
         
     def load_data_old(self, idx):
-        #print "Load Image:%s"%(self.images[idx])
+        print "Load Image:%s"%(self.images[idx])
         img = cv2.imread(self.images[idx])
         msk = cv2.imread(self.labels[idx], cv2.CV_LOAD_IMAGE_GRAYSCALE)
 

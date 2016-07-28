@@ -2,21 +2,21 @@ net: "train_val.prototxt"
 
 test_iter: 10
 test_interval: 500
-test_initialization: true 
+test_initialization: true
 
 display: 10
 average_loss: 100
 
 base_lr: 0.01
 momentum: 0.9
-weight_decay: 0.0005
+weight_decay: 0.0002
 
 lr_policy: "step"
 gamma: 0.9
 stepsize: 5000
-max_iter: 25000
+max_iter: 250000
 
-snapshot: 1000
-snapshot_prefix: "models/fnet"
+snapshot: 5000
+snapshot_prefix: "models/mnet"
 solver_mode: GPU
-#solver_mode: CPU 
+#solver_mode: CPU

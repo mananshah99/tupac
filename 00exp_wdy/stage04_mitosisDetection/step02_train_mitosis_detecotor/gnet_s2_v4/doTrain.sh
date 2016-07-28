@@ -14,6 +14,3 @@ GLOG_stderrthreshold=1 \
 GLOG_log_dir=$LOG \
     $TOOLS/caffe train --solver=./solver.prototxt \
     --gpu=3
-
-#    --snapshot models/gnet_iter_19000.solverstate \    
-#    -weights models.final/gnet_iter_45000.caffemodel \

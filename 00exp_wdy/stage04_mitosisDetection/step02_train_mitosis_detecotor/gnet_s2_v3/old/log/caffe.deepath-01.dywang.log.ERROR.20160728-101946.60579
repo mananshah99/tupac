@@ -1,0 +1,4 @@
+Log file created at: 2016/07/28 10:19:46
+Running on machine: deepath-01
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0728 10:19:46.639200 60579 io.cpp:54] Check failed: fd != -1 (-1 vs. -1) File not found: gnet_iter_19000.solverstate
