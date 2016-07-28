@@ -69,12 +69,12 @@ for key in mitosis_dictionary:
     tmp =  mitosis_dictionary[key] if SAMPLE_SIZE == -1 else random.sample(mitosis_dictionary[key], len(mitosis_dictionary[key]))[0:SAMPLE_SIZE]
     # this example is guaranteed to work
     
-#    if key == 1:
-#        tmp = ['001','006','008','009','010','014','015','016','017','018']
-#    elif key == 2:
-#        tmp = ['003','004','005','011','013','021','024','026','027','032']
-#    elif key == 3:
-#        tmp = ['007','012','019','023','029','030','036','041','046','047']
+    if key == 1:
+        tmp = ['001','006','008','009','010','014','015','016','017','018']
+    elif key == 2:
+        tmp = ['003','004','005','011','013','021','024','026','027','032']
+    elif key == 3:
+        tmp = ['007','012','019','023','029','030','036','041','046','047']
     
     image_ids.extend(tmp)
 
@@ -103,7 +103,7 @@ for image_id in image_ids:
 #        continue
 
     features = mp.extract_features(patches)
-#    print (image_id, features)
+    print (image_id, features)
 
     if any(a == -1 for a in features):
         # print "Ignoring ", image_id

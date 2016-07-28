@@ -82,8 +82,13 @@ def extract_features(patches, gen_heatmaps = 1):
 
         _internal_mitoses = []
         _internal_only_mitoses = []
+        _internal_mitoses_area = []
         for heatmap in heatmaps: # use 15
-            im = imread(heatmap, cv2.IMREAD_GRAYSCALE)
+            try:
+                im = imread(heatmap, cv2.IMREAD_GRAYSCALE)
+            except Exception as e:
+                print e
+                continue
 
             thresh = MANUAL_THRESHOLD
             
@@ -92,11 +97,16 @@ def extract_features(patches, gen_heatmaps = 1):
             # label image regions
             label_image = label(bw)
 
+            _int_A = 0
             _potential_mitoses = regionprops(label_image)
             
+            for x in _potential_mitoses:
+                _int_A += x.area
+
             num_mitoses = len(_potential_mitoses) 
             _internal_mitoses.append(num_mitoses)
-
+            _internal_mitoses_area.append(_int_A)
+            
             # add to vector for only mitoses            
             if num_mitoses > 0:
                 _internal_only_mitoses.append(num_mitoses)
@@ -104,6 +114,7 @@ def extract_features(patches, gen_heatmaps = 1):
         try:
             _internal_mitoses = sorted(_internal_mitoses)
             _internal_mitoses = _internal_mitoses[int(0.1 * len(_internal_mitoses)) : int(0.9 * len(_internal_mitoses))]
+            _internal_mitoses_area = _internal_mitoses_area[int(0.1 * len(_internal_mitoses_area)) : int(0.9 * len(_internal_mitoses_area))] 
             
             if len(_internal_only_mitoses) == 0:
                 _internal_only_mitoses = [0]
@@ -112,6 +123,8 @@ def extract_features(patches, gen_heatmaps = 1):
  
             individual_vector.extend([np.median(_internal_mitoses), np.average(_internal_mitoses), np.amin(_internal_mitoses), np.amax(_internal_mitoses), np.std(_internal_mitoses)])
             individual_vector.extend([np.median(_internal_only_mitoses), np.average(_internal_only_mitoses), np.amin(_internal_only_mitoses), np.amax(_internal_only_mitoses), np.std(_internal_only_mitoses)])
+
+            individual_vector.extend([np.median(_internal_mitoses_area), np.average(_internal_mitoses_area), np.amin(_internal_mitoses_area), np.amax(_internal_mitoses_area), np.std(_internal_mitoses_area)])
 
         except Exception as e: #0 heatmaps?
             print e
