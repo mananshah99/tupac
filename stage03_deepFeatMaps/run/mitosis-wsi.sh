@@ -10,7 +10,7 @@ cd ..
 inifile="$root/../caffe/mitosis-wsi/conf.ini"
 
 inputFolder="$curdir"
-inputList="$curdir/wsi-full-bot.lst" #this is the wsi and the TISSUE MASK
+inputList="$curdir/wsi-full-top.lst" #this is the wsi and the TISSUE MASK
 
 modelLevel=0
 outputDir="$root/../results/mitosis-wsi-tst"
@@ -21,7 +21,7 @@ cmd="python ./tools/extract_wsi_full_tupac.py caffe-no-resize ${inifile} prob ${
     --heatmap_level 2 \
     --mask_image_level 2 \
     --augmentation 1 \
-    --device_ids 1 \
+    --device_ids 2 \
     --step_size 500 \
     --batch_size 32
     --gpu"
