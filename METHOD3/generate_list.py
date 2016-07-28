@@ -34,8 +34,8 @@ for x in groundtruth:
     else:
         groundtruth_map[x[0]] = x[2]
 
-train_lst_name = MODE + '_train-norm.lst'
-val_lst_name = MODE + '_val-norm.lst'
+train_lst_name = MODE + '_train-norm-bin.lst'
+val_lst_name = MODE + '_val-norm-bin.lst'
 
 train_lst = open(train_lst_name, 'wb+')
 val_lst = open(val_lst_name, 'wb+')
@@ -50,9 +50,16 @@ lines = []
 from tqdm import tqdm
 bar = tqdm(total=len(patches))
 
+###### REMOVING 2's
+
 for patch in patches:
     number = patch[patch.index('TUPAC') + 9 : patch.index('TUPAC') + 12]
     output = groundtruth_map[number]
+    if int(output) == 2:
+        continue
+    else:
+        if int(output) > 1:
+            output = '2' #then gets subtracted
     lines.append(patch + ' ' + str(int(output)-1) + '\n')
     bar.update(1)
 bar.close()
