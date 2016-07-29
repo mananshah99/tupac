@@ -11,8 +11,6 @@ stage06_fcnSegmentation/roi-resnet-lasagne/data/
 stage06_fcnSegmentation/roi-vgg-13/external/
 vis/
 *.npy
-*.solverstate
 *.pyc
-*.caffemodel
 *.tif
 *.png
