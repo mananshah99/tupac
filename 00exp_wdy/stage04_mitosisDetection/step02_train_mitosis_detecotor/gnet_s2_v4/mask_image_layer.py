@@ -72,7 +72,7 @@ class random_patches_from_images_withlabel(caffe.Layer):
         else:
             self.lpsize = (self.size - 1)/2
             self.rpsize = (self.size - 1)/2 + 1
-      
+
     def reshape(self, bottom, top):
         self.data, self.label = self.load_data(self.idx)
         top[0].reshape(*self.data.shape)
@@ -103,17 +103,17 @@ class random_patches_from_images_withlabel(caffe.Layer):
                 scale -= self.scale
         ls_n = np.floor(ls * scale)
         rs_n = np.floor(rs * scale)
-        
+
         p = None
         if y - ls_n < 0 or x - ls_n < 0 or y + rs_n >= h or x + rs_n >= w:
-            return None  
+            return None
         else:
             p = img[y-ls_n:y+rs_n, x-ls_n:x+rs_n, :]
             #print p.shape
             p = cv2.resize(p, (self.size, self.size))
 
         # rotation
-        p = np.rot90(p, random.randint(4))                              
+        p = np.rot90(p, random.randint(4))
 
         # flip
         if pyrandom.random() > 0.5:
@@ -124,7 +124,7 @@ class random_patches_from_images_withlabel(caffe.Layer):
         # color noise and remove mean
         if self.colorn > 0:
             for ii in range(c):
-                p_ii = p[:,:,ii] 
+                p_ii = p[:,:,ii]
                 if pyrandom.random() > 0.5:
                     p_ii += random.randint(self.colorn)
                 else:
@@ -145,10 +145,10 @@ class random_patches_from_images_withlabel(caffe.Layer):
 
         num_clcs = len(self.classes)
         num_patches = int(float(self.batch) / float(num_clcs))
-        
+
         imgs = np.zeros((self.batch, c, self.size, self.size), dtype=np.float32)
         lals = []
-        
+
         # add training patches from various classes
         ct = 0
         for clc_value, clc_label in self.classes:
@@ -168,11 +168,9 @@ class random_patches_from_images_withlabel(caffe.Layer):
                     sct += 1
                     if sct == num_patches:
                         break
-        
-        #print "1@@@@", imgs.shape, len(lals), ct
-        # add extra patches
+
         if ct < self.batch:
-            ct_left = 0            
+            ct_left = 0
             clc_value, clc_label = self.classes[0]
             clc_value = int(clc_value)
             clc_label = int(clc_label)
@@ -189,23 +187,19 @@ class random_patches_from_images_withlabel(caffe.Layer):
                     ct_left += 1
                     if ct == self.batch:
                         break
-        
-        #print "2@@@@", imgs.shape, len(lals)
-        # add extra background patches
+
         while ct < self.batch:
             y = random.randint(h)
             x = random.randint(w)
-            p = in_[:, y-self.lpsize : y+self.rpsize, x-self.lpsize : x+self.rpsize] 
+            p = in_[:, y-self.lpsize : y+self.rpsize, x-self.lpsize : x+self.rpsize]
             p = self.crop_patch(in_, y, x, self.lpsize, self.rpsize)
             if p is not None:
                 imgs[ct, :, :, :] = p
                 lals.append(clc_label)
                 ct += 1
-        #print "3@@@@", imgs.shape, len(lals)
-        
-        # reshpae label
+
         lals = np.asarray(lals).reshape((-1, 1, 1, 1))
-        
+
         if self.DEBUG:
             b, c, h, w = imgs.shape
             bs = 5
@@ -214,7 +208,7 @@ class random_patches_from_images_withlabel(caffe.Layer):
                 if lals[i] == 1:
                     imgs2[i, 0, :, :] = 0
                     imgs2[i, 1, :, :] = 0
-                    imgs2[i, 2, :, :] = 255                    
+                    imgs2[i, 2, :, :] = 255
                 else:
                     imgs2[i, 0, :, :] = 0
                     imgs2[i, 1, :, :] = 255
@@ -225,7 +219,7 @@ class random_patches_from_images_withlabel(caffe.Layer):
             #vimg += self.mean # remove mean
             cv2.imwrite('images/a_%010d.png'%idx, vimg)
         return imgs, lals
-        
+
     def load_data_old(self, idx):
         print "Load Image:%s"%(self.images[idx])
         img = cv2.imread(self.images[idx])
@@ -236,18 +230,18 @@ class random_patches_from_images_withlabel(caffe.Layer):
         #in_ -= self.mean # remove mean
         h, w, c =in_.shape
 
-        ys, xs = np.where(msk==2)        
+        ys, xs = np.where(msk==2)
         pos_locs = [(y, x) for y, x in zip(ys, xs)]
         ys, xs = np.where(msk==1)
         neg_locs = [(y, x) for y, x in zip(ys, xs)]
-        
+
         if len(neg_locs) < self.batch:
             for iii in range(self.batch):
                 neg_locs.append((random.randint(h), random.randint(w)))
-            
+
         #pos_num = np.min([self.batch/2, len(pos_locs)])
         #neg_num = self.batch - pos_num
-        
+
         pyrandom.shuffle(pos_locs)
         pyrandom.shuffle(neg_locs)
         imgs = np.zeros((self.batch, c, self.size, self.size), dtype=np.float32)
@@ -271,13 +265,13 @@ class random_patches_from_images_withlabel(caffe.Layer):
                 n_ct = n_ct + 1
                 if n_ct == self.batch - p_ct:
                     break
-        
+
         lals = np.asarray(lals).reshape((-1, 1, 1, 1))
 
         if self.DEBUG:
             vimg = vis_square(imgs.transpose(0, 2, 3, 1))
             vimg += self.mean # remove mean
             #vimg = vimg[:,:,::-1] # BGR - > RGB
-            #vim = vimg.astype(np.uint8)            
+            #vim = vimg.astype(np.uint8)
             cv2.imwrite('images/a_%010d.png'%idx, vimg)
         return imgs, lals
