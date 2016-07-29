@@ -6,7 +6,7 @@ import numpy as np
 import cv2
 import sys
 sys.path.append("..")
-import tools
+#import tools
 
 DESCRIPTION = """
 Name: stage01-1_genSmallImage.py
@@ -70,11 +70,14 @@ def addMasks(IDs):
 
 # This stage of the pipeline is complete, marked @ June 17, 2016
 
+from tqdm import tqdm
 if __name__ == "__main__":
     ID1, ID2, LEVEL = 1, 500, 2
-    for IDs in range(ID1, ID2+1):
+    for IDs in tqdm(range(ID1, ID2+1)):
         try: 
-            getSmallImages('../../data/TrainingData/training_image_data/', '../../data/TrainingData/small_images-level-' + str(LEVEL) + '/', "TUPAC-TR-", "", LEVEL, IDs)  #range(ID1, ID2+1)]
-        except:
+            getSmallImages('../../data/TestingData/testing_image_data', '../../data/TestingData/small_images-level-' + str(LEVEL) + '/', "TUPAC-TE-", "", LEVEL, IDs)
+        except Exception as e:
+            print(e)
+            print(e.args)
             print("[!] File read error on ID " + str(IDs))
             pass
