@@ -1,6 +1,6 @@
 # TUPAC 2016 Tumor Proliferation Assessment Grand Challenge
 
-This repository implements a complete pipeline to grade the severity of tumors in unlabeled whole slide images as part of the TUPAC 2016 challenge. 
+This repository implements multiple complete pipelines to grade the severity of tumors in unlabeled whole slide images as part of the TUPAC 2016 challenge. 
 
 ## Pipeline-based Approach
 
@@ -57,3 +57,18 @@ Code for this stage is housed in `METHOD2`. In this approach, we extract patches
 To be completed, will update README after initial results. 
 
 ## End-to-end Deep Learning Approach
+
+This approach is differentiated from the pipeline model in that it utilizes high power regions (from Stage 3) and associated mitosis heatmaps (from Stage 5) to perform class differentiation (1, 2, and 3). All code for this approach is stored in `METHOD3`; different methods are outlined below. 
+
+### Attempt 1: ROI (HPR) Based Networks
+
+In this approach, we input high power regions and their associated classes to an end-to-end network and utilize intermediate feature representations from a fully convolutional ROI detector at Level 0 (currently facenet) to distinguish between classes. In addition to the full end to end networks (HPR image -> class), we attempt to save the softmax outputs from the fully convolutional ROI detector locally to perform faster detection, with the network looking like (Softmax output of fully convolutional ROI detector -> class). Network architectures therefore tend to be large and require small batch sizes for effective computation. Architectures attempted include
+* End to end facenet + 3 conv/pool blocks, using intermediate features as softmax outputs
+* End to end facenet + 2 conv/pool blocks, using intermediate features as softmax outputs
+* End to end facenet + 3 conv/pool blocks, using intermediate features as feature layer outputs
+* End to end facenet + 2 conv/pool blocks, using intermediate features as feature layer outputs
+* Partial end to end facenet + 3 conv/pool blocks
+
+In general, we found these networks to lack discriminative potential due to the nature of high power regions as quite similar in terms of the ROI detector filter maps. Visualization of the filters indicated a significant number of "dead filters", yielding this approach as ineffective. 
+
+### Attempt 2: Mitosis-Based Networks
