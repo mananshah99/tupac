@@ -14,7 +14,7 @@ stepsize: 30000
 max_iter: 90000
 
 momentum: 0.9
-weight_decay: 0.0005
+weight_decay: 0.0015
 
 snapshot: 1000
 snapshot_prefix: "models-resultlayer/"
