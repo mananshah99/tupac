@@ -13,7 +13,7 @@ Code for this stage is housed in the directory `stage02_genROIPatches` (with ful
 * FaceNet (Stages 1 and 2)
 * Wide Residual Networks (Stage 1, failed to converge)
 * VGGNet (Stage 1, memory limits and convergence issues prevented further development)
-* ResNet-[18, 34, 152] (Stage 1, failed to converge and memory limits for 152)
+* ResNet-18, ResNet-34, ResNet-152 (Stage 1, failed to converge and memory limits for 152)
 
 ## Stage 3: High Power Region Extraction
 
