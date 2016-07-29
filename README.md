@@ -69,6 +69,17 @@ In this approach, we input high power regions and their associated classes to an
 * End to end facenet + 2 conv/pool blocks, using intermediate features as feature layer outputs
 * Partial end to end facenet + 3 conv/pool blocks
 
-In general, we found these networks to lack discriminative potential due to the nature of high power regions as quite similar in terms of the ROI detector filter maps. Visualization of the filters indicated a significant number of "dead filters", yielding this approach as ineffective. 
+In general, we found these networks to lack discriminative potential due to the nature of high power regions as quite similar in terms of the ROI detector filter maps. Visualization of the filters indicated a significant number of "dead filters", yielding this approach as ineffective. Code for this section is located at `METHOD3/roi-net2` and `METHOD3/roi-endtoend`.
 
 ### Attempt 2: Mitosis-Based Networks
+
+In this approach, we perform a similar process to Attempt 1 with HPR based networks, instead using mitosis softmax outputs (and feature layer representations) as opposed to ROI network outputs. Architectures attempted include
+* End to end googlenet + 3 conv/pool blocks, using intermediate features as softmax outputs
+* End to end facenet   + 3 conv/pool blocks, using intermediate features as softmax outputs
+* End to end mitkonet  + 3 conv/pool blocks, using intermediate features as softmax outputs
+
+Note that mitkonet was tested using both normalized and non-normalized patches. We additionally developed a binary (1 v 3) classifier using an end-to-end normalized mitkonet. Code for this section is located at `METHOD3/mitosis-*`.
+
+### Attempt 3: Four-Channel Image Networks
+
+To be completed, will update README after initial results. 
