@@ -23,13 +23,14 @@ def extract_features(heatmap):
 
     vector = []
     for threshold_decimal in [0.1, 0.2, 0.3, 0.4, 0.5, 0.67, 0.83, 0.85, 0.91, 0.95, 0.97]: #based on mitko's threhsolds #np.arange(0.1, 1, 0.1): #much slower with larger images
-        if ALL_BLACK:
-            individual_vector = [0,0,0,0,0,0]
-            vector.extend(individual_vector)
-            continue
 
         MANUAL_THRESHOLD = int(255 * threshold_decimal)
         individual_vector = [] 
+
+        if ALL_BLACK:
+            individual_vector.extend([0,0,0,0,0,0])
+            vector.extend(individual_vector)
+            continue
 
         mitoses = []
         mitoses_area = []
@@ -47,12 +48,17 @@ def extract_features(heatmap):
         for x in potential_mitoses:
             mitoses_area.append(x.area)
 
+        if len(mitoses_area) == 0:
+            mitoses_area.append(0)
+
         num_mitoses = len(potential_mitoses) 
         mitoses.append(num_mitoses)
 
         try:
             mitoses_area = sorted(mitoses_area)
-            mitoses_area = mitoses_area[int(0.2 * len(mitoses_area)) : int(0.8 * len(mitoses_area))] 
+            if len(mitoses_area[int(0.2 * len(mitoses_area)) : int(0.8 * len(mitoses_area))]) > 1:
+                mitoses_area = mitoses_area[int(0.2 * len(mitoses_area)) : int(0.8 * len(mitoses_area))] 
+            
             individual_vector.append(num_mitoses)
 
             individual_vector.extend([np.median(mitoses_area), 
@@ -63,6 +69,7 @@ def extract_features(heatmap):
 
         except Exception as e: #0 mitoses
             print e
+            print e.args
             individual_vector.extend([0,0,0,0,0,0])
 
         # vector is extended at each threshold 

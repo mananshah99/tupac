@@ -62,7 +62,7 @@ for row in processed:
     class_dictionary[image_mitosis].append(row[0])
     ground_dictionary[image_number].extend([image_mitosis, image_RNA])
     
-SAMPLE_SIZE = args.portion
+SAMPLE_SIZE = int(args.portion)
 
 image_ids = []
 for key in class_dictionary:
@@ -77,6 +77,7 @@ for key in class_dictionary:
     
     image_ids.extend(tmp)
 
+print "Using ", len(image_ids), " ids, with SAMPLE_SIZE set to ", args.portion
 X = []
 y = []
 
@@ -127,6 +128,7 @@ else:
 
         features = extract_wsi.extract_features(name)
         #print (image_id, features)
+        print (image_id, len(features))
 
         if any(a == -1 for a in features):
             bar.update(1)
@@ -156,8 +158,8 @@ if args.mode == 'mitosis': # classification problem
 
     # Set the parameters by cross-validation
     tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
-                     'C': [1, 10, 100, 1000]},
-                    {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+                     'C': [1, 100, 1000]},
+                    {'kernel': ['linear'], 'C': [1, 100, 1000]}]
 
     scores = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted']
 
@@ -186,12 +188,14 @@ if args.mode == 'mitosis': # classification problem
     print "[PREDICTION > RF] Tuning via Grid Search"
     
     tuned_parameters = {"max_depth": [3, None],
-              "max_features": [1, 3, 10],
-              "min_samples_split": [1, 3, 10],
-              "min_samples_leaf": [1, 3, 10],
-              "n_estimators": [20, 30, 40, 50, 60, 70, 80, 90],
+              "max_features": [1, 10],
+              "min_samples_split": [1, 10],
+              "min_samples_leaf": [1, 10],
+              "n_estimators": [60, 70, 80],
               "bootstrap": [True, False],
               "criterion": ["gini", "entropy"]}
+
+    scores = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted']
 
     for score in scores:
         print("# Tuning hyper-parameters for %s" % score)

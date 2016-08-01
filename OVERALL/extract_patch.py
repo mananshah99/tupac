@@ -107,21 +107,16 @@ def extract_features(patch_dir, patches):
 
             mitoses_area.append(A)
             
-            # add to vector for only mitoses            
-            if num_mitoses > 0:
-                mitoses_nonzero.append(num_mitoses)
-
         try:
             # clip to the middle 80 percent
             mitoses = sorted(mitoses)
-            mitoses = mitoses[int(0.1 * len(mitoses)) : int(0.9 * len(mitoses))]
+            if len(mitoses[int(0.1 * len(mitoses)) : int(0.9 * len(mitoses))]) > 1:
+                mitoses = mitoses[int(0.1 * len(mitoses)) : int(0.9 * len(mitoses))]
             
             mitoses_area = sorted(mitoses_area)
-            mitoses_area = mitoses_area[int(0.1 * len(mitoses_area)) : int(0.9 * len(mitoses_area))] 
+            if len(mitoses_area[int(0.1 * len(mitoses_area)) : int(0.9 * len(mitoses_area))]) > 1: 
+                mitoses_area = mitoses_area[int(0.1 * len(mitoses_area)) : int(0.9 * len(mitoses_area))] 
             
-            if len(mitoses_nonzero) == 0:
-                mitoses_nonzero = [0]
-
             total_mitoses = sum(i for i in mitoses)
  
             individual_vector.extend([np.median(mitoses), 
@@ -136,14 +131,10 @@ def extract_features(patch_dir, patches):
                                       np.amax(mitoses_area), 
                                       np.std(mitoses_area)])
 
-            individual_vector.extend([np.median(mitoses_nonzero), 
-                                      np.average(mitoses_nonzero), 
-                                      np.amin(mitoses_nonzero), 
-                                      np.amax(mitoses_nonzero), 
-                                      np.std(mitoses_nonzero)])
-            
-        except Exception as e: #0 heatmaps?
+        except Exception as e: #0 heatmaps
             print e
+            print e.args
+            print "There were ", len(heatmaps), " heatmaps."
             individual_vector.append(-1.0)
 
         # vector is extended at each threshold 
