@@ -114,6 +114,7 @@ for image_id in image_ids:
     globname = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/' + patch_directory + '/TUPAC-TR-' + image_id + '*'
     patches = []
     for patch_name in glob.glob(globname):
+        print patch_name
         patches.append(patch_name)
 
     features = extract_cnn_features.extract_features(net, transformer,  patches)
