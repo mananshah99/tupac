@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
-export PYTHONPATH="/home/dywang/dl/caffe/python:/home/dywang/tools:$PATHONPATH"
+#export PYTHONPATH="/home/dywang/dl/caffe/python:/home/dywang/tools:$PATHONPATH"
 
-TOOLS=/home/dywang/dl/caffe/build/tools
+TOOLS=/home/dywang/dl/caffe-augmentation/build/tools
 LOG=log
 MODEL=models
 mkdir $LOG
