@@ -6,4 +6,4 @@
 # Distributed under terms of the MIT license.
 #
 
-sh /home/manan/bin/n rsync -P --rsh=ssh --delete -uar visualize_roi ms831@transfer.orchestra.med.harvard.edu:/home/ms831/tupac/ 
+sh /home/manan/bin/n rsync -P --rsh=ssh --delete -uar ROI-Stage2 ms831@transfer.orchestra.med.harvard.edu:/home/ms831/tupac/stage02_genROIPatches/ROI-Stage2 
