@@ -23,6 +23,6 @@ found = 0
 list_of_files = {}
 for (dirpath, dirnames, filenames) in os.walk('.'):
     for filename in filenames:
-        if filename.endswith('.caffemodel'): 
+        if filename.endswith('.solverstate'): 
             print "=> Command Running"
             do_command(os.sep.join([dirpath, filename]))
