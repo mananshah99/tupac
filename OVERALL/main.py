@@ -19,8 +19,9 @@ import itertools
 from sklearn import *
 from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
 from sklearn.svm import SVC
-
+from sklearn import preprocessing
 from quadratic_weighted_kappa import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -61,7 +62,14 @@ for row in processed:
     
     class_dictionary[image_mitosis].append(row[0])
     ground_dictionary[image_number].extend([image_mitosis, image_RNA])
-    
+
+rna_list = []
+for key in ground_dictionary:
+    rna = ground_dictionary[key][1]
+    rna_list.append(rna)
+
+sort(rna_list)
+
 SAMPLE_SIZE = int(args.portion)
 
 image_ids = []
@@ -108,7 +116,7 @@ if args.ispatch:
             bar.update(1)
             continue #ignore crap data
 
-        X.append(np.array(features, dtype=np.float32))
+        X.append(preprocessing.scale(np.array(features, dtype=np.float32)))
         y.append(image_level)
         bar.update(1)
 
@@ -128,13 +136,13 @@ else:
 
         features = extract_wsi.extract_features(name)
         #print (image_id, features)
-        print (image_id, len(features))
+        #print (image_id, len(features))
 
         if any(a == -1 for a in features):
             bar.update(1)
             continue #ignore crap data
 
-        X.append(np.array(features, dtype=np.float32))
+        X.append(preprocessing.scale(np.array(features, dtype=np.float32)))
         y.append(image_level)
         bar.update(1)
     bar.close()
@@ -151,7 +159,6 @@ if args.seed != -1:
 else:
     X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=args.split)
 
-
 if args.mode == 'mitosis': # classification problem
 
     print "[PREDICTION > SVM] Tuning via Grid Search"
@@ -159,7 +166,7 @@ if args.mode == 'mitosis': # classification problem
     # Set the parameters by cross-validation
     tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
                      'C': [1, 100, 1000]},
-                    {'kernel': ['linear'], 'C': [1, 100, 1000]}]
+                    {'kernel': ['linear'], 'C': [1, 100, 1000, 5000, 10000]}]
 
     scores = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted']
 
@@ -184,12 +191,12 @@ if args.mode == 'mitosis': # classification problem
     
         y_true, y_pred = y_test, clf.predict(X_test)
         print(classification_report(y_true, y_pred))
+        print(confusion_matrix(y_true, y_pred))
 
     print "[PREDICTION > RF] Tuning via Grid Search"
     
-    tuned_parameters = {"max_depth": [3, None],
-              "max_features": [1, 10],
-              "min_samples_split": [1, 10],
+    tuned_parameters = {"max_depth": [10, None],
+              "min_samples_split": [2, 10],
               "min_samples_leaf": [1, 10],
               "n_estimators": [60, 70, 80],
               "bootstrap": [True, False],
@@ -218,3 +225,40 @@ if args.mode == 'mitosis': # classification problem
     
         y_true, y_pred = y_test, clf.predict(X_test)
         print(classification_report(y_true, y_pred))
+        print(confusion_matrix(y_true, y_pred))
+else:
+    # rna!
+    print "[REGRESSION > RF] Tuning via Grid Search"
+
+    tuned_parameters = {"max_depth": [10, None],
+              "min_samples_split": [2, 10],
+              "min_samples_leaf": [1, 10],
+              "n_estimators": [60, 70, 80],
+              "bootstrap": [True, False],
+              "criterion": ["gini", "entropy"]}
+
+    scores = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted']
+
+    for score in scores:
+        print("# Tuning hyper-parameters for %s" % score)
+
+        clf = GridSearchCV(RandomForestRegressor(n_estimators=50), tuned_parameters, cv=5,
+                       scoring='%s' % score)
+        clf.fit(X_train, y_train)
+
+        print("\t Best parameters set found on development set:")
+        print(clf.best_params_)
+        print("\t Grid scores on development set:")
+
+        for params, mean_score, scores in clf.grid_scores_:
+            print("\t %0.3f (+/-%0.03f) for %r"
+              % (mean_score, scores.std() * 2, params))
+
+        print("\t Detailed classification report:")
+        print("\t The model is trained on the full development set.")
+        print("\t The scores are computed on the full evaluation set.")
+
+        y_true, y_pred = y_test, clf.predict(X_test)
+        print(classification_report(y_true, y_pred))
+        print(confusion_matrix(y_true, y_pred))
+
