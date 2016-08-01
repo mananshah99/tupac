@@ -1,16 +1,6 @@
 # TUPAC 2016 Tumor Proliferation Assessment Grand Challenge
 
-This repository implements multiple complete pipelines to grade the severity of tumors in unlabeled whole slide images as part of the TUPAC 2016 challenge. A listing of important data directories is as follows
-
-| Description           | Location  | Downloaded? |
----------------------| ---------|----------|
-| All training SVS files| `../data/TrainingData/training_image_data`    | N|
-| All training small images at level 2              |   `../data/TrainingData/small_images-level-2`     | N|
-| All training tissue masks at level 2| `../data/TrainingData/small_images-mask-level-2`    | N|
-| All training high power regions (non-normalized)| `libs/stage03_deepFeatMaps/resuts/patches_07-14-16`    | Y|
-| All training high power regions (normalized)| Not sure, but in `00exp_wdy`    |N|
-
-We also need to retain all mitosis heatmap outputs (in `../evaluation/` and in `libs/stage03_deepFeatMaps/results`) as well as the heatmap outputs on the whole slide images. 
+This repository implements multiple complete pipelines to grade the severity of tumors in unlabeled whole slide images as part of the TUPAC 2016 challenge. 
 
 ## Pipeline-based Approach
 
