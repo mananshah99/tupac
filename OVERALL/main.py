@@ -5,13 +5,15 @@ import numpy as np
 import extract_patch as extract_patch 
 import extract_wsi as extract_wsi
 import sys
+import os
+import datetime
 
 import random
 from random import shuffle
 import numpy as np
 
 from utils import *
-
+import multiprocessing as mp
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import itertools
@@ -33,6 +35,9 @@ from mlxtend.classifier import EnsembleVoteClassifier
 from tqdm import tqdm
 import glob
 import cPickle
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 parser = argparse.ArgumentParser(description="Perform prediction for TUPAC 2016 results given image features")
 
@@ -50,6 +55,35 @@ parser.add_argument('-e', '--experiments', help="Generate experiment plots (oob 
 parser.add_argument('-k', '--pickle', help="Pickle outputs for re-use (generally do this when running on entire dataset, WILL OVERWRITE last save). Default is 0", default=0)
 # Set up dictionaries and select image IDs for sampling
 args = parser.parse_args()
+
+mydir = os.path.join(os.getcwd(), "results/" + args.mode.upper() + "-" + datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+
+try:
+    os.makedirs(mydir)
+except OSError, e:
+    if e.errno != 17:
+        raise # This was not a "directory exist" error..
+
+print "Saving all output to directory ", mydir
+logfile = open(os.path.join(mydir, 'output.txt'), 'wb')  # File where you need to keep the logs
+
+class Logger(object):
+    def __init__(self):
+        self.terminal = sys.stdout
+        self.log = logfile
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)  
+
+    def flush(self):
+        #this flush method is needed for python 3 compatibility.
+        #this handles the flush command by doing nothing.
+        #you might want to specify some extra behavior here.
+        pass    
+
+sys.stdout = Logger()
+
 print "Using arguments"
 print(args)
 
@@ -93,9 +127,9 @@ for key in class_dictionary:
     
     image_ids.extend(tmp)
 
-print "Class balances"
-for key in class_dictionary:
-    print (key, len(class_dictionary[key]))
+#print "Class balances"
+#for key in class_dictionary:
+#    print (key, len(class_dictionary[key]))
 
 print "Using ", len(image_ids), " ids, with SAMPLE_SIZE set to ", args.portion
 
@@ -103,7 +137,10 @@ X = []
 y = []
 
 def process_images_patch(image_id):
-    #where are the patches stored?
+    global args
+    global ground_dictionary
+    
+    patch_directory = args.directory
     globname =  patch_directory + '/TUPAC-TR-' + image_id + '*'
 
     patches = []
@@ -118,17 +155,13 @@ def process_images_patch(image_id):
     features = extract_patch.extract_features(args.feature_directory, patches)
     #print (image_id, features)
 
-    if any(a == -1 for a in features):
-        bar.update(1)
-        continue #ignore crap data
-
     return preprocessing.scale(np.array(features, dtype=np.float32)), image_level
-    '''
-    X.append(preprocessing.scale(np.array(features, dtype=np.float32)))
-    y.append(image_level)
-    '''
 
 def process_images_nopatch(image_id):
+    global args
+    global ground_dictionary
+    
+    heatmap_dictionary = args.feature_directory
     name = heatmap_directory + '/TUPAC-TR-' + image_id + '.png'
 
     if args.mode == 'mitosis':
@@ -140,71 +173,23 @@ def process_images_nopatch(image_id):
     #print (image_id, features)
     #print (image_id, len(features))
 
-    if any(a == -1 for a in features):
-        bar.update(1)
-        continue #ignore crap data
-
-    X.append(preprocessing.scale(np.array(features, dtype=np.float32)))
-    y.append(image_level)
-
+    print "\t Completed ", image_id
+    return preprocessing.scale(np.array(features, dtype=np.float32)), image_level
 
 # If we are looking at patches, process the patches
 if args.ispatch:
     patch_directory = args.directory
     print "Patch argument selected. Obtaining images from patch directory ", patch_directory
-
-    bar = tqdm(total=len(image_ids))
-    for image_id in image_ids:
-
-        #where are the patches stored?
-        globname =  patch_directory + '/TUPAC-TR-' + image_id + '*'
-
-        patches = []
-        for patch_name in glob.glob(globname):
-            patches.append(patch_name)
-
-        if args.mode == 'mitosis':
-            image_level = ground_dictionary[int(image_id)][0] 
-        else:
-            image_level = ground_dictionary[int(image_id)][1]
-
-        features = extract_patch.extract_features(args.feature_directory, patches)
-        #print (image_id, features)
-
-        if any(a == -1 for a in features):
-            bar.update(1)
-            continue #ignore crap data
-
-        X.append(preprocessing.scale(np.array(features, dtype=np.float32)))
-        y.append(image_level)
-        bar.update(1)
-
-    bar.close()
+    pool = mp.Pool(processes = 20)
+    X_and_y = pool.map(process_images_patch, image_ids)
+    X, y = zip(*X_and_y)
+    
 else:
     heatmap_directory = args.feature_directory
     print "WSI argument selected. Obtaining images from directory ", heatmap_directory
-    
-    bar = tqdm(total=len(image_ids))
-    for image_id in image_ids:
-        name = heatmap_directory + '/TUPAC-TR-' + image_id + '.png'
-
-        if args.mode == 'mitosis':
-            image_level = ground_dictionary[int(image_id)][0]
-        else:
-            image_level = ground_dictionary[int(image_id)][1]
-
-        features = extract_wsi.extract_features(name)
-        #print (image_id, features)
-        #print (image_id, len(features))
-
-        if any(a == -1 for a in features):
-            bar.update(1)
-            continue #ignore crap data
-
-        X.append(preprocessing.scale(np.array(features, dtype=np.float32)))
-        y.append(image_level)
-        bar.update(1)
-    bar.close()
+    pool = mp.Pool(processes = 20)
+    X_and_y = pool.map(process_images_nopatch, image_ids)
+    X, y = zip(*X_and_y)
 
 X = np.vstack(X)
 
@@ -212,6 +197,13 @@ if args.mode == 'mitosis':
     y = np.array(y, dtype=np.dtype(int))  #, dtype=np.float32)
 else:
     y = np.array(y, dtype=np.float32)
+
+if int(args.pickle) == 1:
+    with open(os.path.join(mydir, 'X.pickle'), 'wb') as f:
+        cPickle.dump(X, f)
+
+    with open(os.path.join(mydir, 'y.pickle'), 'wb') as f:
+        cPickle.dump(y, f)
 
 if args.seed != -1:
     X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=args.split, random_state=int(args.seed))
@@ -261,7 +253,7 @@ if args.mode == 'mitosis': # classification problem
         plt.xlabel("n_estimators")
         plt.ylabel("OOB error rate")
         plt.legend(loc="upper right")
-        plt.savefig('exp/mitosis_oob_error.png')
+        plt.savefig(os.path.join(mydir, 'mitosis_oob_error.png'))
 
         #print("[EXP > CALIB] Performing multiclass calibration experiment")
 
@@ -282,7 +274,7 @@ if args.mode == 'mitosis': # classification problem
         clf.fit(X_train, y_train)
 
         if int(args.pickle) == 1:
-            with open('pickle/svm-' + score + '.pickle', 'wb') as f:
+            with open(os.path.join(mydir, 'svm-' + score + '.pickle'), 'wb') as f:
                 cPickle.dump(clf, f)
 
         print("\t Best parameters set found on development set:")
@@ -303,30 +295,6 @@ if args.mode == 'mitosis': # classification problem
         print "Pred: ", y_pred
         #print(confusion_matrix(y_true, y_pred, labels=[1,2,3]))
 
-        '''
-        if int(args.experiments) == 1:
-            print "\t Subtask: [EXP > FEAT] Plotting feature importances"
-            importances = clf.feature_importances_
-            std = np.std([tree.feature_importances_ for tree in clf.estimators_],
-                     axis=0)
-            indices = np.argsort(importances)[::-1]
-
-            # Print the feature ranking
-            print("\t\t Feature ranking:")
-
-            for f in range(X.shape[1]):
-                print("\t\ %d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
-
-            # Plot the feature importances of the forest
-            plt.figure()
-            plt.title("Feature importances")
-            plt.bar(range(X.shape[1]), importances[indices],
-               color="r", yerr=std[indices], align="center")
-            plt.xticks(range(X.shape[1]), indices)
-            plt.xlim([-1, X.shape[1]])
-            plt.savefig('mitosis_feat_imp.png')
-
-        '''
     print "[PREDICTION > RF] Tuning via Grid Search"
     
     tuned_parameters = {"max_depth": [10, None],
@@ -346,7 +314,7 @@ if args.mode == 'mitosis': # classification problem
         clf.fit(X_train, y_train)
 
         if int(args.pickle) == 1:
-            with open('pickle/rf-' + score + '.pickle', 'wb') as f:
+            with open(os.path.join(mydir, 'rf-' + score + '.pickle'), 'wb') as f:
                 cPickle.dump(clf, f)
 
         print("\t Best parameters set found on development set:")
@@ -374,7 +342,7 @@ else:
     print "Spearman's Rho is ", rho, " with p-val ", pval
 
     if int(args.pickle) == 1:
-        with open('pickle/rf-regressor.pickle', 'wb') as f:
+        with open(os.path.join(mydir, 'rf-regressor.pickle'), 'wb') as f:
             cPickle.dump(regressor, f)
 
     if int(args.experiments) == 1:
@@ -396,5 +364,5 @@ else:
            color="r", yerr=std[indices], align="center")
         plt.xticks(range(X.shape[1]), indices)
         plt.xlim([-1, X.shape[1]])
-        plt.savefig('exp/rna_feat_imp.png')
+        plt.savefig(os.path.join(mydir, 'rna_feat_imp.png'))
 
