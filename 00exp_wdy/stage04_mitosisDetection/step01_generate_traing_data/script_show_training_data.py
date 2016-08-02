@@ -1,5 +1,5 @@
 import sys, os, csv
-DATAROOT = '../../data/mitoses'
+DATAROOT = '/home/dywang/Proliferation/data/mitoses'
 #ROOT = 'old.training_examples'
 #OROOT = 'old.training_examples_visual'
 ROOT = 'training_examples'

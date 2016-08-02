@@ -87,12 +87,16 @@ def gen_patches(img_path, csv_path, patch_size = 100, output_directory = "", nn_
 
 def load_pts(csv_file):
     pts = []
-    with open(csv_file, 'r') as csvfile:
-        spamreader = csv.reader(csvfile)
-        for line in spamreader:
-            row, col = line[0], line[1]
-            pts.append((int(col), int(row))) 
-    return pts
+    if not os.path.exists(csv_file):
+        print "Missing", csv_file
+        return pts
+    else:
+        with open(csv_file, 'r') as csvfile:
+            spamreader = csv.reader(csvfile)
+            for line in spamreader:
+                row, col = line[0], line[1]
+                pts.append((int(col), int(row))) 
+        return pts
 
 def notMitosis(pt, gpts, r = 30):
     dis = []
@@ -108,52 +112,55 @@ def nearest_neighbors(im, i, j, d=4):
     n = im[i-d:i+d+1, j-d:j+d+1]
     return n
 
-IMG_DATA_ROOT = '../../../../data/mitoses/mitoses_image_data'
+IMG_DATA_ROOT = '../../../../data/mitoses/mitoses_image_data_cn'
+MSK_DATA_ROOT = '../../../../data/mitoses/mitoses_image_data'
 CSV_DATA_ROOT = '../../../../data/mitoses/mitoses_ground_truth'
-HEP_DATA_ROOT = '../step03_getPM/heatmap_stage1/heatmap'
+
+HEP_DATA_ROOT = '../step03_getHeatmap/mnet/mnet_stage01/heatmap'
 
 def get_false_negative(img_path, msk_path, hep_path, csv_path, mitosis_radius=20, num_neg=200, patch_size=100, output_directory = ''):
     ground_truth_points = load_pts(csv_path)
-    image = cv2.imread(img_path)
-    msk_image = cv2.imread(msk_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+    if 0:
+        image = cv2.imread(img_path)
+        msk_image = cv2.imread(msk_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 
-    print hep_path
-    hep_image = cv2.imread(hep_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
-    
-    # remove mitosis
-    for center_pt in ground_truth_points:
-        hep_image[center_pt[1] - mitosis_radius : center_pt[1] + mitosis_radius, center_pt[0] - mitosis_radius : center_pt[0] + mitosis_radius] = 0
+        print hep_path
+        hep_image = cv2.imread(hep_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 
-    itms = img_path.split('/')
-    img_name = itms[-1]
-    img_name_root = img_name.split('.')[0]
-    wsi_name = itms[-2]
-    output_directory_for_img = getFolders('%s/%s/%s'%(output_directory, wsi_name, img_name_root))
-    
-    threshold = 0.9 * 255
-    ys, xs = np.where(hep_image > threshold)
-    neg_pts = [(y,x) for y, x in zip(ys, xs)]
-    print "#pts=%d"%(len(neg_pts))
-    random.seed(1122)
-    num_neg_size = np.min((num_neg, len(neg_pts)))
-    neg_pts_sel = random.sample(neg_pts, num_neg_size)
-    for neg_pt in neg_pts_sel:
-        y, x = neg_pt
-        center_patch = create_patch(image, (y, x), patch_size) # return None if the patch is out of image.
-        output_image_path_name = '%s/%s_%s_x%010d_y%010d.png'%(output_directory_for_img, wsi_name, img_name_root, x, y)
-        print "\t\t -> Saved center crop to %s (y:%d x:%d)"%(output_image_path_name, y, x)
-        if center_patch is not None:
-            cv2.imwrite(output_image_path_name, center_patch)
+        # remove mitosis
+        for center_pt in ground_truth_points:
+            hep_image[center_pt[1] - mitosis_radius : center_pt[1] + mitosis_radius, center_pt[0] - mitosis_radius : center_pt[0] + mitosis_radius] = 0
 
-for line in [l.strip() for l in open('groundtruth.lst').readlines()]:
+        itms = img_path.split('/')
+        img_name = itms[-1]
+        img_name_root = img_name.split('.')[0]
+        wsi_name = itms[-2]
+        output_directory_for_img = getFolders('%s/%s/%s'%(output_directory, wsi_name, img_name_root))
+        
+        threshold = 0.8 * 255
+        ys, xs = np.where(hep_image > threshold)
+        neg_pts = [(y,x) for y, x in zip(ys, xs)]
+        print "#pts=%d"%(len(neg_pts))
+        random.seed(1122)
+        num_neg_size = np.min((num_neg, len(neg_pts)))
+        neg_pts_sel = random.sample(neg_pts, num_neg_size)
+        for neg_pt in neg_pts_sel:
+            y, x = neg_pt
+            center_patch = create_patch(image, (y, x), patch_size) # return None if the patch is out of image.
+            output_image_path_name = '%s/%s_%s_x%010d_y%010d.png'%(output_directory_for_img, wsi_name, img_name_root, x, y)
+            print "\t\t -> Saved center crop to %s (y:%d x:%d)"%(output_image_path_name, y, x)
+            if center_patch is not None:
+                cv2.imwrite(output_image_path_name, center_patch)
+
+for line in [l.strip() for l in open('all_image.lst').readlines()]:
     wsi_name, csv_name = line.split('/')
     name_root = csv_name.split('.')[0]
 
-    img_path = '%s/%s/%s.tif'%(IMG_DATA_ROOT, wsi_name, name_root)
+    img_path = '%s/%s/%s.tif_nc.png'%(IMG_DATA_ROOT, wsi_name, name_root)
     csv_path = '%s/%s/%s.csv'%(CSV_DATA_ROOT, wsi_name, name_root)
-    msk_path = '%s/%s/%s_mask_nuclei.png'%(IMG_DATA_ROOT, wsi_name, name_root)
+    msk_path = '%s/%s/%s_mask_nuclei.png'%(MSK_DATA_ROOT, wsi_name, name_root)
     hep_path = '%s/%s/%s.tif.png'%(HEP_DATA_ROOT, wsi_name, name_root)
-    if 0: # get positive
-       gen_patches(img_path, csv_path, n_patches=40, nn_patch_size = 10, output_directory='training_examples_s2/pos')
+#    if 0: # get positive
+#       gen_patches(img_path, csv_path, n_patches=40, nn_patch_size = 10, output_directory='training_examples_s2/pos')
     if 1: # get false positive
        get_false_negative(img_path, msk_path, hep_path, csv_path, output_directory='training_examples_s2/neg')
