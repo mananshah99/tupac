@@ -18,7 +18,7 @@ def extract_features(heatmap):
     try:
         im = imread(heatmap, cv2.IMREAD_GRAYSCALE)
     except Exception as e:
-        print e
+#        print e
         ALL_BLACK = True
 
     vector = []

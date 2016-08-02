@@ -1,3 +1,7 @@
+cd ..
 sh ~/bin/n python main.py \
     "/home/dywang/00exp_wdy/stage02_getHP/result_wsi_fcnn/heatmap" --no-patch \
-    --mode "mitosis" 
+    --mode "mitosis" \
+    --experiments 1 \
+    --portion 50 \
+    --pickle 0
