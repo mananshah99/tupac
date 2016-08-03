@@ -53,6 +53,7 @@ parser.add_argument('-s', '--split', help="Train/test split percentage. Default 
 parser.add_argument('-p', '--portion', help="Sample portion from each class, or select all. Default is selecting all (-1)", default=-1)
 parser.add_argument('-e', '--experiments', help="Generate experiment plots (oob error rate varying trees, feature importances). Default is 0", default=0)
 parser.add_argument('-k', '--pickle', help="Pickle outputs for re-use (generally do this when running on entire dataset, WILL OVERWRITE last save). Default is 0", default=0)
+parser.add_argument('-l', '--load', type=int, help="Load from previous pickle file (X and y, must change from code default)", default=0)
 # Set up dictionaries and select image IDs for sampling
 args = parser.parse_args()
 
@@ -176,34 +177,39 @@ def process_images_nopatch(image_id):
     print "\t Completed ", image_id
     return preprocessing.scale(np.array(features, dtype=np.float32)), image_level
 
-# If we are looking at patches, process the patches
-if args.ispatch:
-    patch_directory = args.directory
-    print "Patch argument selected. Obtaining images from patch directory ", patch_directory
-    pool = mp.Pool(processes = 20)
-    X_and_y = pool.map(process_images_patch, image_ids)
-    X, y = zip(*X_and_y)
+if args.load == 0:
+    # If we are looking at patches, process the patches
+    if args.ispatch:
+        patch_directory = args.directory
+        print "Patch argument selected. Obtaining images from patch directory ", patch_directory
+        pool = mp.Pool(processes = 20)
+        X_and_y = pool.map(process_images_patch, image_ids)
+        X, y = zip(*X_and_y)
     
+    else:
+        heatmap_directory = args.feature_directory
+        print "WSI argument selected. Obtaining images from directory ", heatmap_directory
+        pool = mp.Pool(processes = 20)
+        X_and_y = pool.map(process_images_nopatch, image_ids)
+        X, y = zip(*X_and_y)
+
+    X = np.vstack(X)
+
+    if args.mode == 'mitosis':
+        y = np.array(y, dtype=np.dtype(int))  #, dtype=np.float32)
+    else:
+        y = np.array(y, dtype=np.float32)
+
+    if int(args.pickle) == 1:
+        with open(os.path.join(mydir, 'X.pickle'), 'wb') as f:
+            cPickle.dump(X, f)
+
+        with open(os.path.join(mydir, 'y.pickle'), 'wb') as f:
+            cPickle.dump(y, f)
+
 else:
-    heatmap_directory = args.feature_directory
-    print "WSI argument selected. Obtaining images from directory ", heatmap_directory
-    pool = mp.Pool(processes = 20)
-    X_and_y = pool.map(process_images_nopatch, image_ids)
-    X, y = zip(*X_and_y)
-
-X = np.vstack(X)
-
-if args.mode == 'mitosis':
-    y = np.array(y, dtype=np.dtype(int))  #, dtype=np.float32)
-else:
-    y = np.array(y, dtype=np.float32)
-
-if int(args.pickle) == 1:
-    with open(os.path.join(mydir, 'X.pickle'), 'wb') as f:
-        cPickle.dump(X, f)
-
-    with open(os.path.join(mydir, 'y.pickle'), 'wb') as f:
-        cPickle.dump(y, f)
+    X = cPickle.load(open('results/RNA-2016-08-03_00-03-09/X.pickle','r'))
+    y = cPickle.load(open('results/RNA-2016-08-03_00-03-09/y.pickle','r'))
 
 if args.seed != -1:
     X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=args.split, random_state=int(args.seed))
@@ -231,7 +237,7 @@ if args.mode == 'mitosis': # classification problem
         
         # Range of `n_estimators` values to explore.
         min_estimators = 10
-        max_estimators = 175
+        max_estimators = 1000
 
         print "\t Ranging from ", min_estimators, " to ", max_estimators
 
@@ -333,8 +339,51 @@ if args.mode == 'mitosis': # classification problem
         print(classification_report(y_true, y_pred))
         #print(confusion_matrix(y_true, y_pred, labels=[1,2,3]))
 else:
+    if int(args.experiments) == 1:
+        print "[EXP > OOB] Performing oob error rate experiment"
+        ensemble_clfs = [
+            ("RandomForestRegressor, max_features='sqrt'",
+                RandomForestRegressor(warm_start=True, oob_score=True,
+                                       max_features="sqrt", n_jobs=-1)),
+            ("RandomForestRegressor, max_features='log2'",
+                RandomForestRegressor(warm_start=True, max_features='log2',
+                                       oob_score=True, n_jobs=-1)),
+            ("RandomForestRegressor, max_features=None",
+                RandomForestRegressor(warm_start=True, max_features=None,
+                                       oob_score=True, n_jobs=-1))
+        ]
+
+        # Map a classifier name to a list of (<n_estimators>, <error rate>) pairs.
+        error_rate = OrderedDict((label, []) for label, _ in ensemble_clfs)
+
+        # Range of `n_estimators` values to explore.
+        min_estimators = 10
+        max_estimators = 1000
+
+        print "\t Ranging from ", min_estimators, " to ", max_estimators
+
+        for label, clf in ensemble_clfs:
+            for i in tqdm(range(min_estimators, max_estimators + 1)):
+                clf.set_params(n_estimators=i)
+                clf.fit(X, y)
+
+                # Record the OOB error for each `n_estimators=i` setting.
+                oob_error = 1 - clf.oob_score_
+                error_rate[label].append((i, oob_error))
+
+        # Generate the "OOB error rate" vs. "n_estimators" plot.
+        for label, clf_err in error_rate.items():
+            xs, ys = zip(*clf_err)
+            plt.plot(xs, ys, label=label)
+
+        plt.xlim(min_estimators, max_estimators)
+        plt.xlabel("n_estimators")
+        plt.ylabel("OOB error rate")
+        plt.legend(loc="upper right")
+        plt.savefig(os.path.join(mydir, 'rna_oob_error.png'))
+
     # rna!
-    regressor = RandomForestRegressor(n_estimators=60, oob_score=True, n_jobs=-1, verbose=1)
+    regressor = RandomForestRegressor(n_estimators=140, oob_score=True, n_jobs=-1, verbose=1)
     regressor.fit(X, y)
     #print regressor.oob_prediction_
     print "R^2 is ", regressor.oob_score_
