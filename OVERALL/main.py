@@ -48,10 +48,10 @@ parser.set_defaults(feature=True)
 
 parser.add_argument('-d', '--directory', help="The directory where patches are stored (if patch is True)", default="")  
 parser.add_argument('-m', '--mode', help="Whether to make predictions for mitosis (type='mitosis') or rna (type='rna'). Default is mitosis",  default="mitosis")
-parser.add_argument('-r', '--seed', help="Random seed for result reproducibility.  Default is 0. Enter -1 for no seed.", default=0)
-parser.add_argument('-s', '--split', help="Train/test split percentage. Default is 0.2 (80/20 split)", default=0.2)
-parser.add_argument('-p', '--portion', help="Sample portion from each class, or select all. Default is selecting all (-1)", default=-1)
-parser.add_argument('-e', '--experiments', help="Generate experiment plots (oob error rate varying trees, feature importances). Default is 0", default=0)
+parser.add_argument('-r', '--seed',type=int, help="Random seed for result reproducibility.  Default is 0. Enter -1 for no seed.", default=0)
+parser.add_argument('-s', '--split', type=int, help="Train/test split percentage. Default is 0.2 (80/20 split)", default=0.2)
+parser.add_argument('-p', '--portion', type=int, help="Sample portion from each class, or select all. Default is selecting all (-1)", default=-1)
+parser.add_argument('-e', '--experiments', type=int, help="Generate experiment plots (oob error rate varying trees, feature importances). Default is 0", default=0)
 parser.add_argument('-k', '--pickle', help="Pickle outputs for re-use (generally do this when running on entire dataset, WILL OVERWRITE last save). Default is 0", default=0)
 parser.add_argument('-l', '--load', type=int, help="Load from previous pickle file (X and y, must change from code default)", default=0)
 # Set up dictionaries and select image IDs for sampling
@@ -209,7 +209,7 @@ if args.load == 0:
 
 else:
     X = cPickle.load(open('results/RNA-2016-08-03_00-03-09/X.pickle','r'))
-    y = cPickle.load(open('results/RNA-2016-08-03_00-03-09/y.pickle','r'))
+    y = cPickle.load(open('results/MITOSIS-2016-08-02_15-47-27/y.pickle', 'r')) #open('results/RNA-2016-08-03_00-03-09/y.pickle','r'))
 
 if args.seed != -1:
     X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=args.split, random_state=int(args.seed))
@@ -237,7 +237,7 @@ if args.mode == 'mitosis': # classification problem
         
         # Range of `n_estimators` values to explore.
         min_estimators = 10
-        max_estimators = 1000
+        max_estimators = 500
 
         print "\t Ranging from ", min_estimators, " to ", max_estimators
 
@@ -358,7 +358,7 @@ else:
 
         # Range of `n_estimators` values to explore.
         min_estimators = 10
-        max_estimators = 1000
+        max_estimators = 500
 
         print "\t Ranging from ", min_estimators, " to ", max_estimators
 
@@ -369,7 +369,9 @@ else:
 
                 # Record the OOB error for each `n_estimators=i` setting.
                 oob_error = 1 - clf.oob_score_
-                error_rate[label].append((i, oob_error))
+                pred = clf.oob_prediction_
+                rho, _ = spearmanr(pred, y)
+                error_rate[label].append((i, rho))
 
         # Generate the "OOB error rate" vs. "n_estimators" plot.
         for label, clf_err in error_rate.items():
