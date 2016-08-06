@@ -53,12 +53,13 @@ if 1:
 
             outputFolder = getFolders('%s/%s'%(OROOT, wsi_name))
             cv2.imwrite('%s/%s.jpg'%(outputFolder, hpf_name), img)
-            #break
-        #break
+            break
+        break
 if 1:
     params = [
-    ['pos', 5, (0, 0, 255), 2],
-    ['neg', 10, (255, 0, 0), -1]
+    ['pos', 5, (0, 0, 255), -1],
+    ['neg', 10, (255, 0, 0), -1],
+    ['neg2', 10, (255, 0, 0), -1]
     ]
     for param in params:
         fd = param[0]
@@ -77,6 +78,7 @@ if 1:
 
                 img_names = [l.strip() for l in os.popen('ls %s/%s/%s/%s'%(ROOT, fd, wsi_name, hpf_name))]
                 pts = []
+                print "\t\t num=", len(img_names)
                 for img_name in img_names:
                     itms = img_name.split('.')[0].split('_')
                     #print itms
@@ -85,6 +87,6 @@ if 1:
                     pts.append((x, y))
                 drawPTS(img, pts, *param[1:])
                 cv2.imwrite('%s/%s.jpg'%(outputFolder, hpf_name), img)
-                #break
-            #break
-        #break
+                break # hpf_name
+            break # wsi_name
+        #break # params
