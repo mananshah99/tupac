@@ -2,19 +2,20 @@ net: "train_val.prototxt"
 
 test_iter: 100
 test_interval: 500
-test_initialization: true 
+test_initialization: false
 
-display: 10
+display: 50
+average_loss: 50
 
 base_lr: 0.01
 lr_policy: "step"
 gamma: 0.1
-stepsize: 60000
-max_iter: 180000
+stepsize: 100000
+max_iter: 400000
 
 momentum: 0.9
 weight_decay: 0.0005
 
 snapshot: 5000
-snapshot_prefix: "models/cnn10"
+snapshot_prefix: "models/gnet"
 solver_mode: GPU

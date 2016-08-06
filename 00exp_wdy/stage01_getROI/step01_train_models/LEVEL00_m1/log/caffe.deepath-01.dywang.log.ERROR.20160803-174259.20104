@@ -1,4 +1,0 @@
-Log file created at: 2016/08/03 17:42:59
-Running on machine: deepath-01
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-F0803 17:42:59.312075 20104 net.cpp:405] Top blob 'data' produced by multiple sources.

@@ -2,7 +2,6 @@
 TOOLS=/home/dywang/dl/caffe/build/tools
 LOG=log
 MODEL=models
-
 mkdir $LOG
 mkdir $MODEL
 

@@ -1,4 +1,0 @@
-Log file created at: 2016/08/03 17:43:11
-Running on machine: deepath-01
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-F0803 17:43:11.961870 20186 softmax_loss_layer.cpp:40] Check failed: outer_num_ * inner_num_ == bottom[1]->count() (12800 vs. 128) Number of labels must match number of predictions; e.g., if softmax axis == 1 and prediction shape is (N, C, H, W), label count (number of labels) must be N*H*W, with integer values in {0, 1, ..., C-1}.
