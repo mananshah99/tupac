@@ -12,6 +12,7 @@ stage06_fcnSegmentation/roi-vgg-13/external/
 vis/
 *.caffemodel
 *.solverstate
+*.pickle
 *.npy
 *.pyc
 *.tif
