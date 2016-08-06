@@ -11,7 +11,7 @@ from skimage import img_as_int
 from multiprocessing import Pool
 
 import sys
-## FIX THIS SOON
+sys.path.append("..")
 sys.path.append("Train")
 import tools
 
@@ -105,18 +105,19 @@ def run_findROI(ID):
     print("On ID " + str(ID))
     
     try: 
-        imgName = '../../data/TrainingData/small_images-level-2/TUPAC-TR-%03d.png'%(ID)	
-        mskName1 ='../../data/TrainingData/small_images-level-2-mask/TUPAC-TR-%03d.png'%(ID)
+        imgName = '../../data/TestingData/small_images-level-2/TUPAC-TE-%03d.png'%(ID)	
+        mskName1 ='../../data/TestingData/small_images-level-2-mask/TUPAC-TE-%03d.png'%(ID)
     
         doFindROI(imgName, mskName1)
 
-        outputName = '../../data/TrainingData/small_images-level-2-overlay/TUPAC-TR-%03d.png'%(ID)
+        outputName = '../../data/TestingData/small_images-level-2-overlay/TUPAC-TE-%03d.png'%(ID)
 
         tools.doAddMask(imgName,
                      mskName1,
                      [0, 255, 0],
                      outputName)
-    except:
+    except Exception as e:
+        print(e)
         print("[!] ID " + str(ID) + " failed.")
         pass
 
@@ -124,7 +125,7 @@ if __name__ == "__main__":
 
 	# remember to modify the level in run_findROI
 	# generates a multiprocessing pool
-    pool = Pool(100)
+    pool = Pool(20)
 	
     ID1, ID2 = 1,500
     IDs = range(ID1, ID2 + 1)
