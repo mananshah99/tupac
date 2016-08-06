@@ -35,3 +35,4 @@ METHOD3/recurrent-net/scripts/hualos/
 memmap.dat
 stage06_fcnSegmentation/roi-facenet/models.final/
 00exp_wdy/stage00_colornorm/staining-normalization
+00exp_wdy/stage02_getHP/result_wsi_fcnn_t07/
