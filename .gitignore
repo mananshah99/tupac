@@ -17,6 +17,8 @@ vis/
 *.pyc
 *.tif
 *.png
+*.jpg
+*.jpeg
 00exp_wdy/stage02_getHP/Untitled*
 00exp_wdy/stage02_getHP/old/
 00exp_wdy/stage02_getHP/result_mitko_m1_fcnn/
