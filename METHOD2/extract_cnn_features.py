@@ -1,8 +1,9 @@
 import os
 import sys
+import cv2
 sys.path.insert(0, '../METHOD3/external/caffe/python')
 import subprocess
-
+import openslide as osi
 import numpy as np
 from skimage import data
 from skimage.filters import threshold_otsu
@@ -13,87 +14,105 @@ from skimage.measure import regionprops
 from skimage.color import label2rgb
 from skimage.io import *
 import caffe
+from tqdm import tqdm
 
-def in_bounds(coordinate, mx = 1000):
-    if coordinate < 0:
-        coordinate = 0
-    if coordinate > mx:
-        coordinate = mx
-    return coordinate
+levelpow = 4
 
-def extract_features(net, transformer, patches, gen_heatmaps = 1):
-    # each patch has an associated heatmap
-  
-    heatmaps = []
-    real_patches = []
+def extend_inds_to_level0(input_level, h, w):
+    gap = input_level - 0
+    v = np.power(levelpow, gap)
+    hlist = h * v + np.arange(v)
+    wlist = w * v + np.arange(v)
+    hw = []
+    for hv in hlist:
+        for wv in wlist:
+            hw.append([hv, wv])
+    return hw
 
-    # this gets the respective heatmaps (we first get a list of all the patches, and then get the heatmaps corresponding to them)
-    os.chdir('/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/run')
-    for patch in patches:
-        patch_name = patch.split('/')[-1]
-        prefix = '/data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/results/mitosis-full_07-07-16/'
-        full_name = prefix + patch_name
+def get_tl_pts_in_level0(OUT_LEVEL, h_level0, w_level0, wsize):
+    scale = np.power(levelpow, OUT_LEVEL)
+    wsize_level0 = wsize * scale
+    wsize_level0_half = wsize_level0 / 2
 
-        # only look at the patches that have a defined heatmap        
-        if os.path.exists(full_name):
-            heatmaps.append(full_name)
-            real_patches.append(patch)
- 
-        '''
-        elif gen_heatmaps:
-            print full_name
-            # generate the respective heatmap
-            list_file = 'tmp.lst'
-            f = open(list_file, 'w')
-            f.write('../../../libs/stage03_deepFeatMaps/results/patches_06-29-16/' + patch_name)
-            f.close()
-            
-            subprocess.call("sh /data/dywang/Database/Proliferation/libs/stage03_deepFeatMaps/run/mitosis-subprocess.sh", shell=True)
+    h1_level0, w1_level0 = h_level0 - wsize_level0_half, w_level0 - wsize_level0_half
+    return int(h1_level0), int(w1_level0)
 
-            heatmaps.append(full_name)
-        '''
+def get_image(wsi, h1_level0, w1_level0, OUT_LEVEL, wsize):
+    img = wsi.read_region(
+            (w1_level0, h1_level0),
+            OUT_LEVEL, (wsize, wsize))
+    img = np.asarray(img)[:,:,:3]
+    return img
+
+
+def extract_features(net, transformer, heatmap):
+    ALL_BLACK = False
+    slide = None
+    try:
+        im_name = heatmap.split('/')[-1].split('.')[0]
+        print heatmap
+        slide = osi.OpenSlide('/data/dywang/Database/Proliferation/data/TrainingData/training_image_data/' + im_name + '.svs')
+        im = cv2.imread(heatmap, cv2.IMREAD_GRAYSCALE)
+        print im.shape
+    except Exception as e:
+        print e
+        print e.args
+        ALL_BLACK = True
 
     vector = []
-    for i, heatmap in enumerate(heatmaps[0:15]): # use 15
+    for threshold_decimal in [0.7]: 
+
+        thresh = int(255 * threshold_decimal)
         individual_vector = []
-        im = imread(heatmap)
-        associated_patch = imread(real_patches[i])
 
-        thresh = 0.9
-        bw = closing(im > thresh, square(3))
+        if ALL_BLACK:
+            individual_vector.extend([0]*200)
+            vector.extend(individual_vector)
+            continue
 
-        # remove artifacts connected to image border
-        cleared = bw.copy()
-        clear_border(cleared)
+        _, bw = cv2.threshold(im, thresh, 255, cv2.THRESH_BINARY)
 
         # label image regions
-        label_image = label(cleared)
-        borders = np.logical_xor(bw, cleared)
-        label_image[borders] = -1
+        label_image = label(bw)
 
-        for region in regionprops(label_image):
-            y0,x0 = region.centroid
-            region_im = associated_patch[in_bounds(y0-112):in_bounds(y0+112), in_bounds(x0-112):in_bounds(x0+112)]
-            
+        potential_mitoses = regionprops(label_image)
+
+        for region in potential_mitoses:
+            centroid = region.centroid
+            indices = extend_inds_to_level0(2, centroid[0], centroid[1])
+
+            idx = int(len(indices) / 2)
+            chcw_level0 = indices[idx] # take middle point (this is basically the centroid at level 0)
+            h_level0, w_level0 = chcw_level0
+            h1_level0, w1_level0 = get_tl_pts_in_level0(0,
+                                                        h_level0,
+                                                        w_level0,
+                                                        224) # should give top left corner of patch
+
+            associated_patch = get_image(slide, h1_level0, w1_level0, 0, 224)
+ 
+            associated_patch = np.asarray(associated_patch)[:,:,:3]
             try:
-                transformed_image = transformer.preprocess('data', caffe.io.resize_image(region_im, (224, 224)))
+                transformed_image = transformer.preprocess('data', caffe.io.resize_image(associated_patch, (224, 224)))
             except Exception as e:
-                print associated_patch.shape
-                print label_image.shape 
                 print e
+                print e.args
                 continue
+            
             batch = np.array(transformed_image)
             net.blobs['data'].data[...] = batch
 
             output = net.forward()
-            features = net.blobs['pool5/7x7_s1'].data.copy()
-            
+            features = net.blobs['ip1'].data.copy()
             # convert the features to a readable format
             tmp = []
+            print features.shape
             for x in features[0]:
-                y = x[0][0]
-                tmp.append(y)
-                
+                y = []
+                for q in xrange(features.shape[2]):
+                    y.append(x[0][q])
+                tmp.extend(y)
+
             individual_vector.extend(tmp)
-        vector.extend(individual_vector) 
+        vector.extend(individual_vector)
     return vector
