@@ -1,6 +1,6 @@
 cd ..
 python main.py \
-    "/data/dywang/Database/Proliferation/libs/OVERALL/092916_FACENET_HEATMAPS" --no-patch \
+    "/data/dywang/Database/Proliferation/libs/OVERALL/092516_MITKONET_HEATMAPS" --no-patch \
     --mode "mitosis" \
     --experiments 1 \
     --load 0 \
