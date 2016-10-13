@@ -1,0 +1,5 @@
+Using arguments
+Namespace(directory='', experiments=0, feature=True, feature_directory='/data/dywang/Database/Proliferation/libs/OVERALL/THISISFACENETRNA', ispatch=False, load=1, mode='rna', pickle='1', portion=-1, seed=0, split=0.2)
+Using  500  ids, with SAMPLE_SIZE set to  -1
+R^2 is  0.148552729338
+Spearman's Rho is  0.400435859557  with p-val  1.11367462057e-20

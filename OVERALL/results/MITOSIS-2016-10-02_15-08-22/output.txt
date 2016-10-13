@@ -1,0 +1,2 @@
+Using arguments
+Namespace(directory='', experiments=1, feature=True, feature_directory='/data/dywang/Database/Proliferation/libs/OVERALL/092916_FACENET_HEATMAPS', ispatch=False, load=0, mode='mitosis', pickle='1', portion=-1, seed=0, split=0.2)

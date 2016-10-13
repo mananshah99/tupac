@@ -1,0 +1,1092 @@
+Using arguments
+Namespace(directory='', experiments=1, feature=True, feature_directory='/data/dywang/Database/Proliferation/libs/OVERALL/result_cn_mnet_t05', ispatch=False, load=0, mode='mitosis', pickle='1', portion=-1, seed=0, split=0.2)
+Using  500  ids, with SAMPLE_SIZE set to  -1
+WSI argument selected. Obtaining images from directory  /data/dywang/Database/Proliferation/libs/OVERALL/result_cn_mnet_t05
+[EXP > OOB] Performing oob error rate experiment
+	 Ranging from  10  to  500
+[PREDICTION > SVM] Tuning via Grid Search
+# Tuning hyper-parameters for accuracy
+	 Best parameters set found on development set:
+{'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}
+	 Grid scores on development set:
+	 0.458 (+/-0.071) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.001}
+	 0.475 (+/-0.011) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}
+	 0.422 (+/-0.071) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.001}
+	 0.415 (+/-0.091) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}
+	 0.417 (+/-0.080) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.001}
+	 0.420 (+/-0.079) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.0001}
+	 0.420 (+/-0.083) for {'kernel': 'linear', 'C': 1}
+	 0.415 (+/-0.057) for {'kernel': 'linear', 'C': 100}
+	 0.435 (+/-0.045) for {'kernel': 'linear', 'C': 1000}
+	 0.430 (+/-0.077) for {'kernel': 'linear', 'C': 5000}
+	 0.438 (+/-0.041) for {'kernel': 'linear', 'C': 10000}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.46      1.00      0.63        46
+          2       0.00      0.00      0.00        25
+          3       0.00      0.00      0.00        29
+
+avg / total       0.21      0.46      0.29       100
+
+True:  [1 2 2 3 3 1 2 3 1 1 2 2 3 2 1 2 3 3 1 1 1 3 2 1 1 3 1 3 1 1 3 1 1 1 3 3 2
+ 3 3 2 2 1 3 1 1 1 1 2 3 1 3 1 2 1 1 1 2 1 1 2 1 2 3 3 2 1 1 3 2 1 1 1 2 3
+ 1 3 2 1 3 2 2 1 3 1 2 2 3 1 2 1 1 3 3 1 1 3 1 3 1 1]
+Pred:  [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+# Tuning hyper-parameters for precision_weighted
+	 Best parameters set found on development set:
+{'kernel': 'linear', 'C': 1000}
+	 Grid scores on development set:
+	 0.231 (+/-0.023) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.001}
+	 0.226 (+/-0.010) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}
+	 0.312 (+/-0.083) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.001}
+	 0.285 (+/-0.069) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}
+	 0.320 (+/-0.080) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.001}
+	 0.307 (+/-0.088) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.0001}
+	 0.308 (+/-0.090) for {'kernel': 'linear', 'C': 1}
+	 0.317 (+/-0.099) for {'kernel': 'linear', 'C': 100}
+	 0.370 (+/-0.099) for {'kernel': 'linear', 'C': 1000}
+	 0.361 (+/-0.106) for {'kernel': 'linear', 'C': 5000}
+	 0.369 (+/-0.077) for {'kernel': 'linear', 'C': 10000}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.49      0.80      0.61        46
+          2       0.40      0.16      0.23        25
+          3       0.27      0.14      0.18        29
+
+avg / total       0.40      0.45      0.39       100
+
+True:  [1 2 2 3 3 1 2 3 1 1 2 2 3 2 1 2 3 3 1 1 1 3 2 1 1 3 1 3 1 1 3 1 1 1 3 3 2
+ 3 3 2 2 1 3 1 1 1 1 2 3 1 3 1 2 1 1 1 2 1 1 2 1 2 3 3 2 1 1 3 2 1 1 1 2 3
+ 1 3 2 1 3 2 2 1 3 1 2 2 3 1 2 1 1 3 3 1 1 3 1 3 1 1]
+Pred:  [1 2 1 1 2 1 1 1 1 1 1 1 1 3 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 3 3
+ 1 1 1 1 1 1 1 1 1 1 2 1 1 3 1 1 1 3 3 2 2 1 1 3 3 2 1 1 3 1 1 1 1 1 2 3 2
+ 1 1 3 1 1 1 1 1 1 1 1 1 3 1 2 1 1 1 1 3 1 1 1 1 1 3]
+# Tuning hyper-parameters for recall_weighted
+	 Best parameters set found on development set:
+{'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}
+	 Grid scores on development set:
+	 0.458 (+/-0.071) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.001}
+	 0.475 (+/-0.011) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}
+	 0.422 (+/-0.071) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.001}
+	 0.415 (+/-0.091) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}
+	 0.417 (+/-0.080) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.001}
+	 0.420 (+/-0.079) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.0001}
+	 0.420 (+/-0.083) for {'kernel': 'linear', 'C': 1}
+	 0.415 (+/-0.057) for {'kernel': 'linear', 'C': 100}
+	 0.435 (+/-0.045) for {'kernel': 'linear', 'C': 1000}
+	 0.430 (+/-0.077) for {'kernel': 'linear', 'C': 5000}
+	 0.438 (+/-0.041) for {'kernel': 'linear', 'C': 10000}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.46      1.00      0.63        46
+          2       0.00      0.00      0.00        25
+          3       0.00      0.00      0.00        29
+
+avg / total       0.21      0.46      0.29       100
+
+True:  [1 2 2 3 3 1 2 3 1 1 2 2 3 2 1 2 3 3 1 1 1 3 2 1 1 3 1 3 1 1 3 1 1 1 3 3 2
+ 3 3 2 2 1 3 1 1 1 1 2 3 1 3 1 2 1 1 1 2 1 1 2 1 2 3 3 2 1 1 3 2 1 1 1 2 3
+ 1 3 2 1 3 2 2 1 3 1 2 2 3 1 2 1 1 3 3 1 1 3 1 3 1 1]
+Pred:  [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+# Tuning hyper-parameters for f1_weighted
+	 Best parameters set found on development set:
+{'kernel': 'linear', 'C': 10000}
+	 Grid scores on development set:
+	 0.304 (+/-0.014) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.001}
+	 0.306 (+/-0.011) for {'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}
+	 0.347 (+/-0.059) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.001}
+	 0.325 (+/-0.050) for {'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}
+	 0.352 (+/-0.060) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.001}
+	 0.343 (+/-0.063) for {'kernel': 'rbf', 'C': 1000, 'gamma': 0.0001}
+	 0.343 (+/-0.066) for {'kernel': 'linear', 'C': 1}
+	 0.337 (+/-0.029) for {'kernel': 'linear', 'C': 100}
+	 0.367 (+/-0.048) for {'kernel': 'linear', 'C': 1000}
+	 0.365 (+/-0.059) for {'kernel': 'linear', 'C': 5000}
+	 0.372 (+/-0.044) for {'kernel': 'linear', 'C': 10000}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.50      0.74      0.60        46
+          2       0.29      0.16      0.21        25
+          3       0.28      0.17      0.21        29
+
+avg / total       0.38      0.43      0.39       100
+
+True:  [1 2 2 3 3 1 2 3 1 1 2 2 3 2 1 2 3 3 1 1 1 3 2 1 1 3 1 3 1 1 3 1 1 1 3 3 2
+ 3 3 2 2 1 3 1 1 1 1 2 3 1 3 1 2 1 1 1 2 1 1 2 1 2 3 3 2 1 1 3 2 1 1 1 2 3
+ 1 3 2 1 3 2 2 1 3 1 2 2 3 1 2 1 1 3 3 1 1 3 1 3 1 1]
+Pred:  [1 2 1 1 2 3 1 1 1 2 1 3 3 3 1 1 1 1 2 1 3 1 1 1 1 1 1 1 1 1 3 1 1 1 1 3 1
+ 1 2 1 1 1 1 1 1 1 1 3 1 1 3 1 1 1 3 3 2 2 1 1 3 3 2 1 1 3 3 2 1 1 1 2 1 2
+ 1 1 3 1 1 1 1 1 1 1 2 1 3 1 2 1 1 1 1 1 1 2 1 1 1 3]
+[PREDICTION > RF] Tuning via Grid Search
+# Tuning hyper-parameters for accuracy
+	 Best parameters set found on development set:
+{'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 Grid scores on development set:
+	 0.453 (+/-0.111) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.080) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.432 (+/-0.062) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.455 (+/-0.075) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.425 (+/-0.080) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.422 (+/-0.057) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.438 (+/-0.063) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.102) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.432 (+/-0.102) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.430 (+/-0.125) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.427 (+/-0.080) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.065) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.445 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.435 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.132) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.121) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.453 (+/-0.112) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.443 (+/-0.129) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.432 (+/-0.097) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.138) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.122) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.458 (+/-0.100) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.093) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.098) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.112) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.435 (+/-0.082) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.100) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.430 (+/-0.124) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.432 (+/-0.073) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.432 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.435 (+/-0.053) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.079) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.450 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.068) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.113) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.098) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.438 (+/-0.092) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.440 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.104) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.435 (+/-0.115) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.430 (+/-0.088) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.458 (+/-0.120) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.125) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.109) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.147) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.117) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.093) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.139) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.107) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.143) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.146) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.124) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.068) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.420 (+/-0.052) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.071) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.073) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.427 (+/-0.040) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.443 (+/-0.069) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.067) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.415 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.116) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.435 (+/-0.065) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.072) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.037) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.084) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.123) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.149) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.455 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.093) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.120) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.113) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.135) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.435 (+/-0.112) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.463 (+/-0.125) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.465 (+/-0.118) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.120) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.123) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.445 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.422 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.084) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.100) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.062) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.432 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.435 (+/-0.070) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.068) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.085) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.074) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.440 (+/-0.104) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.438 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.119) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.425 (+/-0.124) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.133) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.158) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.106) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.092) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.432 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.430 (+/-0.131) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.130) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.435 (+/-0.118) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.453 (+/-0.096) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.438 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.455 (+/-0.100) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.097) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.435 (+/-0.082) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.427 (+/-0.069) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.076) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.091) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.432 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.432 (+/-0.085) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.075) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.086) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.095) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.077) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.060) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.099) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.115) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.115) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.458 (+/-0.121) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.463 (+/-0.117) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.112) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.106) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.124) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.443 (+/-0.134) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.460 (+/-0.127) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.130) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.465 (+/-0.136) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.460 (+/-0.131) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.463 (+/-0.110) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.105) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.438 (+/-0.071) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.092) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.090) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.430 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.090) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.091) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.096) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.438 (+/-0.088) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.438 (+/-0.077) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.065) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.440 (+/-0.096) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.438 (+/-0.137) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.460 (+/-0.126) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.458 (+/-0.124) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.455 (+/-0.137) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.455 (+/-0.113) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.455 (+/-0.118) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.102) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.470 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.128) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.455 (+/-0.124) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.465 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.455 (+/-0.119) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.417 (+/-0.078) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.425 (+/-0.056) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.430 (+/-0.055) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.053) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.061) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.432 (+/-0.063) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.034) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.057) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.052) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.071) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.056) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.038) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.463 (+/-0.095) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.458 (+/-0.121) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.465 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.128) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.458 (+/-0.121) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.472 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.472 (+/-0.102) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.475 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.108) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.129) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.463 (+/-0.136) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.129) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.123) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.123) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.450 (+/-0.042) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.099) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.074) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.078) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.053) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.427 (+/-0.054) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.083) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.072) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.073) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.066) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.455 (+/-0.069) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.468 (+/-0.136) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.463 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.455 (+/-0.139) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.114) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.450 (+/-0.150) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.450 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.134) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.463 (+/-0.116) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.110) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.460 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.134) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.49      0.65      0.56        46
+          2       0.38      0.20      0.26        25
+          3       0.35      0.31      0.33        29
+
+avg / total       0.42      0.44      0.42       100
+
+# Tuning hyper-parameters for precision_weighted
+	 Best parameters set found on development set:
+{'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 Grid scores on development set:
+	 0.400 (+/-0.063) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.377 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.375 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.376 (+/-0.091) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.386 (+/-0.093) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.382 (+/-0.098) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.372 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.355 (+/-0.063) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.375 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.363 (+/-0.098) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.400 (+/-0.149) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.379 (+/-0.111) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.381 (+/-0.119) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.370 (+/-0.109) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.403 (+/-0.123) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.384 (+/-0.181) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.393 (+/-0.156) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.394 (+/-0.166) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.381 (+/-0.129) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.385 (+/-0.177) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.357 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.386 (+/-0.121) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.372 (+/-0.145) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.364 (+/-0.096) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.386 (+/-0.136) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.391 (+/-0.190) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.377 (+/-0.148) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.384 (+/-0.174) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.361 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.383 (+/-0.067) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.377 (+/-0.088) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.376 (+/-0.111) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.360 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.384 (+/-0.120) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.363 (+/-0.111) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.377 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.383 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.378 (+/-0.127) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.391 (+/-0.139) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.398 (+/-0.113) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.373 (+/-0.082) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.368 (+/-0.099) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.343 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.401 (+/-0.199) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.364 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.394 (+/-0.167) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.385 (+/-0.145) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.376 (+/-0.138) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.359 (+/-0.115) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.362 (+/-0.154) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.368 (+/-0.252) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.401 (+/-0.232) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.398 (+/-0.229) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.388 (+/-0.154) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.362 (+/-0.129) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.357 (+/-0.115) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.371 (+/-0.137) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.362 (+/-0.067) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.362 (+/-0.060) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.362 (+/-0.100) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.385 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.367 (+/-0.102) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.390 (+/-0.085) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.356 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.359 (+/-0.065) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.378 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.387 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.380 (+/-0.074) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.373 (+/-0.096) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.374 (+/-0.073) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.385 (+/-0.122) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.404 (+/-0.171) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.378 (+/-0.114) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.362 (+/-0.119) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.414 (+/-0.207) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.385 (+/-0.139) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.392 (+/-0.150) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.359 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.359 (+/-0.102) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.379 (+/-0.145) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.372 (+/-0.096) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.371 (+/-0.123) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.361 (+/-0.112) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.395 (+/-0.175) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.378 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.379 (+/-0.077) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.390 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.375 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.380 (+/-0.095) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.375 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.373 (+/-0.096) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.375 (+/-0.058) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.381 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.369 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.374 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.352 (+/-0.092) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.371 (+/-0.107) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.381 (+/-0.092) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.414 (+/-0.063) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.362 (+/-0.131) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.390 (+/-0.171) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.389 (+/-0.131) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.402 (+/-0.128) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.399 (+/-0.211) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.373 (+/-0.145) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.362 (+/-0.088) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.395 (+/-0.126) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.378 (+/-0.160) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.370 (+/-0.160) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.390 (+/-0.151) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.428 (+/-0.234) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.390 (+/-0.172) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.407 (+/-0.049) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.379 (+/-0.066) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.355 (+/-0.063) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.372 (+/-0.064) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.369 (+/-0.059) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.381 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.385 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.381 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.390 (+/-0.088) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.382 (+/-0.077) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.396 (+/-0.060) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.386 (+/-0.082) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.370 (+/-0.070) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.394 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.425 (+/-0.090) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.389 (+/-0.140) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.408 (+/-0.105) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.406 (+/-0.102) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.404 (+/-0.108) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.412 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.412 (+/-0.127) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.389 (+/-0.150) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.421 (+/-0.102) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.398 (+/-0.099) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.402 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.410 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.414 (+/-0.097) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.409 (+/-0.107) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.372 (+/-0.072) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.385 (+/-0.088) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.381 (+/-0.080) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.378 (+/-0.082) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.388 (+/-0.064) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.383 (+/-0.076) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.381 (+/-0.084) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.390 (+/-0.072) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.383 (+/-0.085) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.380 (+/-0.106) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.366 (+/-0.066) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.385 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.395 (+/-0.088) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.379 (+/-0.092) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.378 (+/-0.158) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.397 (+/-0.151) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.390 (+/-0.078) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.412 (+/-0.118) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.414 (+/-0.106) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.409 (+/-0.154) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.397 (+/-0.136) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.409 (+/-0.142) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.406 (+/-0.134) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.390 (+/-0.110) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.408 (+/-0.105) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.408 (+/-0.105) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.416 (+/-0.093) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.398 (+/-0.114) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.371 (+/-0.086) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.364 (+/-0.064) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.365 (+/-0.037) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.372 (+/-0.059) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.383 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.389 (+/-0.044) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.369 (+/-0.064) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.371 (+/-0.046) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.379 (+/-0.078) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.395 (+/-0.054) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.396 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.394 (+/-0.056) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.394 (+/-0.045) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.394 (+/-0.039) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.393 (+/-0.086) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.409 (+/-0.117) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.408 (+/-0.099) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.408 (+/-0.121) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.409 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.400 (+/-0.111) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.393 (+/-0.093) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.415 (+/-0.154) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.406 (+/-0.132) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.394 (+/-0.081) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.410 (+/-0.116) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.416 (+/-0.089) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.411 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.418 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.381 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.386 (+/-0.069) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.386 (+/-0.058) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.385 (+/-0.066) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.375 (+/-0.077) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.373 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.381 (+/-0.072) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.378 (+/-0.034) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.386 (+/-0.065) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.380 (+/-0.054) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.376 (+/-0.026) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.377 (+/-0.053) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.383 (+/-0.055) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.383 (+/-0.060) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.418 (+/-0.129) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.421 (+/-0.096) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.411 (+/-0.099) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.418 (+/-0.061) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.408 (+/-0.118) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.404 (+/-0.102) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.402 (+/-0.089) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.420 (+/-0.073) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.408 (+/-0.070) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.404 (+/-0.126) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.399 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.401 (+/-0.083) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.420 (+/-0.108) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.394 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.49      0.70      0.58        46
+          2       0.36      0.16      0.22        25
+          3       0.33      0.28      0.30        29
+
+avg / total       0.41      0.44      0.41       100
+
+# Tuning hyper-parameters for recall_weighted
+	 Best parameters set found on development set:
+{'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 Grid scores on development set:
+	 0.422 (+/-0.060) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.432 (+/-0.097) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.095) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.422 (+/-0.056) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.443 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.065) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.438 (+/-0.150) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.102) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.435 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.090) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.435 (+/-0.088) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.113) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.430 (+/-0.080) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.420 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.463 (+/-0.139) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.132) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.137) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.106) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.059) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.097) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.117) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.430 (+/-0.108) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.123) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.129) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.432 (+/-0.079) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.422 (+/-0.090) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.078) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.430 (+/-0.048) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.084) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.435 (+/-0.071) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.425 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.125) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.435 (+/-0.126) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.427 (+/-0.061) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.430 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.425 (+/-0.100) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.435 (+/-0.117) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.122) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.438 (+/-0.115) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.450 (+/-0.119) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.458 (+/-0.102) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.438 (+/-0.112) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.432 (+/-0.081) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.453 (+/-0.121) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.125) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.453 (+/-0.132) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.061) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.059) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.050) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.427 (+/-0.104) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.080) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.443 (+/-0.068) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.128) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.438 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.430 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.090) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.115) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.435 (+/-0.095) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.445 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.123) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.116) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.124) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.115) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.453 (+/-0.109) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.453 (+/-0.124) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.090) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.129) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.124) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.445 (+/-0.113) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.055) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.435 (+/-0.058) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.073) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.079) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.064) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.077) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.095) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.450 (+/-0.056) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.460 (+/-0.095) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.073) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.440 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.425 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.453 (+/-0.079) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.427 (+/-0.134) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.460 (+/-0.097) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.145) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.134) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.455 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.118) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.432 (+/-0.078) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.435 (+/-0.109) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.435 (+/-0.112) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.129) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.438 (+/-0.106) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.109) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.079) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.425 (+/-0.074) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.430 (+/-0.055) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.440 (+/-0.090) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.071) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.430 (+/-0.086) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.432 (+/-0.086) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.084) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.071) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.075) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.443 (+/-0.074) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.089) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.465 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.463 (+/-0.129) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.463 (+/-0.106) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.465 (+/-0.118) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.450 (+/-0.119) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.460 (+/-0.126) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.458 (+/-0.116) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.453 (+/-0.124) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.112) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.460 (+/-0.119) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.460 (+/-0.131) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.127) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.127) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.460 (+/-0.132) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.440 (+/-0.058) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.430 (+/-0.085) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.435 (+/-0.084) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.440 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.074) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.099) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.432 (+/-0.078) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.113) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.080) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.440 (+/-0.085) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.453 (+/-0.088) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.440 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.440 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.093) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.153) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.463 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.463 (+/-0.117) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.460 (+/-0.113) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.463 (+/-0.123) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.455 (+/-0.130) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.141) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.453 (+/-0.117) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.460 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.463 (+/-0.124) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.460 (+/-0.126) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.463 (+/-0.123) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.112) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.435 (+/-0.088) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.047) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.438 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.445 (+/-0.076) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.443 (+/-0.073) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.435 (+/-0.048) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.443 (+/-0.082) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.468 (+/-0.074) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.030) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.450 (+/-0.050) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.039) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.047) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.463 (+/-0.050) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.465 (+/-0.136) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.453 (+/-0.127) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.115) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.453 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.453 (+/-0.092) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.139) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.463 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.448 (+/-0.112) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.465 (+/-0.107) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.458 (+/-0.086) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.445 (+/-0.127) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.453 (+/-0.127) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.455 (+/-0.117) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.448 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.465 (+/-0.065) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.438 (+/-0.074) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.049) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.450 (+/-0.060) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.054) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.050) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.443 (+/-0.054) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.468 (+/-0.052) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.450 (+/-0.075) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.443 (+/-0.080) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.055) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.078) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.448 (+/-0.084) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.458 (+/-0.059) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.468 (+/-0.149) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.445 (+/-0.142) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.458 (+/-0.106) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.099) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.463 (+/-0.129) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.448 (+/-0.115) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.453 (+/-0.094) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.460 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.460 (+/-0.119) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.455 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.455 (+/-0.135) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.445 (+/-0.096) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.453 (+/-0.092) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.49      0.67      0.57        46
+          2       0.17      0.08      0.11        25
+          3       0.32      0.28      0.30        29
+
+avg / total       0.36      0.41      0.37       100
+
+# Tuning hyper-parameters for f1_weighted
+	 Best parameters set found on development set:
+{'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 Grid scores on development set:
+	 0.390 (+/-0.088) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.400 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.394 (+/-0.084) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.406 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.391 (+/-0.085) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.388 (+/-0.078) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.408 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.383 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.393 (+/-0.114) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.390 (+/-0.074) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.387 (+/-0.099) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.380 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.394 (+/-0.100) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.403 (+/-0.077) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.392 (+/-0.024) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.372 (+/-0.107) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.373 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.372 (+/-0.107) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.391 (+/-0.106) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.377 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.366 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.373 (+/-0.068) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.371 (+/-0.091) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.371 (+/-0.092) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.366 (+/-0.104) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.379 (+/-0.114) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.384 (+/-0.094) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.384 (+/-0.126) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.381 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.386 (+/-0.055) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.394 (+/-0.077) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.394 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.393 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.412 (+/-0.072) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.393 (+/-0.062) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.388 (+/-0.053) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.383 (+/-0.063) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.396 (+/-0.066) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.402 (+/-0.109) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.393 (+/-0.068) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.390 (+/-0.067) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.392 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.383 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.382 (+/-0.101) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.387 (+/-0.105) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.376 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.387 (+/-0.106) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.369 (+/-0.088) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.377 (+/-0.087) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.375 (+/-0.123) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.376 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.375 (+/-0.095) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.377 (+/-0.106) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.377 (+/-0.089) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.380 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.384 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.396 (+/-0.096) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.397 (+/-0.074) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.395 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.388 (+/-0.072) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.386 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.395 (+/-0.076) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.390 (+/-0.061) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.382 (+/-0.053) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.387 (+/-0.070) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.408 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.405 (+/-0.046) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.385 (+/-0.086) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.399 (+/-0.082) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.394 (+/-0.070) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.370 (+/-0.069) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.369 (+/-0.071) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.376 (+/-0.091) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.387 (+/-0.115) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.375 (+/-0.119) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.377 (+/-0.120) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.382 (+/-0.104) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.388 (+/-0.075) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.363 (+/-0.062) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.379 (+/-0.107) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.377 (+/-0.080) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.382 (+/-0.073) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.375 (+/-0.098) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.375 (+/-0.092) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.381 (+/-0.083) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.393 (+/-0.069) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.393 (+/-0.054) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.396 (+/-0.040) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.398 (+/-0.084) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.409 (+/-0.061) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.393 (+/-0.072) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.423 (+/-0.093) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.385 (+/-0.071) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.399 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.399 (+/-0.064) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.388 (+/-0.071) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.390 (+/-0.037) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.388 (+/-0.072) for {'bootstrap': True, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.388 (+/-0.090) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.369 (+/-0.084) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.382 (+/-0.110) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.388 (+/-0.124) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.381 (+/-0.133) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.370 (+/-0.107) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.367 (+/-0.092) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.384 (+/-0.103) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.375 (+/-0.106) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.380 (+/-0.099) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.383 (+/-0.104) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.392 (+/-0.111) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.379 (+/-0.102) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.374 (+/-0.077) for {'bootstrap': True, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.403 (+/-0.113) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.390 (+/-0.069) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.381 (+/-0.052) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.388 (+/-0.058) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.392 (+/-0.039) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.392 (+/-0.052) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.384 (+/-0.058) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.414 (+/-0.105) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.393 (+/-0.047) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.391 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.403 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.390 (+/-0.081) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.390 (+/-0.059) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.398 (+/-0.074) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.402 (+/-0.111) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.391 (+/-0.123) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.402 (+/-0.120) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.404 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.390 (+/-0.083) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.403 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.399 (+/-0.097) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': 10}
+	 0.391 (+/-0.108) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.400 (+/-0.077) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.386 (+/-0.107) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.404 (+/-0.113) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.399 (+/-0.108) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.397 (+/-0.088) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.401 (+/-0.108) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': 10}
+	 0.397 (+/-0.097) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.397 (+/-0.058) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.404 (+/-0.082) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.396 (+/-0.066) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.395 (+/-0.078) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.394 (+/-0.067) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.406 (+/-0.075) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.387 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.404 (+/-0.095) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.386 (+/-0.095) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.390 (+/-0.089) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.389 (+/-0.097) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.402 (+/-0.072) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.406 (+/-0.082) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.409 (+/-0.121) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.406 (+/-0.080) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.399 (+/-0.091) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.401 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.402 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.405 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.396 (+/-0.112) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 2, 'max_depth': None}
+	 0.405 (+/-0.111) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.396 (+/-0.118) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.403 (+/-0.104) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.397 (+/-0.092) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.399 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.408 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.403 (+/-0.089) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'gini', 'min_samples_split': 10, 'max_depth': None}
+	 0.385 (+/-0.080) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.402 (+/-0.052) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.388 (+/-0.026) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.401 (+/-0.044) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.381 (+/-0.052) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.392 (+/-0.052) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.398 (+/-0.070) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.398 (+/-0.054) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.402 (+/-0.027) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.385 (+/-0.043) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.401 (+/-0.042) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.398 (+/-0.038) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.405 (+/-0.035) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.400 (+/-0.033) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.389 (+/-0.097) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.401 (+/-0.093) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.395 (+/-0.100) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.406 (+/-0.084) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.403 (+/-0.085) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.400 (+/-0.098) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.398 (+/-0.116) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': 10}
+	 0.405 (+/-0.058) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.392 (+/-0.109) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.396 (+/-0.097) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.404 (+/-0.093) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.400 (+/-0.098) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.389 (+/-0.094) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.393 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': 10}
+	 0.399 (+/-0.073) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.399 (+/-0.043) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.393 (+/-0.069) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.391 (+/-0.061) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.397 (+/-0.047) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.399 (+/-0.055) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.398 (+/-0.062) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.392 (+/-0.068) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.379 (+/-0.063) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.396 (+/-0.056) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.398 (+/-0.053) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.400 (+/-0.050) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.399 (+/-0.048) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.404 (+/-0.060) for {'bootstrap': False, 'min_samples_leaf': 1, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.403 (+/-0.118) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.393 (+/-0.096) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.401 (+/-0.096) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.396 (+/-0.093) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.400 (+/-0.071) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.400 (+/-0.083) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.399 (+/-0.097) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 2, 'max_depth': None}
+	 0.396 (+/-0.069) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 10, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.405 (+/-0.087) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 60, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.413 (+/-0.084) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 80, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.397 (+/-0.107) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 100, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.400 (+/-0.098) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 120, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.398 (+/-0.103) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 140, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 0.394 (+/-0.101) for {'bootstrap': False, 'min_samples_leaf': 10, 'n_estimators': 160, 'criterion': 'entropy', 'min_samples_split': 10, 'max_depth': None}
+	 Detailed classification report:
+	 The model is trained on the full development set.
+	 The scores are computed on the full evaluation set.
+             precision    recall  f1-score   support
+
+          1       0.49      0.65      0.56        46
+          2       0.29      0.16      0.21        25
+          3       0.36      0.31      0.33        29
+
+avg / total       0.40      0.43      0.41       100
+

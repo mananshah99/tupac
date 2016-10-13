@@ -1,0 +1,4 @@
+Using arguments
+Namespace(directory='', experiments=1, feature=True, feature_directory='/data/dywang/Database/Proliferation/libs/OVERALL/092516_MITKONET_HEATMAPS', ispatch=False, load=0, mode='mitosis', pickle='1', portion=-1, seed=0, split=0.2)
+Using  500  ids, with SAMPLE_SIZE set to  -1
+WSI argument selected. Obtaining images from directory  /data/dywang/Database/Proliferation/libs/OVERALL/092516_MITKONET_HEATMAPS

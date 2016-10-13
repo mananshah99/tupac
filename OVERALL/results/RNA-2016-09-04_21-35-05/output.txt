@@ -1,0 +1,5 @@
+Using arguments
+Namespace(directory='', experiments=0, feature=True, feature_directory='/home/dywang/00exp_wdy/stage02_getHP/result_wsi_fcnn_t05/heatmap', ispatch=False, load=1, mode='rna', pickle='1', portion=-1, seed=0, split=0.2)
+Using  500  ids, with SAMPLE_SIZE set to  -1
+R^2 is  0.136339151211
+Spearman's Rho is  0.376503126718  with p-val  2.76368659343e-18
