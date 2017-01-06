@@ -15,12 +15,22 @@ from skimage.io import *
 
 def extract_features(heatmap):
     ALL_BLACK = False
+    tm = None
     try:
+        name = heatmap.split('/')[-1]
         im = imread(heatmap, cv2.IMREAD_GRAYSCALE)
+        tm = cv2.imread("../00exp_wdy/stage02_getHP/wsi_msk/" + name, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+        #tm = cv2.imread("../stage03_deepFeatMaps/results/roi-level1-test_07-11-16/" + name, cv2.CV_LOAD_IMAGE_GRAYSCALE)     
+        thresh = 127
+        tm = cv2.threshold(tm, thresh, 255, cv2.THRESH_BINARY)[1]
     except Exception as e:
 #        print e
         ALL_BLACK = True
 
+    if tm is not None:
+        total_area = cv2.countNonZero(tm) * 0.001
+    else:
+        total_area = 1
     vector = []
     for threshold_decimal in [0.1, 0.2, 0.3, 0.4, 0.5, 0.67, 0.83, 0.85, 0.91, 0.95, 0.97]: #based on mitko's threhsolds #np.arange(0.1, 1, 0.1): #much slower with larger images
 
@@ -28,7 +38,7 @@ def extract_features(heatmap):
         individual_vector = [] 
 
         if ALL_BLACK:
-            individual_vector.extend([0]*31)
+            individual_vector.extend([0]*8)#33)#8) #33)
             vector.extend(individual_vector)
             continue
 
@@ -75,13 +85,16 @@ def extract_features(heatmap):
                 mitoses_area = mitoses_area[int(0.2 * len(mitoses_area)) : int(0.8 * len(mitoses_area))] 
             
             individual_vector.append(num_mitoses)
-
+            individual_vector.append(num_mitoses / float(total_area))
+        
             individual_vector.extend([np.median(mitoses_area), 
                                       np.average(mitoses_area), 
                                       np.amin(mitoses_area), 
                                       np.amax(mitoses_area), 
                                       np.std(mitoses_area)])
 
+            individual_vector.append(sum(mitoses_area) / float(total_area))
+            '''
             individual_vector.extend([np.median(mitoses_eccentricity),
                                       np.average(mitoses_eccentricity),
                                       np.amin(mitoses_eccentricity),
@@ -111,11 +124,11 @@ def extract_features(heatmap):
                                       np.amin(mitoses_solidity),
                                       np.amax(mitoses_solidity),
                                       np.std(mitoses_solidity)])
-
+            '''
         except Exception as e: #0 mitoses
             print e
             print e.args
-            individual_vector.extend([0]*31)
+            individual_vector.extend([0]*31)#8)#31)
 
         # vector is extended at each threshold 
         vector.extend(individual_vector)

@@ -22,27 +22,12 @@ classifiers = ['svm', 'rf']
 
 ## Get names of images
 
-processed = process_groundtruth()
-class_dictionary  = {1 : [], 2 : [], 3 : []}
-ground_dictionary = {i : [] for i in range(1, 501)}
-
-for row in processed:
-    image_number  = int(row[0])
-    image_mitosis = int(row[1])
-    image_RNA     = float(row[2])
-
-    class_dictionary[image_mitosis].append(row[0])
-    ground_dictionary[image_number].extend([image_mitosis, image_RNA])
-
-rna_list = []
-for key in ground_dictionary:
-    rna = ground_dictionary[key][1]
-    rna_list.append(rna)
-
 image_ids = []
-for key in class_dictionary:
-    tmp =  class_dictionary[key]
-    image_ids.extend(tmp)
+for i in range(1, 322):
+    si = str(i).zfill(3)
+    image_ids.append(si)
+
+print image_ids
 
 image_ids = np.array(image_ids)
 
@@ -62,21 +47,21 @@ def is_regressor(s):
         return True 
     return False
 
-X_mitosis = cPickle.load(open(join(args.mitosis_directory, 'X.pickle')))
-y_mitosis = cPickle.load(open(join(args.mitosis_directory, 'y.pickle')))
+# for #1: 
+#X_mitosis = cPickle.load(open(join('testresults/MITOSIS-2016-08-31_21-08-39/', 'X.pickle')))
+# for #2:
+#X_mitosis = cPickle.load(open(join('testresults/MITOSIS-2016-10-01_23-03-11/', 'X.pickle')))
+# for #3:
+#X_mitosis = cPickle.load(open(join('testresults/MITOSIS-2016-10-02_12-00-15/', 'X.pickle')))
 
-X_rna = cPickle.load(open(join(args.rna_directory, 'X.pickle')))
-y_rna = cPickle.load(open(join(args.rna_directory, 'y.pickle')))
+# for mitkonet - latest
+X_mitosis = cPickle.load(open('10116_FACENET_TEST_X.pickle'))
+X_rna = X_mitosis
 
 # mitosis
 
 classifier_list = ['id'] #the headers for the CSV file
-mitosis_image_preds = {i : [str(i).zfill(3)] for i in range(1, 501)} #prediction values (each header should have one value in image_preds)
-
-for idx, i in enumerate(image_ids):
-    mitosis_image_preds[int(i)].append(y_mitosis[idx])
-
-classifier_list.append("score")
+mitosis_image_preds = {i : [str(i).zfill(3)] for i in range(1, 322)} #prediction values (each header should have one value in image_preds)
 
 def write_csv_preds(headers, preds_map, out_f):
     out_f = open(out_f, 'wb+')
@@ -96,25 +81,16 @@ for f in glob.glob(join(args.mitosis_directory, '*.pickle')):
 
         clf = cPickle.load(open(f, 'r'))        
         clf.set_params(n_jobs=-1, verbose=1)
-        kf = KFold(len(X_mitosis), n_folds=5, shuffle=True) 
-
-        for k, (train, test) in enumerate(kf):
-            clf.fit(X_mitosis[train], y_mitosis[train])
-            preds = clf.predict(X_mitosis[test])
-            for idx, i in enumerate(image_ids[test]):
-                mitosis_image_preds[int(i)].append(preds[idx])
+        preds = clf.predict(X_mitosis)
+        for idx, i in enumerate(image_ids):
+            mitosis_image_preds[int(i)].append(preds[idx])
 
         classifier_list.append(f.split('/')[-1].split('.')[0])
 
 write_csv_preds(classifier_list, mitosis_image_preds, 'mitos-predictions.csv')
 
 classifier_list = ['id'] #the headers for the CSV file
-rna_image_preds = {i : [str(i).zfill(3)] for i in range(1, 501)} #prediction values (each header should have one value in image_preds)
-
-for idx, i in enumerate(image_ids):
-    rna_image_preds[int(i)].append(y_rna[idx])
-
-classifier_list.append("score")
+rna_image_preds = {i : [str(i).zfill(3)] for i in range(1, 322)} #prediction values (each header should have one value in image_preds)
 
 for f in glob.glob(join(args.rna_directory, '*.pickle')):
     if is_regressor(f):
@@ -122,13 +98,10 @@ for f in glob.glob(join(args.rna_directory, '*.pickle')):
 
         clf = cPickle.load(open(f, 'r'))        
         clf.set_params(n_jobs=-1, verbose=1)
-        kf = KFold(len(X_rna), n_folds=5, shuffle=True) 
 
-        for k, (train, test) in enumerate(kf):
-            clf.fit(X_rna[train], y_rna[train])
-            preds = clf.predict(X_rna[test])
-            for idx, i in enumerate(image_ids[test]):
-                rna_image_preds[int(i)].append(preds[idx])
+        preds = clf.predict(X_rna)
+        for idx, i in enumerate(image_ids):
+            rna_image_preds[int(i)].append(preds[idx])
 
         classifier_list.append(f.split('/')[-1].split('.')[0])
 

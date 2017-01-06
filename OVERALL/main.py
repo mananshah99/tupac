@@ -156,9 +156,10 @@ def process_images_patch(image_id):
     features = extract_patch.extract_features(args.feature_directory, patches)
     #print (image_id, features)
 
-    return preprocessing.scale(np.array(features, dtype=np.float32)), image_level
+    return np.array(features), image_level #preprocessing.scale(np.array(features, dtype=np.float32)), image_level
 
 def process_images_nopatch(image_id):
+    print "\t Beginning ", image_id
     global args
     global ground_dictionary
     
@@ -175,21 +176,23 @@ def process_images_nopatch(image_id):
     #print (image_id, len(features))
 
     print "\t Completed ", image_id
-    return preprocessing.scale(np.array(features, dtype=np.float32)), image_level
+    return np.array(features, dtype=np.float32), image_level
+
+#    return preprocessing.scale(np.array(features, dtype=np.float32)), image_level
 
 if args.load == 0:
     # If we are looking at patches, process the patches
     if args.ispatch:
         patch_directory = args.directory
         print "Patch argument selected. Obtaining images from patch directory ", patch_directory
-        pool = mp.Pool(processes = 20)
+        pool = mp.Pool(processes = 30)
         X_and_y = pool.map(process_images_patch, image_ids)
         X, y = zip(*X_and_y)
     
     else:
         heatmap_directory = args.feature_directory
         print "WSI argument selected. Obtaining images from directory ", heatmap_directory
-        pool = mp.Pool(processes = 20)
+        pool = mp.Pool(processes = 30)
         X_and_y = pool.map(process_images_nopatch, image_ids)
         X, y = zip(*X_and_y)
 
@@ -208,8 +211,30 @@ if args.load == 0:
             cPickle.dump(y, f)
 
 else:
-    X = cPickle.load(open('results/RNA-2016-08-03_00-03-09/X.pickle','r'))
-    y = cPickle.load(open('results/MITOSIS-2016-08-02_15-47-27/y.pickle', 'r')) #open('results/RNA-2016-08-03_00-03-09/y.pickle','r'))
+    # MITKONET
+    X = cPickle.load(open('results/MITOSIS-2016-10-02_15-12-31/X.pickle', 'r'))
+    y = cPickle.load(open('results/MITOSIS-2016-10-02_15-12-31/y.pickle', 'r'))
+    # FACENET
+#    X = cPickle.load(open('results/MITOSIS-2016-10-02_15-11-31/X.pickle', 'r'))
+#    y = cPickle.load(open('results/MITOSIS-2016-10-02_15-11-31/y.pickle', 'r'))
+
+#    X = cPickle.load(open('results/MITOSIS-2016-09-25_12-34-10/X.pickle', 'r'))
+#    y = cPickle.load(open('results/MITOSIS-2016-09-25_12-34-10/y.pickle', 'r'))
+#    X = cPickle.load(open('results/MITOSIS-2016-09-29_22-25-05/X.pickle', 'r'))
+#    y = cPickle.load(open('results/MITOSIS-2016-09-29_22-25-05/y.pickle', 'r'))
+#    X = cPickle.load(open('results/MITOSIS-2016-09-04_20-05-15/X.pickle', 'r'))
+#    y = cPickle.load(open('results/MITOSIS-2016-09-04_20-05-15/y.pickle', 'r'))
+
+#    X = cPickle.load(open('results/MITOSIS-2016-09-04_17-50-30/X.pickle', 'r'))
+#    y = cPickle.load(open('results/MITOSIS-2016-09-04_17-50-30/y.pickle', 'r'))
+
+#    X = cPickle.load(open('results/MITOSIS-2016-09-01_01-52-52/X.pickle', 'r'))
+#    y = cPickle.load(open('results/MITOSIS-2016-09-01_01-52-52/y.pickle', 'r'))
+
+#    X = cPickle.load(open('results/MITOSIS-2016-08-30_22-28-48/X.pickle', 'r'))
+#    y = cPickle.load(open('results/MITOSIS-2016-08-30_22-28-48/y.pickle', 'r'))
+    #X = cPickle.load(open('results/RNA-2016-08-03_00-03-09/X.pickle','r'))
+    #y = cPickle.load(open('results/MITOSIS-2016-08-02_15-47-27/y.pickle', 'r')) #open('results/RNA-2016-08-03_00-03-09/y.pickle','r'))
 
 if args.seed != -1:
     X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=args.split, random_state=int(args.seed))
@@ -263,6 +288,7 @@ if args.mode == 'mitosis': # classification problem
 
         #print("[EXP > CALIB] Performing multiclass calibration experiment")
 
+    """
     print "[PREDICTION > SVM] Tuning via Grid Search"
 
     # Set the parameters by cross-validation
@@ -301,6 +327,7 @@ if args.mode == 'mitosis': # classification problem
         print "Pred: ", y_pred
         #print(confusion_matrix(y_true, y_pred, labels=[1,2,3]))
 
+    """
     print "[PREDICTION > RF] Tuning via Grid Search"
     
     tuned_parameters = {"max_depth": [10, None],
@@ -385,7 +412,7 @@ else:
         plt.savefig(os.path.join(mydir, 'rna_oob_error.png'))
 
     # rna!
-    regressor = RandomForestRegressor(n_estimators=140, oob_score=True, n_jobs=-1, verbose=1)
+    regressor = RandomForestRegressor(n_estimators=440, oob_score=True, n_jobs=-1, verbose=1)
     regressor.fit(X, y)
     #print regressor.oob_prediction_
     print "R^2 is ", regressor.oob_score_
