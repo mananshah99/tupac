@@ -19,15 +19,16 @@ args = vars(parser.parse_args())
 
 balance_classes=args["balance_classes"]
 
-TRAIN_OUT = 'roi-train-L0.lst'
-VAL_OUT = 'roi-val-L0.lst'
-TEST_OUT = 'roi-test-L0.lst'
+TRAIN_OUT = 'roi-train-L0-s1.lst'
+VAL_OUT = 'roi-val-L0-s1.lst'
+TEST_OUT = 'roi-test-L0-s1.lst'
 
 # Level 1
 #negfiles = [l.strip() for l in os.popen('find /data/dzhu1/LEVEL00/sample_W256_P0000000999/img-Normal/ -name "*.png"').readlines()]
 
 # Level 0 -- the negative files are the negs that aren't in the high thresholded regions, pos files are teh same as before
-negfiles = [l.strip() for l in os.popen('find ../../stage02_genROIPatches/ROI-Stage2/ -name "*.png"').readlines()]
+#negfiles = [l.strip() for l in os.popen('find ../../stage02_genROIPatches/ROI-Stage2/ -name "*.png"').readlines()]
+negfiles = [l.strip() for l in os.popen('find /data/dzhu1/LEVEL00/sample_W256_P0000000999/img-Normal/ -name "*.png"').readlines()]
 posfiles = [l.strip() for l in os.popen('find /data/dzhu1/LEVEL00/sample_W256_P0000000999/img-ROI/ -name "*.png"').readlines()]
 
 if balance_classes:
@@ -38,8 +39,8 @@ if balance_classes:
 	
 print "INFO: Found " + str(len(posfiles)) + " ROI patches and " + str(len(negfiles)) + " non-ROI patches."
 
-train_val_pos, test_pos = split_percentage(posfiles, .80)
-train_val_neg, test_neg = split_percentage(negfiles, .80)
+train_val_pos, test_pos = split_percentage(posfiles, .90)
+train_val_neg, test_neg = split_percentage(negfiles, .90)
 
 train_pos, val_pos = split_percentage(train_val_pos, .90)
 train_neg, val_neg = split_percentage(train_val_neg, .90)
