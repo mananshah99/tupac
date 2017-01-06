@@ -11,112 +11,69 @@ from skimage.measure import label
 from skimage.morphology import closing, square
 from skimage.measure import regionprops
 from skimage.color import label2rgb
-from skimage.io import *
-
-def extract_features(heatmap):
+import skimage.io as skio
+from skimage.transform import resize
+def extract_features(heatmap_mitoses, heatmap_roi, tv, ratio=4.0, dscale=0.0001):
     ALL_BLACK = False
+    FEA_NUM = 3
+    #print "\t Loading:", heatmap_mitoses
+    #print "\t Loading:", heatmap_roi
+
     try:
-        im = imread(heatmap, cv2.IMREAD_GRAYSCALE)
+        im = skio.imread(heatmap_mitoses, as_grey=True)
+        im2 = skio.imread(heatmap_roi, as_grey=True)
+
+        h, w = im.shape
+        nh = int(h / ratio)
+        nw = int(w / ratio)
+        im = resize(im, (nh, nw)) # img_as_float()
+        im2 = resize(im2, (nh, nw))
+        print "im.shape", im.shape
+        print "im2.shape", im2.shape
     except Exception as e:
-#        print e
+        print "ERROR"
         ALL_BLACK = True
 
     vector = []
-    for threshold_decimal in [0.1, 0.2, 0.3, 0.4, 0.5, 0.67, 0.83, 0.85, 0.91, 0.95, 0.97]: #based on mitko's threhsolds #np.arange(0.1, 1, 0.1): #much slower with larger images
-
-        MANUAL_THRESHOLD = int(255 * threshold_decimal)
-        individual_vector = [] 
+    for threshold_decimal in [0.5, 0.6, 0.7, 0.8, 0.9]: #based on mitko's threhsolds #np.arange(0.1, 1, 0.1): #much slower with larger images
+        print "@@@@@", threshold_decimal
+        individual_vector = []
 
         if ALL_BLACK:
-            individual_vector.extend([0]*31)
+            individual_vector.extend([0]*FEA_NUM)
             vector.extend(individual_vector)
             continue
 
-        mitoses = []
-        mitoses_area = []
-        mitoses_eccentricity = []
-        mitoses_max_i = []
-        mitoses_min_i = []
-        mitoses_mean_i = []
-        mitoses_solidity = []
-
-        thresh = MANUAL_THRESHOLD
-            
-        _, bw = cv2.threshold(im, thresh, 255, cv2.THRESH_BINARY)
-
+        bw = im > threshold_decimal
+        bw2 = im2 > tv
         # label image regions
         label_image = label(bw)
-
-        A = 0
         potential_mitoses = regionprops(label_image, intensity_image=im)
 
+        mitoses_area = []
+        mitoses_eccentricity = []
         for x in potential_mitoses:
             mitoses_area.append(x.area)
             mitoses_eccentricity.append(x.eccentricity)
-            mitoses_max_i.append(x.max_intensity)
-            mitoses_min_i.append(x.min_intensity)
-            mitoses_mean_i.append(x.mean_intensity)
-            mitoses_solidity.append(x.solidity)
 
         if len(mitoses_area) == 0:
             mitoses_area.append(0)
             mitoses_eccentricity.append(0)
-            mitoses_max_i.append(0)
-            mitoses_min_i.append(0)
-            mitoses_mean_i.append(0)
-            mitoses_solidity.append(0)
 
-        num_mitoses = len(potential_mitoses) 
-        mitoses.append(num_mitoses)
+        TUMOR_SIZE = np.sum(bw2) * dscale
 
+        num_mitoses = float(len(potential_mitoses)) / TUMOR_SIZE
+        #mitoses.append(num_mitoses)
+        print "@@@@", len(potential_mitoses), num_mitoses, TUMOR_SIZE
         try:
-            mitoses_area = sorted(mitoses_area)
-            if len(mitoses_area[int(0.2 * len(mitoses_area)) : int(0.8 * len(mitoses_area))]) > 1:
-                mitoses_area = mitoses_area[int(0.2 * len(mitoses_area)) : int(0.8 * len(mitoses_area))] 
-            
             individual_vector.append(num_mitoses)
-
-            individual_vector.extend([np.median(mitoses_area), 
-                                      np.average(mitoses_area), 
-                                      np.amin(mitoses_area), 
-                                      np.amax(mitoses_area), 
-                                      np.std(mitoses_area)])
-
-            individual_vector.extend([np.median(mitoses_eccentricity),
-                                      np.average(mitoses_eccentricity),
-                                      np.amin(mitoses_eccentricity),
-                                      np.amax(mitoses_eccentricity),
-                                      np.std(mitoses_eccentricity)])
-
-            individual_vector.extend([np.median(mitoses_min_i),
-                                      np.average(mitoses_min_i),
-                                      np.amin(mitoses_min_i),
-                                      np.amax(mitoses_min_i),
-                                      np.std(mitoses_min_i)])
-
-            individual_vector.extend([np.median(mitoses_max_i),
-                                      np.average(mitoses_max_i),
-                                      np.amin(mitoses_max_i),
-                                      np.amax(mitoses_max_i),
-                                      np.std(mitoses_max_i)])
-
-            individual_vector.extend([np.median(mitoses_mean_i),
-                                      np.average(mitoses_mean_i),
-                                      np.amin(mitoses_mean_i),
-                                      np.amax(mitoses_mean_i),
-                                      np.std(mitoses_mean_i)])
-
-            individual_vector.extend([np.median(mitoses_solidity),
-                                      np.average(mitoses_solidity),
-                                      np.amin(mitoses_solidity),
-                                      np.amax(mitoses_solidity),
-                                      np.std(mitoses_solidity)])
-
+            individual_vector.append(np.average(mitoses_area))
+            individual_vector.append(np.average(mitoses_eccentricity))
         except Exception as e: #0 mitoses
             print e
             print e.args
-            individual_vector.extend([0]*31)
+            individual_vector.extend([0]*FEA_NUM)
 
-        # vector is extended at each threshold 
+        # vector is extended at each threshold
         vector.extend(individual_vector)
-    return vector 
+    return vector
