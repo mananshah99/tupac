@@ -1,0 +1,71 @@
+Mitko
+
+tv = 0.5
+radius = 4
+mindis = 10
+multiprocess = 20
+sz = 30
+N = 295
+
+################################################################
+fnet
+
+
+tv = 0.8
+radius = 4
+mindis = 4
+multiprocess = 20
+sz = 30
+N = 295
+
+TPs=21 FPs=5 FNs=512
+0.807692307692 0.0393996247655 0.0751341681574
+
+tv = 0.5    
+    # 0050K
+    TPs=365 FPs=1018 FNs=168
+    0.263919016631 0.684803001876 0.381002087683
+    
+    # 0650K
+    TPs=335 FPs=592 FNs=198
+    0.361380798274 0.62851782364 0.458904109589
+
+    # 1000K
+    TPs=302 FPs=771 FNs=231
+    0.281453867661 0.56660412758 0.376089663761
+
+    # combine 2
+
+    # combine 3
+    TPs=293 FPs=275 FNs=240
+    0.515845070423 0.549718574109 0.532243415077
+
+tv = 0.4
+    # combine
+    TPs=353 FPs=516 FNs=180
+    0.406214039125 0.662288930582 0.503566333809
+
+tv = 0.2
+    # 0650K
+    TPs=398 FPs=1726 FNs=135
+    0.187382297552 0.746716697936 0.299585999247 
+    # add more TP while, add more FPs
+
+    # combine
+    TPs=436 FPs=1910 FNs=97
+    0.185848252344 0.818011257036 0.302882945467
+
+    
+tv = 0.5
+sz = 40
+TPs=335 FPs=593 FNs=198
+0.36099137931 0.62851782364 0.458590006845
+# extend the range to 40, there is no difference
+# FPs - 2, while they are duplicate points.
+
+tv = 0.5
+sz = 50
+TPs=335 FPs=592 FNs=198
+0.361380798274 0.62851782364 0.458904109589
+# extend the range to 50, there is no difference
+# FPs - 1, while they are duplicate points
