@@ -37,21 +37,13 @@ def create_patch(img, center_pixel, patch_size):
 # Will generate square patches only (patch_size x patch_size)
 # center_pixel is guaranteed to be in each patch
 # center_pixel is (x, y)
-def gen_patches(img_path, # something.tif
-                center_pixel, # a tuple
-                mask_image, # mask for contours
-                patch_size = 100,
-                output_directory = "",
-                nn_patch_size = 10,
-                n_patches=10,
-                patch_frac_denominator=4):
-
+def gen_patches(img_path, center_pixel, mask_image, patch_size = 100, output_directory = "", nn_patch_size = 10, n_patches=10, patch_frac_denominator=4):
     itms = img_path.split('/')
     img_name = itms[-1]
     img_name_root = img_name.split('.')[0]
-    wsi_name = itms[-2]
+    sub_folder_name = itms[-2]
 
-    output_directory_for_img = getFolders('%s/%s/%s'%(output_directory, wsi_name, img_name_root))
+    output_directory_for_img = getFolders('%s/%s/%s'%(output_directory, sub_folder_name, img_name_root))
 
     image = cv2.imread(img_path)
 
@@ -59,9 +51,10 @@ def gen_patches(img_path, # something.tif
     initial_y = center_pixel[1]
 
     center_patch = create_patch(image, (initial_x, initial_y), patch_size) # return None if the patch is out of image.
-    output_image_path_name = '%s/%s_%s_x%010d_y%010d.jpg'%(output_directory_for_img, wsi_name, img_name_root, initial_x, initial_y)
+
+    output_image_path_name = '%s/%s_%s_x%010d_y%010d.png'%(output_directory_for_img, sub_folder_name, img_name_root, initial_x, initial_y)
     if center_patch is not None:
-        if msk_image[initial_y, initial_x] > 0:
+        if mask_image[initial_y, initial_x] > 0:
             print "\t\t -> Saved center crop to " + output_image_path_name
             cv2.imwrite(output_image_path_name, center_patch)
 
@@ -78,7 +71,7 @@ def gen_patches(img_path, # something.tif
                         new_y = initial_y - (nn_patch_size - y)
                         shifted_patch = create_patch(image, (new_x, new_y), patch_size)
                         if shifted_patch is not None:
-                            output_image_path_name = '%s/%s_%s_x%010d_y%010d.jpg'%(output_directory_for_img, wsi_name, img_name_root, new_x, new_y)
+                            output_image_path_name = '%s/%s_%s_x%010d_y%010d.png'%(output_directory_for_img, sub_folder_name, img_name_root, new_x, new_y)
                             cv2.imwrite(output_image_path_name, shifted_patch)
                             print "\t\t -> Saved shifted crop to " + output_image_path_name
                         break
@@ -113,44 +106,67 @@ def notMitosis(pt, gpts, r = 30):
     else:
         return True
 
-IMG_DATA_ROOT = '../../../../data/mitoses/mitoses_image_data_cn'
-MSK_DATA_ROOT = '../../../../data/mitoses/mitoses_image_data'
-CSV_DATA_ROOT = '../../../../data/mitoses/mitoses_ground_truth'
-for line in [l.strip() for l in open('groundtruth.lst').readlines()]:
-    wsi_name, csv_name = line.split('/')
-    name_root = csv_name.split('.')[0]
+def get_training_samples(param):
+    IMG_DATA_ROOT = 'mitoses/mitoses_image_data_cn3'
+    MSK_DATA_ROOT = 'mitoses/mitoses_image_data'
+    CSV_DATA_ROOT = 'mitoses/mitoses_ground_truth'
 
-    img_path = '%s/%s/%s.tif_nc.png'%(IMG_DATA_ROOT, wsi_name, name_root)
-    csv_path = '%s/%s/%s.csv'%(CSV_DATA_ROOT, wsi_name, name_root)
-    msk_path = '%s/%s/%s_mask_nuclei.png'%(MSK_DATA_ROOT, wsi_name, name_root)
-    ground_truth_points = load_pts(csv_path)
-    print img_path
+    sub_folder_name, img_name_root = param
+    img_name_root_exp = '_Normalized'
+    img_path = '%s/%s/%s%s.tif'%(IMG_DATA_ROOT, sub_folder_name, img_name_root, img_name_root_exp)
+    csv_path = '%s/%s/%s.csv'%(CSV_DATA_ROOT, sub_folder_name, img_name_root)
+    msk_path = '%s/%s/%s_mask_nuclei.png'%(MSK_DATA_ROOT, sub_folder_name, img_name_root)
 
+    image = cv2.imread(img_path)
     msk_image = cv2.imread(msk_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 
+    if os.path.exists(csv_path):
+        ground_truth_points = load_pts(csv_path)
+        # get positive samples
+        if 1:
+            for point in ground_truth_points:
+                print "\tPositive => " + "(" + str(point[0]) + "," + str(point[1]) + ")"
+                gen_patches(img_path, point, msk_image, patch_size=64, n_patches = 10, nn_patch_size = 5, output_directory='training_examples/pos')
+    # get negative samples
     if 1:
-        for point in ground_truth_points:
-            print "\tPositive => " + "(" + str(point[0]) + "," + str(point[1]) + ")"
-            gen_patches(img_path, point, msk_image, patch_size=64, n_patches = 10, nn_patch_size = 5, output_directory='training_examples/pos')
+        NegNUM = 200
+        mitosis_radius = 30
+        patch_size = 64
+        output_directory = 'training_examples/neg'
+        img_name_root = '%s%s'%(img_name_root, img_name_root_exp)
+
+        if os.path.exists(csv_path):
+            ground_truth_points = load_pts(csv_path)
+            for center_pt in ground_truth_points:
+                msk_image[center_pt[1] - mitosis_radius : center_pt[1] + mitosis_radius, center_pt[0] - mitosis_radius : center_pt[0] + mitosis_radius] = 0
+
+        ys, xs = np.where(msk_image > 0)
+        neg_pts = [(y,x) for y, x in zip(ys, xs)]
+        print "#pts=%d"%(len(neg_pts))
+        random.seed(1122)
+        num_neg_size = np.min((NegNUM, len(neg_pts)))
+        neg_pts_sel = random.sample(neg_pts, num_neg_size)
+
+        output_directory_for_img = getFolders('%s/%s/%s'%(output_directory, sub_folder_name, img_name_root))
+        for neg_pt in neg_pts_sel:
+            y, x = neg_pt
+            center_patch = create_patch(image, (y, x), patch_size) # return None if the patch is out of image.
+            output_image_path_name = '%s/%s_%s_x%010d_y%010d.png'%(output_directory_for_img, sub_folder_name, img_name_root, x, y)
+            if center_patch is not None:
+                cv2.imwrite(output_image_path_name, center_patch)
+
+params = []
+for line in open('mitoses/all_image.lst'):
+    itms = line.strip().split('/')
+    sub_folder_name = itms[0]
+    img_name_root = itms[1].split('.')[0]
+    params.append([sub_folder_name, img_name_root])
+
+if __name__ == "__main__":
     if 0:
-        cnts, _ = cv2.findContours(msk_image.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-        ct, NegNUM = 0, 50
-        random.shuffle(cnts)
-        for cnt in cnts:
-            M = cv2.moments(cnt)
-            cX = int(M["m10"] / M["m00"])
-            cY = int(M["m01"] / M["m00"])
-            tup = (cX, cY)
-            if notMitosis(tup, ground_truth_points):
-                print "\tNegative => " + "(" + str(tup[0]) + "," + str(tup[1]) + ")"
-                r = gen_patches(img_path, tup, msk_image, patch_size=64, output_directory='training_examples/neg', n_patches=1, nn_patch_size = 5)
-                if r:
-                    ct = ct + 1
-                    if msk_image.shape[0] > 2000: # for large images
-                        if ct == NegNUM * 4:
-                            break
-                    else:
-                        if ct == NegNUM:
-                            break
-            else:
-                print "\t\t -> Error: too closed to MITOSIS: %d %d"%(cX, cY)
+        for param in params:
+            get_training_samples(param)
+    else:
+        from multiprocessing import Pool
+        pool = Pool(10)
+        pool.map(get_training_samples, params)
