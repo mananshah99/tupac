@@ -1,0 +1,327 @@
+##### Solver #####
+
+test_iter: 500
+test_interval: 5000
+test_initialization: true
+
+display: 10
+average_loss: 100
+
+base_lr: 0.01
+momentum: 0.9
+weight_decay: 0.002
+
+lr_policy: "step"
+gamma: 0.9
+stepsize:    50000
+max_iter:  2000000
+
+snapshot: 50000
+snapshot_prefix: "models/mnet"
+solver_mode: GPU
+#solver_mode: CPU
+
+##### Network #####
+
+net_param: {
+name: "Net"
+layer {
+  name: "data"
+  type: "Data"
+  top: "data"
+  top: "label"
+  include {
+    phase: TRAIN
+  }
+  transform_param {
+    mirror: true
+    mean_value: 182
+    mean_value: 127
+    mean_value: 194
+  }
+  data_param {
+    source: "../../../../step01_generate_traing_data/training_examples_babak/lmdb_stage2_tr_top12_sz63"
+    batch_size: 64
+    backend: LMDB
+  }
+}
+layer {
+  name: "data"
+  type: "Data"
+  top: "data"
+  top: "label"
+  include {
+    phase: TEST
+  }
+  transform_param {
+    mirror: true
+    mean_value: 182
+    mean_value: 127
+    mean_value: 194
+  }
+  data_param {
+    source: "../../../../step01_generate_traing_data/training_examples_babak/lmdb_stage2_te_top12_sz63"
+    batch_size: 128
+    backend: LMDB
+  }
+}
+## Layers ##
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 16
+    kernel_size: 4
+    stride: 1
+    pad: 0
+    weight_filler {
+        type: "gaussian" std: 0.07
+    }
+    bias_filler {
+        type: "constant" value: 0.1
+    }
+  }
+}
+
+layer {
+  name: "nonlin1"
+  type: "ReLU"
+  bottom: "conv1"
+  top: "conv1"
+}
+
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+    engine: CAFFE
+  }
+}
+
+##### Layer 2 #####
+
+layer {
+  name: "conv2"
+  type: "Convolution"
+  bottom: "pool1"
+  top: "conv2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    stride: 1
+    pad: 0
+    weight_filler {
+        type: "gaussian" std: 0.04
+    }
+    bias_filler {
+      type: "constant" value: 0.1
+    }
+  }
+}
+
+layer {
+  name: "nonlin2"
+  type: "ReLU"
+  bottom: "conv2"
+  top: "conv2"
+}
+
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+    engine: CAFFE
+  }
+}
+
+##### Layer 3 #####
+
+layer {
+  name: "conv3"
+  type: "Convolution"
+  bottom: "pool2"
+  top: "conv3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    stride: 1
+    pad: 0
+    weight_filler {
+        type: "gaussian" std: 0.04
+    }
+    bias_filler {
+      type: "constant" value: 0.1
+    }
+  }
+}
+
+layer {
+  name: "nonlin3"
+  type: "ReLU"
+  bottom: "conv3"
+  top: "conv3"
+}
+
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "conv3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+    engine: CAFFE
+  }
+}
+
+##### Layer 4 #####
+layer {
+  name: "conv4"
+  type: "Convolution"
+  bottom: "pool3"
+  top: "conv4"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    stride: 1
+    pad: 0
+    weight_filler {
+        type: "gaussian" std: 0.04
+    }
+    bias_filler {
+      type: "constant" value: 0.1
+    }
+  }
+}
+
+layer {
+  name: "nonlin4"
+  type: "ReLU"
+  bottom: "conv4"
+  top: "conv4"
+}
+
+layer {
+  name: "pool4"
+  type: "Pooling"
+  bottom: "conv4"
+  top: "pool4"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+    engine: CAFFE
+  }
+}
+
+##### Fully connected 1 #####
+
+ layer {
+  name: "ip1_c"
+  type: "Convolution"
+  bottom: "pool4"
+  top: "ip1"
+  convolution_param {
+    num_output: 200
+    kernel_size: 2
+    stride: 1
+    pad: 0
+    weight_filler {
+        type: "gaussian" std: 0.03
+    }
+    bias_filler {
+      type: "constant" value: 0.1
+    }
+  }
+}
+
+layer {
+  name: "nonlin_ip1"
+  type: "ReLU"
+  bottom: "ip1"
+  top: "ip1"
+}
+
+##### Fully connected 2 (output layer) #####
+layer {
+  name: "ip2_c"
+  type: "Convolution"
+  bottom: "ip1"
+  top: "ip2"
+  convolution_param {
+    num_output: 2
+    kernel_size: 1
+    stride: 1
+    pad: 0
+    weight_filler {
+        type: "gaussian" std: 0.06
+    }
+    bias_filler {
+      type: "constant" value: 0.1
+    }
+  }
+}
+######################################
+layer {
+  name: "accuracy"
+  type: "Accuracy"
+  bottom: "ip2"
+  bottom: "label"
+  top: "accuracy"
+  include {
+    phase: TEST
+  }
+}
+layer {
+  name: "loss"
+  type: "SoftmaxWithLoss"
+  bottom: "ip2"
+  bottom: "label"
+  top: "loss"
+}
+}

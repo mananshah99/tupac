@@ -9,8 +9,8 @@ from matplotlib import pyplot as plt
 from os import listdir
 from os.path import isfile, join
 
-PATH = 'roi-level1_06-24-16'
-threshold_decimal = 0.65
+PATH = 'roi-level1-test_07-11-16'
+threshold_decimal = 0.55 #used to be 0.65
 
 onlyfiles = [f for f in listdir(PATH) if isfile(join(PATH, f))]
 

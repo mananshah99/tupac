@@ -1,0 +1,4 @@
+model 1 / 2 / 3: use patch size as 64, the number P and N are balanced
+
+model 4 size 63, #P and N are unbalanced, from scratch
+model 5 size 63, #P and N are unbalanced, from stage01

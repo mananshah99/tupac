@@ -1,0 +1,69 @@
+m1 / m2 / m3 : old training samples, 50K max
+m3 / m4 / m5 : old training samples, 80K max
+
+m7
+    test_iter: 100
+    test_interval: 500
+    test_initialization: true
+
+    display: 10
+    average_loss: 100
+
+    base_lr: 0.01
+    momentum: 0.9
+    weight_decay: 0.002
+
+    lr_policy: "step"
+    gamma: 0.9
+    stepsize:   50000
+    max_iter: 2000000
+
+    snapshot: 50000
+    snapshot_prefix: "models/mnet"
+    solver_mode: GPU
+
+m8
+    ##### Solver #####
+
+    test_iter: 100
+    test_interval: 500
+    test_initialization: true
+
+    display: 10
+    average_loss: 100
+
+    base_lr: 0.01
+    momentum: 0.9
+    weight_decay: 0.002
+
+    lr_policy: "step"
+    gamma: 0.9
+    stepsize:  100000
+    max_iter: 2000000
+
+    snapshot: 50000
+    snapshot_prefix: "models/mnet"
+    solver_mode: GPU
+
+m9
+    ##### Solver #####
+
+    test_iter: 100
+    test_interval: 500
+    test_initialization: true
+
+    display: 10
+    average_loss: 100
+
+    base_lr: 0.01
+    momentum: 0.9
+    weight_decay: 0.002
+
+    lr_policy: "step"
+    gamma: 0.8
+    stepsize:   50000
+    max_iter: 2000000
+
+    snapshot: 50000
+    snapshot_prefix: "models/mnet"
+    solver_mode: GPU

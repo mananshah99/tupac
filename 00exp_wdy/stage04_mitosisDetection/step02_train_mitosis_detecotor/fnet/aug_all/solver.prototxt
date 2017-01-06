@@ -1,0 +1,20 @@
+net: "train_val.prototxt"
+
+test_iter: 100
+test_interval: 500
+test_initialization: true
+
+display: 10
+
+base_lr: 0.01
+lr_policy: "step"
+gamma: 0.9
+stepsize:    50000
+max_iter:  2000000
+
+momentum: 0.9
+weight_decay: 0.0005
+
+snapshot: 5000
+snapshot_prefix: "models/cnn10"
+solver_mode: GPU

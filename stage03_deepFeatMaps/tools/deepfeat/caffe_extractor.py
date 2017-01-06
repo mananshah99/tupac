@@ -191,8 +191,8 @@ class CaffeExtractor(Extractor):
         num_img = len(v_img)
         v_data = [self.transform_numpy(img) for img in v_img]
 
-        print ">>>> NUM_IMG ", num_img
-        print ">>>> IMG SIZE ", v_data[0].shape
+        #print ">>>> NUM_IMG ", num_img
+        #print ">>>> IMG SIZE ", v_data[0].shape
 
         n, c, h, w = self.net.blobs['data'].shape
         if n != num_img:
