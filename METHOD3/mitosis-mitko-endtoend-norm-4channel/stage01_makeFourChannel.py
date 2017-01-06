@@ -6,9 +6,9 @@ import argparse
 import math
 from random import randint
 import os, sys
-
+from scipy.misc import imsave
 parser=argparse.ArgumentParser()
-parser.add_argument('input_directory')
+parser.add_argument('patch_directory')
 parser.add_argument('mask_directory') #for fourth channel
 parser.add_argument('output_directory')
 parser.add_argument('-r', '--rotate', type=int, help='How many times to randomly rotate any given image', default=4)
@@ -25,7 +25,7 @@ def _internal_augment(image):
     # same power for the entire image
     P = 1
     
-    if args.power:
+    if args.power == 1:
         P = ((1.05 - 0.95) * np.random.ranf()) + 0.95
     
     for channel in range(0, image.shape[2]):
@@ -55,37 +55,62 @@ def __augment_help(image, mask):
 def augment(image, mask):
     # image is in RGB format (np array)
     augmented = []
-    
-    
-    
+    augmented.append(image) 
     augmented.append(_internal_augment(image))
-
-    augmented2 = []
-    for im_a in augmented:
-        b, g, r = cv2.split(im)
-        im_bgra = cv2.merge((b,g,r,mask))
-        augmented2.append(im_bgra)
-
+    '''
+    # screw it, just augment the image and forget rotating
     for i in xrange(args.rotate):
-        image_a = np.rot90(image, randint(1,3))
+        image_a = image
+        #image_a = np.rot90(image, randint(1,3))
         image_a = _internal_augment(image_a)
         augmented.append(image_a)
+    '''
+
+    augmented2 = []
     
-    return augmented
+#    print "Adding fourth channel"
+    for im in augmented:
+        #print "\t > Splitting image"
+        b, g, r = cv2.split(im)
+        #print "\t > Merging image"
+        im_bgra = cv2.merge((b,g,r,mask))
+        augmented2.append(im_bgra)
+    
+#    print "Done!"
+    
+    return augmented2
 
 import glob
 import cv2
 from os.path import join
-input_images = glob.glob(args.input_directory + "/*.png") #these are the input images
+input_images = glob.glob(args.patch_directory + "/*.png") #these are the input images
 
-if not os.path.exists(args.output_directory)
+if not os.path.exists(args.output_directory):
     print "Creating ", args.output_directory
-    os.makedirs(directory)
+    os.makedirs(args.output_directory)
 
-for name in input_images:
-    # patch should look like TUPAC-TR-333_level0_x0000018612_y0000052284.png
-    im = cv2.imread(name) # this is the actual patch image, we need the heatmap
-    mask =  cv2.imread(join(args.mask_directory, name.split('/')[-1]))
+def do_work(name):
+#for name in input_images:
+    if len(glob.glob(args.output_directory + '/' + name.split('/')[-1].split('.')[0] + '*.png')) > 0:
+        print "Seen image ", name
+        return
+
+    try:
+        # patch should look like TUPAC-TR-333_level0_x0000018612_y0000052284.png
+        print "Image ", name
+        im = cv2.imread(name) # this is the actual patch image, we need the heatmap
+        #print "Mask => ", join(args.mask_directory, name.split('/')[-1]) + ".png"
+        mask =  cv2.imread(join(args.mask_directory, name.split('/')[-1]) + ".png", cv2.CV_LOAD_IMAGE_GRAYSCALE) # extra .png in mitko pixel heatmaps
+        augmented = augment(im, mask)
     
-    augmented = augment(im, mask)
+        for idx, i in enumerate(augmented):
+            n = args.output_directory + '/' + name.split('/')[-1].split('.')[0] + "-" + str(idx) + ".png"
+            imsave(n, i)
     
+    except:
+        return
+
+from multiprocessing import Pool
+
+p = Pool(20)
+p.map(do_work, input_images)
